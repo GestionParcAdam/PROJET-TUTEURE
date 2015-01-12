@@ -1,0 +1,60 @@
+{#
+Ca c'est une vue
+Ici elle étend la vue principal qui est dans app/ressources/views
+Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}
+    <br/>
+    <div class="row">     
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-laptop"></i> PC-13</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-laptop"></i> Détail du matériel</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p class="col-lg-8"></p>
+                                <p class="col-lg-2"><button class="btn btn-default">Connexion VNC</button></p>
+                                <p class="col-lg-1"><button class="btn btn-default">PING</button></p>
+                                <p class="col-lg-1"><a href="../../modifierMat/PC1/ficheMateriel1.html"><button class="btn btn-default">Editer</button></a></p>
+                                <p class="col-lg-5"><b>Type de matériel :</b> Ordinateur</p>
+                                <p class="col-lg-5"><b>Nom du matériel :</b> PC-13</p>
+                                <p class="col-lg-5"><b>Etat du matériel :</b> Hors Service</p>
+                                <p class="col-lg-5"><b>Statut du matériel :</b> A renouveler</p>
+                                <p class="col-lg-5"><b>Site géographique :</b> Limoges</p>
+                                <p class="col-lg-12"></p>
+                                <ul class="nav nav-tabs col-lg-12">
+                                    <li class="active" role="presentation"><a href="ficheMateriel1.html">Carac. commerciales</a></li>
+                                    <li role="presentation"><a href="ficheMateriel1Log.html">Carac. logiciels</a></li>
+                                    <li role="presentation"><a href="ficheMateriel1Res.html">Carac. réseau</a></li>
+                                    <li role="presentation"><a href="ficheMateriel1User.html">Utilisateurs affectés</a></li>
+                                    <li role="presentation"><a href="ficheMateriel1Gar.html">Garanti</a></li>
+                                    <li role="presentation"><a href="ficheMAteriel1His.html">Historique des maintenances</a></li>
+                                </ul>
+                                <p class="col-lg-12"></p>
+                                <p class="col-lg-6"><b>Date d'achat :</b> 09 / 10 / 2010</p>
+                                <p class="col-lg-6"><b>Prix d'achat :</b> 469.00€</p>
+                                <p class="col-lg-3 label label-info"><b>Informations supplémentaire :</b></p>
+                                <p class="col-lg-12"></p>
+                                <p class="col-lg-6"><b>N° facture :</b> 01965b48</p>
+                                <p class="col-lg-6"><b>Modèle :</b> Pavilion 500-330nf</p>
+                                <p class="col-lg-6"><b>Fabricant :</b> HP</p>
+                                <p class="col-lg-6"><b>Revendeur :</b> Auchan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

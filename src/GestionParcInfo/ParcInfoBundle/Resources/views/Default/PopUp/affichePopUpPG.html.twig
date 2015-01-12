@@ -14,7 +14,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
         <div class="col-lg-7">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel HS</h3>
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel plus sous garantie</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-lg-12">
@@ -30,7 +30,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for materiel in materielHs %}
+                                    {% for materiel in materielPG %}
                                         <tr onclick="document.location.href = '{# {{ path('parc_info_afficherMat') }} #}'" class="cellule">
                                             <td>{{ materiel.nomMat }}</td>
                                             <td>{{ materiel.getNumSite.nomSite }}</td>

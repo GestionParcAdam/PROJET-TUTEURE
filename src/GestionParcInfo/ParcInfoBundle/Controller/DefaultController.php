@@ -37,9 +37,11 @@ class DefaultController extends Controller
         $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsHS();
         $allsite = $em->getRepository('ParcInfoBundle:Site')->findAll();
+        
+        $materielPG = $em->getRepository('ParcInfoBundle:Materiel')->getMaterielsPG();
        
         return $this->render('ParcInfoBundle:Default:index.html.twig', 
-                                array('materiels' => $materiels,'allsite' => $allsite));
+                                array('materielHs' => $materiels,'allsite' => $allsite,'materielPG'=>$materielPG));
     }
     
     public function ajouterAction(Request $request)
@@ -172,7 +174,18 @@ class DefaultController extends Controller
                        ->getMaterielsHS();
         
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUp.html.twig',
-               array('materiels' => $materiels));
+               array('materielHs' => $materiels));
+    }
+    public function matPGAction()
+    {
+       
+       $em = $this->getDoctrine()->getManager();
+       
+       $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                       ->getMaterielsPG();
+        
+       return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
+               array('materielPG' => $materiels));
     }
     public function editionAction()
     {
@@ -200,5 +213,10 @@ class DefaultController extends Controller
        
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', 
                                 array('materiels' => $mats,'etat'=>$etat));
+    }
+    public function ficheAction()
+    {
+
+        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig');
     }
 }
