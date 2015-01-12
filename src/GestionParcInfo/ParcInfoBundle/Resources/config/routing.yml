@@ -1,0 +1,26 @@
+parc_info_homepage:
+    path:     /
+    defaults: { _controller: ParcInfoBundle:Default:index }
+
+parc_info_ajouter:
+    path:     /ajouter
+    defaults: { _controller: ParcInfoBundle:Default:ajouter }
+    
+    
+parc_info_rechercher:
+    path:     /search
+    defaults: { _controller: ParcInfoBundle:Default:rechercher }
+    
+parc_info_matHS:
+    path:     /matHS
+    defaults: { _controller: ParcInfoBundle:Default:matHS }
+    
+parc_info_edition:
+    path:     /edition
+    defaults: { _controller: ParcInfoBundle:Default:edition }
+    
+parc_info_etat:
+    path:     /etat/{numSite}/{idEtat}
+    defaults: { _controller: ParcInfoBundle:Default:etat }
+    
+    

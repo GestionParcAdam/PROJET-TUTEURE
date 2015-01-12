@@ -1,0 +1,152 @@
+body{
+  background-color:#bdbdbd;
+  margin-top: 3%;
+}
+
+
+.navbar-inverse .navbar-brand, .navbar-nav .navbar-right {
+  color: #ffffff;
+}
+/* Nav Announcements */
+
+
+/* Edit Below to Customize Widths > 768px */
+@media (min-width:768px) {
+
+  /* Wrappers */
+
+  #wrapper {
+	padding-left: 225px;
+  }
+
+  #page-wrapper {
+	padding: 15px 25px;
+  }
+
+  /* Side Nav */
+
+  .side-nav {
+	margin-left: -225px;
+	left: 225px;
+	width: 225px;
+	position: fixed;
+	top: 50px;
+	height: 100%;
+	border-radius: 0;
+	border: none;
+	background-color: #222222;
+	overflow-y: auto;
+  }
+
+  /*menu overrides*/
+  .side-nav>li.dropdown>ul.dropdown-menu {
+	position: relative;
+	min-width: 225px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a {
+	color: #999999;
+	padding: 15px 15px 15px 25px;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:hover,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a.active,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:focus {
+	color: #fff;
+	background-color: #080808;
+  }
+
+  .side-nav>li>a {
+	width: 225px;
+  }
+
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li>a:focus {
+	background-color: #080808;
+  }
+
+  /* Nav Messages */
+
+  .messages-dropdown .dropdown-menu {
+	min-width: 300px;
+  }
+
+  .messages-dropdown .dropdown-menu li a {
+	white-space: normal;
+  }
+
+  .navbar-collapse {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+}
+
+.divider-vertical {
+    border-right: 1px solid #000000;
+    height: 50px;
+    margin: 0 9px;
+    overflow: hidden;
+    width: 1px;
+}
+.navbar-search
+{
+    padding-right: 27px;
+    padding-top: 7px;
+}
+
+.cellule:hover{
+    cursor:pointer;
+    opacity : 0.5;
+    color:blue;
+}
+
+.onglets
+{
+ 
+border-bottom: 1px solid #ddd;
+
+}
+
+.onglet
+{
+display:inline-block;
+margin-left:3px;
+margin-right:3px;
+cursor:pointer;
+color: #555;
+position: relative;
+padding: 10px 15px;   
+border-bottom: none;
+
+}
+
+
+
+.onglet > a:hover{
+background-color: #dddddd; 
+color : blue;
+}
+
+.onglet_1
+{
+border: 1px solid #ddd;
+border-bottom:0px solid black;
+padding-bottom:10px;
+}
+.contenu_onglet
+{
+display:none;
+}
+
+.sameSize{
+    width: 100%;
+}
+

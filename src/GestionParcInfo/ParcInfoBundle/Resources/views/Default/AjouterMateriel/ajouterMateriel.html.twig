@@ -1,0 +1,267 @@
+{#
+    Ca c'est une vue
+    Ici elle étend la vue principal qui est dans app/ressources/views
+    Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}
+
+    <br/>
+    <div class="row">     
+        <div class="panel-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-laptop"></i> Ajout d'un matériel</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <p class="col-lg-5"><b>Type de matériel :</b>
+                        <br/>
+                        {{ form_widget(form.typeMat, {'attr': {'class': 'form-control'}}) }}
+                    </p>
+                    <p class="col-lg-5"><b>Nom du matériel :</b> 
+                        {{ form_widget(form.nomMat, {'attr': {'class': 'form-control'}}) }}
+                    </p>
+                    <p class="col-lg-5"><b>Etat du matériel :</b> 
+                        {{ form_widget(form.etatMat, {'attr': {'class': 'form-control'}}) }}
+                    </p>
+                    <p class="col-lg-5"><b>Statut du matériel :</b> 
+                        {{ form_widget(form.statutMat, {'attr': {'class': 'form-control'}}) }}
+                    </p>
+                    <p class="col-lg-5"><b>Site géographique :</b> 
+                        {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}}) }}
+                    </p>
+                    <div class="systeme_onglets">
+                        <div class="onglets col-sm-12">
+                            <span class="onglet_0 onglet" id="onglet_1" onclick="javascript:change_onglet('1');">Carac. commerciales</span>
+                            <span class="onglet_0 onglet" id="onglet_2" onclick="javascript:change_onglet('2');">Carac. logiciels</span>
+                            <span class="onglet_0 onglet" id="onglet_3" onclick="javascript:change_onglet('3');">Carac. réseau</span>
+                            <span class="onglet_0 onglet" id="onglet_4" onclick="javascript:change_onglet('4');">Utilisateurs affectés</span>
+                            <span class="onglet_0 onglet" id="onglet_5" onclick="javascript:change_onglet('5');">Garanti</span>
+                            <span class="onglet_0 onglet" id="onglet_6" onclick="javascript:change_onglet('6');">Historique des maintenances</span>
+                        </div>
+                        <div class="contenu_onglets">
+                            {# 1er onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_1">
+                                <p class="col-lg-12"></p>
+                                <p class="col-lg-6"><b>Date d'achat :</b>
+                                    {{ form_widget(form.dateAchat, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-6"><b>Prix d'achat :</b> 
+                                    {{ form_widget(form.prixAchat, {'attr': {'class': 'form-control', 
+                                                                             'placeholder' : 'En €'}}) }}
+                                </p>
+
+                                <p class="col-lg-6"><b>N° facture :</b>
+                                    {{ form_widget(form.numFacture, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-6"><b>Modèle :</b>
+                                    {{ form_widget(form.modele, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-6"><b>Fabricant :</b> 
+                                    {{ form_widget(form.fabricant, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-6"><b>Revendeur :</b> 
+                                    {{ form_widget(form.revendeur, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-6"><b>N° immobilisation :</b> 
+                                    {{ form_widget(form.immobilisation, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                            </div>
+                            {# 2eme onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_2">
+                                <p class="col-lg-12">
+                                    <br/>
+                                    <button class="btn btn-default" id="ajouter_user" 
+                                            data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
+                                </p>
+                                <p class="col-lg-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <td>Nom du logiciel</td> 
+                                                <td>Editeur</td> 
+                                                <td>Licence</td> 
+                                                <td>Supprimer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabLog">
+                                            
+                                        </tbody>                                            
+                                    </table>
+                                </p>
+                                
+                            </div>
+                            {# 2eme onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_3">
+                                <p class="col-lg-12"></p>
+                                <p class="col-lg-12"><b>@MAC :</b> 
+                                    {{ form_widget(form.adMac, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-12"><b>@IP :</b> 
+                                    {{ form_widget(form.adIp, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                                <p class="col-lg-12"><b>@PASSERELLE :</b>
+                                    {{ form_widget(form.adPasserelle, {'attr': {'class': 'form-control'}}) }}
+                                </p>
+                            </div> 
+                            {# 3eme onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_4">
+                                <p class="col-lg-12">
+                                    <br/> 
+                                    <button class="btn btn-default" id="ajouter_user" 
+                                            data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
+                                </p>
+                                <p class="col-lg-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <td>Nom des utilisateurs affectés</td> 
+                                                <td>Supprimer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabUser">
+                                            
+                                        </tbody>                                            
+                                    </table>
+                                <div >
+                                    <input id="champsInvisibleUsers" type="text" values=""/>
+                                </div>
+                                </p>
+                            </div>
+                            {# 4eme onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_5">
+                                <p class="col-lg-12"></p>
+                                <p class="col-lg-6"><b>Date de fin de garanti :</b> 
+                                    {{ form_widget(form.dateGarantie, {'attr': {'class': 'form-control'}}) }}
+                                </p>    
+                            </div>
+                            {# 5eme onglet #}
+                            <div class="contenu_onglet" id="contenu_onglet_6">
+                                <p class="col-lg-12">
+                                    <br/> 
+                                    <button class="btn btn-default" id="ajouter_user" 
+                                            data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
+                                </p>
+                                
+                                <p class="col-lg-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <td>Date intervention</td>
+                                                <td>Objet de l'intervention</td> 
+                                                <td>Description de l'intervention</td> 
+                                                <td>Prestataire de l'intervention</td> 
+                                                <td>Cout de l'intervention</td> 
+                                                <td>Supprimer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabMaintenance">
+                                            
+                                        </tbody>                                            
+                                    </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="col-lg-12">
+                    <p class="col-lg-11">
+                    <p class="col-lg-1">
+                        {{ form_widget(form.ajouter,{'attr': {'class': 'btn btn-primary'}})}}
+                    </p>
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Ajouter une maintenance</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Date d'intervention : </label>
+                                    <input type="date" id="dateInterv" class="form-control" />
+                                    <br/>
+                                    <label>Objet de l'intervention : </label>
+                                    <input type="text" id="objInterv" class="form-control" />
+                                    <br/>
+                                    <label>Description de l'intervention : </label>
+                                    <textarea cols="5" rows="5" id="descInterv" class="form-control"></textarea>
+                                    <br/>
+                                    <label>Prestataire de l'intervention : </label>
+                                    <input type="text" id="prestaInterv" class="form-control" />
+                                    <br/>
+                                    <label>Cout de l'intervention : </label>
+                                    <input type="text" id="coutInterv" class="form-control" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+                                    <button type="button" class="btn btn-primary" 
+                                            onclick="javascript:recupSaisiePopupMaintenance()" 
+                                            data-dismiss="modal">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Ajouter un utilisateur</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Nom de l'utilisateur : </label>
+                                    <input type="text" id="nomUser" class="form-control" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+                                    <button type="button" class="btn btn-primary" 
+                                            onclick="javascript:recupSaisiePopupUser()" 
+                                            data-dismiss="modal">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Ajouter un logiciel</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="col-lg-12"><b>Editeur  :</b> 
+                                        {{ form_widget(form.editeur, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-6"><b>Nom du logiciel :</b> 
+                                        {{ form_widget(form.nomLog, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-6"><b>Licence :</b>
+                                        {{ form_widget(form.licence, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+                                    <button type="button" class="btn btn-primary" 
+                                            onclick="javascript:recupSaisiePopupLog()" 
+                                            data-dismiss="modal">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var anc_onglet = '1';
+        change_onglet(anc_onglet);
+    </script>
+{% endblock %}

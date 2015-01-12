@@ -1,0 +1,4 @@
+services:
+#    parc_info.example:
+#        class: GestionParcInfo\ParcInfoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

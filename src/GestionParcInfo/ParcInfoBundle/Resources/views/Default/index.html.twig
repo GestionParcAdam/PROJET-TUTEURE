@@ -1,0 +1,144 @@
+{#
+Ca c'est une vue
+Ici elle étend la vue principal qui est dans app/ressources/views
+Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}        
+    <div class="row">
+        <div class="col-lg-6">
+            <h2> Gestion du Parc Informatique</h2>
+            {#
+                Ici on regarde l'objet passer en paramètre du render du controller
+             #}
+            {% if materiels != null %}
+                {#
+                    Là je créer une variable
+                #}
+                {% set nbMatHS = 0 %}
+
+                {% for materiel in materiels %}
+                    {% set nbMatHS = nbMatHS + 1 %}
+                {% endfor %}
+                <div class="alert alert-dismissable alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <h4> Attention! </h4>
+                    <p>  {{ nbMatHS }} Matériels sont HS.  </p>
+                    <a href="{{ path('parc_info_matHS', { 'materiels': materiels }) }}" ><button class="btn btn-defaut col-lg-offset-9">Accéder à la liste</button></a>      
+                </div>
+            {%endif%}
+        </div>
+    </div> 
+    
+
+<div class="row"> 
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Etat du parc</h3>
+            </div>
+            <div class="panel-body">
+                                  
+                
+               {% if allsite != null %}
+                 {% set nbMatHS = 0 %}
+
+                    {% for site in allsite %}
+                        {% set nbMatService = 0 %}
+                        {% set nbMatPan = 0 %}
+                        {% set nbMatHs = 0 %}
+                        {% for materiel in site.materiels %}
+                            {% if materiel.numEtat.id==1 %}
+                                {% set nbMatService = nbMatService + 1 %}
+                            {% endif %}
+                            {% if materiel.numEtat.id==2 %}
+                                {% set nbMatHs = nbMatHs + 1 %}
+                            {% endif %}
+                            {% if materiel.numEtat.id==3 %}
+                                {% set nbMatPan = nbMatPan + 1 %}
+                            {% endif %}
+                        {% endfor%}
+                        <div class="col-lg-6">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-laptop"></i> {{site.nomSite}} </h3>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Etat</th>
+                                            <th>Nombre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 1,'numSite':site.id }) }}'" class="cellule">
+                                            <td>En Service</td>
+                                            <td>{{nbMatService}}</td>
+                                        </tr>
+                                        <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
+                                            <td>En panne</td>
+                                            <td>{{nbMatPan}}</td>
+                                        </tr>
+                                        <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
+                                            <td>HS</td>
+                                            <td>{{nbMatHs}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    {% endfor %}
+                
+                {%endif%}
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Dernière modification</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nom matériel</th>
+                            <th>Lieu</th>
+                            <th>Date de dernière modification</th>
+                            <th class="text-center">Modifier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PC-13</td>
+                            <td>Limoges</td>
+                            <td>18/10/2014</td>
+                            <td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>PC-Secretaire01</td>
+                            <td>St-Maur</td>
+                            <td>18/11/2014</td>
+                            <td class="text-center"><a href="."><i class="glyphicon glyphicon-edit"></i></a> </td>
+                        </tr>
+                        <tr>
+                            <td>Impr-HP-03</td>
+                            <td>Limoges</td>
+                            <td>15/09/2013</td>
+                            <td class="text-center"><a href=""><i class="glyphicon glyphicon-edit"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

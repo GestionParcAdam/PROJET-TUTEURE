@@ -1,0 +1,64 @@
+<?php
+
+namespace GestionParcInfo\ParcInfoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Utilisateur
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Entity\UtilisateurRepository")
+ */
+class Utilisateur
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_user", type="string", length=255)
+     */
+    private $nomUser;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomUser
+     *
+     * @param string $nomUser
+     * @return Utilisateur
+     */
+    public function setNomUser($nomUser)
+    {
+        $this->nomUser = $nomUser;
+
+        return $this;
+    }
+
+    /**
+     * Get nomUser
+     *
+     * @return string 
+     */
+    public function getNomUser()
+    {
+        return $this->nomUser;
+    }
+}

@@ -1,0 +1,74 @@
+{#
+Ca c'est une vue
+Ici elle étend la vue principal qui est dans app/ressources/views
+Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}
+    <div class="col-lg-12"><br/></div>
+                <div class="col-lg-8">
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Recherche multicritères</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p class="col-lg-5"><b>Site géographique :</b>
+                                {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <p class="col-lg-5"><b>Type de matériel :</b>
+                                {{ form_widget(form.typeMat, {'attr': {'class': 'form-control'}}) }} 
+                            </p>                                        
+                            <p class="col-lg-5"><b>Etat du matériel :</b>
+                                {{ form_widget(form.etatMat, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <p class="col-lg-5"><b>Statut du matériel :</b> 
+                                {{ form_widget(form.statutMat, {'attr': {'class': 'form-control'}}) }}
+                            </p>  
+                        </div>
+                        
+        <hr/>
+                        
+                        <div class="panel-body">
+                            <p class="col-lg-5"><b>Utilisateur :</b> 
+                                {{ form_widget(form.utilisateur, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                        </div>
+        <hr/>            
+                        <div class="panel-body">
+                            <p class="col-lg-6"><b>Nom du matériel :</b> 
+                                {{ form_widget(form.nomMat, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <p class="col-lg-6"><b>Modèle :</b>
+                                {{ form_widget(form.modele, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <p class="col-lg-12"></p>
+                            <p class="col-lg-6"><b>Date d'achat :</b>
+                                {{ form_widget(form.dateAchat, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <p class="col-lg-6"><b>Fabricant :</b> 
+                                {{ form_widget(form.fabricant, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <div class="col-lg-12"></div>
+                            <p class="col-lg-6"><b>Revendeur :</b> 
+                                {{ form_widget(form.revendeur, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <div class="col-lg-12"></div>
+                            <p class="col-lg-6"><b>N° facture :</b>
+                                {{ form_widget(form.numFacture, {'attr': {'class': 'form-control'}}) }}
+                            </p>
+                            <div class="col-lg-12"></div>
+                            <p class="col-lg-4 col-lg-push-8">
+                                <button class="btn btn-default" type="submit" id="Valider">Lancer la recherche</button>
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            <div class="col-lg-4"><i class="glyphicon glyphicon-warning-sign">&nbsp;Les champs non renseignés ne seront pas pris en compte</i></div>
+          
+{% endblock %}

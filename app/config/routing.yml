@@ -1,0 +1,4 @@
+parc_info:
+    resource: "@ParcInfoBundle/Resources/config/routing.yml"
+    prefix:   /
+

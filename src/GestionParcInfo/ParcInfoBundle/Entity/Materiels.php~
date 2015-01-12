@@ -1,0 +1,343 @@
+<?php
+
+/* Ca c'est la classe d'une entité/table Symphony */
+
+namespace GestionParcInfo\ParcInfoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Materiels
+ *
+ * @ORM\Table("materiels")
+ * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\MaterielsRepository")
+ */
+class Materiels
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mat_nom", type="string", length=255)
+     */
+    private $matNom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_type", type="integer")
+     */
+    private $numType;
+
+    /** 
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Site", cascade={"remove", "persist"})
+     */
+    private $numSite;
+    
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_etat", type="integer")
+     */
+    private $numEtat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_statut", type="integer")
+     */
+    private $numStatut;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_carac", type="integer")
+     */
+    private $numCarac;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_affecte", type="integer")
+     */
+    private $numAffecte;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_historique", type="integer")
+     */
+    private $numHistorique;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_garantie", type="date")
+     */
+    private $dateGarantie;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set matNom
+     *
+     * @param string $matNom
+     * @return Materiels
+     */
+    public function setMatNom($matNom)
+    {
+        $this->matNom = $matNom;
+
+        return $this;
+    }
+
+    /**
+     * Get matNom
+     *
+     * @return string 
+     */
+    public function getMatNom()
+    {
+        return $this->matNom;
+    }
+
+    /**
+     * Set numType
+     *
+     * @param integer $numType
+     * @return Materiels
+     */
+    public function setNumType($numType)
+    {
+        $this->numType = $numType;
+
+        return $this;
+    }
+
+    /**
+     * Get numType
+     *
+     * @return integer 
+     */
+    public function getNumType()
+    {
+        return $this->numType;
+    }
+
+    /**
+     * Set numSite
+     *
+     * @param integer $numSite
+     * @return Materiels
+     */
+    public function setNumSite($numSite)
+    {
+        $this->numSite = $numSite;
+
+        return $this;
+    }
+
+    /**
+     * Get numSite
+     *
+     * @return integer 
+     */
+    public function getNumSite()
+    {
+        return $this->numSite;
+    }
+
+    /**
+     * Set numEtat
+     *
+     * @param integer $numEtat
+     * @return Materiels
+     */
+    public function setNumEtat($numEtat)
+    {
+        $this->numEtat = $numEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get numEtat
+     *
+     * @return integer 
+     */
+    public function getNumEtat()
+    {
+        return $this->numEtat;
+    }
+
+    /**
+     * Set numStatut
+     *
+     * @param integer $numStatut
+     * @return Materiels
+     */
+    public function setNumStatut($numStatut)
+    {
+        $this->numStatut = $numStatut;
+
+        return $this;
+    }
+
+    /**
+     * Get numStatut
+     *
+     * @return integer 
+     */
+    public function getNumStatut()
+    {
+        return $this->numStatut;
+    }
+
+    /**
+     * Set numCarac
+     *
+     * @param integer $numCarac
+     * @return Materiels
+     */
+    public function setNumCarac($numCarac)
+    {
+        $this->numCarac = $numCarac;
+
+        return $this;
+    }
+
+    /**
+     * Get numCarac
+     *
+     * @return integer 
+     */
+    public function getNumCarac()
+    {
+        return $this->numCarac;
+    }
+
+    /**
+     * Set numAffecte
+     *
+     * @param integer $numAffecte
+     * @return Materiels
+     */
+    public function setNumAffecte($numAffecte)
+    {
+        $this->numAffecte = $numAffecte;
+
+        return $this;
+    }
+
+    /**
+     * Get numAffecte
+     *
+     * @return integer 
+     */
+    public function getNumAffecte()
+    {
+        return $this->numAffecte;
+    }
+
+    /**
+     * Set numHistorique
+     *
+     * @param integer $numHistorique
+     * @return Materiels
+     */
+    public function setNumHistorique($numHistorique)
+    {
+        $this->numHistorique = $numHistorique;
+
+        return $this;
+    }
+
+    /**
+     * Get numHistorique
+     *
+     * @return integer 
+     */
+    public function getNumHistorique()
+    {
+        return $this->numHistorique;
+    }
+
+    /**
+     * Set dateGarantie
+     *
+     * @param \DateTime $dateGarantie
+     * @return Materiels
+     */
+    public function setDateGarantie($dateGarantie)
+    {
+        $this->dateGarantie = $dateGarantie;
+
+        return $this;
+    }
+
+    /**
+     * Get dateGarantie
+     *
+     * @return \DateTime 
+     */
+    public function getDateGarantie()
+    {
+        return $this->dateGarantie;
+    }
+    
+     public function __construct()
+    {
+        $this->numSite = new ArrayCollection();
+    }
+
+    /**
+     * Add site
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Site $site
+     * @return Materiels
+     */
+    public function addSite(\GestionParcInfo\ParcInfoBundle\Entity\Site $site)
+    {
+        $this->site[] = $site;
+
+        return $this;
+    }
+
+    /**
+     * Remove site
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Site $site
+     */
+    public function removeSite(\GestionParcInfo\ParcInfoBundle\Entity\Site $site)
+    {
+        $this->site->removeElement($site);
+    }
+
+    /**
+     * Get site
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+}
