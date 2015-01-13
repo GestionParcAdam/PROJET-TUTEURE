@@ -8,6 +8,7 @@
         <group>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/web/js/script.js</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
         </group>
 >>>>>>> origin/master
     </open-files>

@@ -13,8 +13,8 @@ function change_onglet(name) {
 
  
 // ajouter un champ avec son "name" propre;
-function plus(){
-    c=document.getElementById('cadre');
+function plus(cadre,type){
+    c=document.getElementById(cadre);
     c2=c.getElementsByTagName('input');
     //ch1=document.createElement('input');
     ch2=document.createElement('input');
@@ -26,8 +26,8 @@ function plus(){
     ch1.setAttribute('style','border:none');
     */
     ch2.setAttribute('type','text');
-    ch2.setAttribute('name','ch'+c2.length);
-    ch2.setAttribute('id','ch'+c2.length);
+    ch2.setAttribute('name',type+c2.length);
+    ch2.setAttribute('id',type+c2.length);
     ch2.setAttribute('readonly','readonly'); 
     //c.appendChild(ch1);
     c.appendChild(ch2);
@@ -44,6 +44,7 @@ function moins(i){
 
 function recupSaisiePopupUser(){
     var i;
+    
     var tableau = document.getElementById("tabUser");
     
     var ligne = tableau.insertRow(-1);//on a ajouté une ligne
@@ -55,16 +56,18 @@ function recupSaisiePopupUser(){
     
     var nom=document.getElementById("nomUser").value;
     console.log(nom+" est le ");
-    plus();
+    plus('cadreUser','user');
     i=(c2.length)-1;
-    console.log('ch'+i);    
-    document.getElementById('ch'+i).value=nom;
+    console.log('user'+i);    
+    document.getElementById('user'+i).value=nom;
         
     
     
 }
-
+j=0;
 function recupSaisiePopupLog(){
+    var i;
+   
     
     var tableau = document.getElementById("tabLog");
     
@@ -79,19 +82,35 @@ function recupSaisiePopupLog(){
     var colonne3 = ligne.insertCell(2);//on a une ajouté une cellule
     colonne3.innerHTML += document.getElementById("form_licence").value;//on y met le contenu de titre
     
-    var colonne4 = ligne.insertCell(3);
-    colonne4.innerHTML += '<a onclick="supprimerLigneLog(this)">X</a>'; 
+    var colonne4 = ligne.insertCell(3);//on a une ajouté une cellule
+    colonne4.innerHTML += document.getElementById("form_versionLogiciel").value;//on y met le contenu de titre
     
-    var nom=document.getElementById("nomUser").value;
-    console.log(nom+" est le ");
-    plus();
+    var colonne5 = ligne.insertCell(4);
+    colonne5.innerHTML += '<a onclick="supprimerLigneLog(this)">X</a>'; 
+    
+    var nom=document.getElementById("form_nomLog").value;
+    var editeur=document.getElementById("form_editeur").value;
+    var licence=document.getElementById("form_licence").value;
+    var version=document.getElementById("form_versionLogiciel").value;
+    console.log(editeur+" "+nom+" "+licence+" "+version+" ");
+    
+    plus('cadreLog','log'+j+'-'+(j+1)+'-');
+    plus('cadreLog','log'+j+'-'+(j+1)+'-');
+    plus('cadreLog','log'+j+'-'+(j+1)+'-');
+    plus('cadreLog','log'+j+'-'+(j+1)+'-');
+    j++;
     i=(c2.length)-1;
-    console.log('ch'+i);    
-    document.getElementById('ch'+i).value=nom;
-    
-    
+    console.log('log'+(j-1)+'-'+(j)+'-'+(i-2));
+    console.log('log'+(j-1)+'-'+(j)+'-'+(i-3));
+    console.log('log'+(j-1)+'-'+(j)+'-'+(i-1));
+    console.log('log'+(j-1)+'-'+(j)+'-'+i);
+    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(i-3)).value=editeur;
+    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(i-2)).value=nom;
+    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(i-1)).value=licence;
+    document.getElementById('log'+(j-1)+'-'+(j)+'-'+i).value=version; 
+       
 }
-
+l=0;
 function recupSaisiePopupMaintenance(){
     
     var tableau = document.getElementById("tabMaintenance");
@@ -116,32 +135,53 @@ function recupSaisiePopupMaintenance(){
     var colonne2 = ligne.insertCell(5);
     colonne2.innerHTML += '<a onclick="supprimerLigneMaintenance(this)">X</a>';  
     
-    var nom=document.getElementById("nomUser").value;
-    console.log(nom+" est le ");
-    plus();
+    var date=document.getElementById("dateInterv").value;
+    var objet=document.getElementById("objInterv").value;
+    var description=document.getElementById("descInterv").value;
+    var prestataire=document.getElementById("prestaInterv").value;
+    var cout=document.getElementById("coutInterv").value;
+    console.log(date+" "+objet+" "+description+" "+prestataire+" "+cout);
+    
+    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
+    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
+    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
+    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
+    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
+    l++;
     i=(c2.length)-1;
-    console.log('ch'+i);    
-    document.getElementById('ch'+i).value=nom;
+    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(i-4));
+    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(i-3));
+    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(i-2));
+    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(i-1));
+    console.log('maintenance'+(l-1)+'-'+(l)+'-'+i);
+    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-4)).value=date;
+    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-3)).value=objet;
+    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-2)).value=description;
+    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-1)).value=prestataire; 
+    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+i).value=cout; 
 }
 
 function supprimerLigneMaintenance(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabMaintenance').deleteRow(i-1);
-    moins(i-1);
+    for(var k=0;k<5;k++)
+        moins(i-1);
 }
 
 function supprimerLigneUser(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabUser').deleteRow(i-1);
-    moins(i-1);
+    
+        moins(i-1);
 }
 
 function supprimerLigneLog(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabLog').deleteRow(i-1);
-    moins(i-1);
+    for(var k=0;k<4;k++)
+        moins(i-1);
 }
 
