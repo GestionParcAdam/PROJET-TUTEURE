@@ -10,6 +10,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
 #}
 {% block body %}
     <br/>
+    
     <div class="row">     
         <div class="col-lg-12">
             <div class="panel panel-primary">
@@ -83,10 +84,10 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td></td> 
-                                                        <td></td> 
-                                                        <td></td> 
-                                                        <td>  </td>
+                                                        <td>{{materiel.numCarac.numCaracLog.nomLog}}</td> 
+                                                        <td>{{materiel.numCarac.numCaracLog.nomEditeur}}</td> 
+                                                        <td>{{materiel.numCarac.numCaracLog.licence}}</td> 
+                                                        <td> {{materiel.numCarac.numCaracLog.versionLog}} </td>
                                                     </tr>
                                                 </tbody>                                            
                                             </table>
@@ -145,12 +146,13 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                                     </tr>
                                                 </thead>
                                                 <tbody >
-                                                    {% for hist in materiel.numHistorique %}
+                                                    
+                                                    {% for hist in materiel.historiques %}
                                                     <tr>
                                                         <td>{{ hist.dateIntervention|date("d/m/Y") }}</td> 
                                                         <td>{{ hist.objetIntervention }}</td> 
                                                         <td>{{ hist.descIntervention }}</td> 
-                                                        <td> {{ hist.prestatareIntervention }} </td>
+                                                        <td> {{ hist.prestataireIntervention }} </td>
                                                         <td> {{ hist.coutIntervention }} </td>
                                                     </tr>
                                                     {% endfor %}
