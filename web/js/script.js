@@ -60,8 +60,6 @@ function recupSaisiePopupUser(){
     i=(c2.length)-1;
     console.log('user'+i);    
     document.getElementById('user'+i).value=nom;
-        
-    
     
 }
 j=0;
