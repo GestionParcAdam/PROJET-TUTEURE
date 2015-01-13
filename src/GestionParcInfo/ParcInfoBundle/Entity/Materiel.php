@@ -64,7 +64,7 @@ class Materiel
     * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur", inversedBy="utilisateurs")
     * @ORM\JoinTable(name="utilisateurs_materiels")
     */
-    private $utilisateur;
+    private $utilisateurs;
     
     /**
      * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", cascade={"persist","remove"})
@@ -355,5 +355,15 @@ class Materiel
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }

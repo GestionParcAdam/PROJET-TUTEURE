@@ -173,11 +173,15 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <td>Nom des utilisateurs affectés</td>
+                                                        <th>Nom des utilisateurs affectés</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tabUser">
-
+                                                    {% for u in materiel.utilisateurs %}
+                                                        <tr>
+                                                            <td>{{u.nomUser}}</td>
+                                                        </tr> 
+                                                    {% endfor %}
                                                 </tbody>                                            
                                             </table>
                                         </p>
