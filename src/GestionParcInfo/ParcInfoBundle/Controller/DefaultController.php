@@ -127,6 +127,8 @@ class DefaultController extends Controller
             $materiel->setNumSite($data['siteGeo']);
             $materiel->setNumType($data['typeMat']);
             $materiel->setNumStatut($data['statutMat']);
+            $date = new \DateTime();
+            $materiel->setDateLastModif($date);
             
             /* j'ouvre la connexion à la BD Doctrine */
             $em = $this->getDoctrine()->getManager();
@@ -148,7 +150,6 @@ class DefaultController extends Controller
             
             $em->persist($revendeur);
             $em->flush();
-            
             
             $caracDeCom = new CaracteristiqueCom();
             
