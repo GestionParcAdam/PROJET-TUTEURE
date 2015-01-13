@@ -65,6 +65,8 @@ class DefaultController extends Controller
          */
         
         $form = $this->createFormBuilder()
+            ->setMethod('POST')
+            ->setAction($this->generateUrl('parc_info_ajouter'))
             ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type', 
                                              'property' => 'libelleType'))
             ->add('nomMat', 'text')
@@ -105,21 +107,23 @@ class DefaultController extends Controller
             ->add('ajouter', 'submit')
             ->getForm();
         
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted())
+        if($form->handleRequest($request)->isSubmitted())
         {
+            
             $requete=$this->get('request');
             if($requete->getMethod() == 'POST'){
                 $user=$_POST['user0'];
                 var_dump($user);
             }
-             
-           /* Ici je récupère les informations du formulaire dans un tableau /*/
+           
+           /* Ici je récupère les informations du formulaire dans un tableau */
             $data = $form->getData();
-             
+            \Doctrine\Common\Util\Debug::dump($data);
+            
             /* Je créer mon objet à persister dans la base */
-            $materiel = new Materiel();
+            /*
+             $materiel = new Materiel();
+             
             
             $materiel->setNomMat($data['nomMat']);
             $materiel->setDateGarantie($data['dateGarantie']);
@@ -129,11 +133,13 @@ class DefaultController extends Controller
             $materiel->setNumStatut($data['statutMat']);
             $date = new \DateTime();
             $materiel->setDateLastModif($date);
-            
+            */
             /* j'ouvre la connexion à la BD Doctrine */
+            /*
             $em = $this->getDoctrine()->getManager();
-            
+            */
             /* je dis que je persist l'objet et que j'upload direct en clair */
+            /*
             $em->persist($materiel);
             $em->flush();
             
@@ -171,11 +177,11 @@ class DefaultController extends Controller
             
             $em->persist($caracDeRes);
             $em->flush(); 
-            
+            */
             
             
             /* ca çà permet de retourner une réponse basique */
-            return new Response('<h1>Materiel ajouté !</h1>\n résultat : '.$user);
+            return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
         }
 
    
