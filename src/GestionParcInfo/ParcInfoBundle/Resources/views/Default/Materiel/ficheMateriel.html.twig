@@ -33,23 +33,128 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 <p class="col-lg-5"><b>Statut du matériel :</b> A renouveler</p>
                                 <p class="col-lg-5"><b>Site géographique :</b> Limoges</p>
                                 <p class="col-lg-12"></p>
-                                <ul class="nav nav-tabs col-lg-12">
-                                    <li class="active" role="presentation"><a href="ficheMateriel1.html">Carac. commerciales</a></li>
-                                    <li role="presentation"><a href="ficheMateriel1Log.html">Carac. logiciels</a></li>
-                                    <li role="presentation"><a href="ficheMateriel1Res.html">Carac. réseau</a></li>
-                                    <li role="presentation"><a href="ficheMateriel1User.html">Utilisateurs affectés</a></li>
-                                    <li role="presentation"><a href="ficheMateriel1Gar.html">Garanti</a></li>
-                                    <li role="presentation"><a href="ficheMAteriel1His.html">Historique des maintenances</a></li>
-                                </ul>
-                                <p class="col-lg-12"></p>
-                                <p class="col-lg-6"><b>Date d'achat :</b> 09 / 10 / 2010</p>
-                                <p class="col-lg-6"><b>Prix d'achat :</b> 469.00€</p>
-                                <p class="col-lg-3 label label-info"><b>Informations supplémentaire :</b></p>
-                                <p class="col-lg-12"></p>
-                                <p class="col-lg-6"><b>N° facture :</b> 01965b48</p>
-                                <p class="col-lg-6"><b>Modèle :</b> Pavilion 500-330nf</p>
-                                <p class="col-lg-6"><b>Fabricant :</b> HP</p>
-                                <p class="col-lg-6"><b>Revendeur :</b> Auchan</p>
+                                <div class="systeme_onglets">
+                                <div class="onglets col-sm-12">
+                                    <span class="onglet_0 onglet" id="onglet_1" onclick="javascript:change_onglet('1');">Carac. commerciales</span>
+                                    <span class="onglet_0 onglet" id="onglet_2" onclick="javascript:change_onglet('2');">Carac. logiciels</span>
+                                    <span class="onglet_0 onglet" id="onglet_3" onclick="javascript:change_onglet('3');">Carac. réseau</span>
+                                    <span class="onglet_0 onglet" id="onglet_4" onclick="javascript:change_onglet('4');">Utilisateurs affectés</span>
+                                    <span class="onglet_0 onglet" id="onglet_5" onclick="javascript:change_onglet('5');">Garanti</span>
+                                    <span class="onglet_0 onglet" id="onglet_6" onclick="javascript:change_onglet('6');">Historique des maintenances</span>
+                                </div>
+                                <div class="contenu_onglets">
+                                    
+                                    {# 1er onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_1">
+                                        <p class="col-lg-12"></p>
+                                        <p class="col-lg-6"><b>Date d'achat :</b>
+                                        </p>
+                                        <p class="col-lg-6"><b>Prix d'achat :</b>                                           
+                                        </p>
+
+                                        <p class="col-lg-6"><b>N° facture :</b>
+                                           
+                                        </p>
+                                        <p class="col-lg-6"><b>Modèle :</b>
+                                            
+                                        </p>
+                                        <p class="col-lg-6"><b>Fabricant :</b> 
+                                            
+                                        </p>
+                                        <p class="col-lg-6"><b>Revendeur :</b> 
+                                            
+                                        </p>
+                                        <p class="col-lg-6"><b>N° immobilisation :</b> 
+                                            
+                                        </p>
+                                    </div>
+                                    {# 2eme onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_2">
+                                        <p class="col-lg-12">
+                                            <br/>
+                                            <button class="btn btn-default" id="ajouter_user" 
+                                                    data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
+                                        </p>
+                                        <p class="col-lg-12">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Nom du logiciel</td> 
+                                                        <td>Editeur</td> 
+                                                        <td>Licence</td> 
+                                                        <td>Supprimer</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tabLog">
+
+                                                </tbody>                                            
+                                            </table>
+                                        </p>
+
+                                    </div>
+                                    {# 2eme onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_3">
+                                        <p class="col-lg-12"></p>
+                                        <p class="col-lg-12"><b>@MAC :</b> 
+                                            
+                                        </p>
+                                        <p class="col-lg-12"><b>@IP :</b> 
+                                            
+                                        </p>
+                                        <p class="col-lg-12"><b>@PASSERELLE :</b>
+                                           
+                                        </p>
+                                    </div> 
+                                    {# 3eme onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_4">
+                                        
+                                        <p class="col-lg-12">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Nom des utilisateurs affectés</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tabUser">
+
+                                                </tbody>                                            
+                                            </table>
+                                        </p>
+                                    </div>
+                                    {# 4eme onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_5">
+                                        <p class="col-lg-12"></p>
+                                        <p class="col-lg-6"><b>Date de fin de garanti :</b> 
+                                           
+                                        </p>    
+                                    </div>
+                                    {# 5eme onglet #}
+                                    <div class="contenu_onglet" id="contenu_onglet_6">
+                                        <p class="col-lg-12">
+                                            <br/> 
+                                            <button class="btn btn-default" id="ajouter_user" 
+                                                    data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
+                                        </p>
+
+                                        <p class="col-lg-12">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Date intervention</td>
+                                                        <td>Objet de l'intervention</td> 
+                                                        <td>Description de l'intervention</td> 
+                                                        <td>Prestataire de l'intervention</td> 
+                                                        <td>Cout de l'intervention</td> 
+                                                        <td>Supprimer</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tabMaintenance">
+
+                                                </tbody>                                            
+                                            </table>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,4 +162,8 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
             </div>
         </div>
     </div>
+<script type="text/javascript">
+        var anc_onglet = '1';
+        change_onglet(anc_onglet);
+    </script>
 {% endblock %}
