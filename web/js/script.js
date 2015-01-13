@@ -15,18 +15,13 @@ function recupSaisiePopupUser(){
     var ligne = tableau.insertRow(-1);//on a ajouté une ligne
 
     var colonne = ligne.insertCell(0);//on a une ajouté une cellule
-    
     colonne.innerHTML += document.getElementById("nomUser").value;//on y met le contenu de titre
-    
-    
-    var champs = document.getElementById("tabUser");
-    
-    console.log(champs);
-    document.getElementById("champsInvisilbeUsers").value=champs;
-          
-   
     var colonne2 = ligne.insertCell(1);
-    colonne2.innerHTML += '<a onclick="supprimerLigneUser(this)">X</a>';  
+    colonne2.innerHTML += '<a onclick="supprimerLigneUser(this)">X</a>'; 
+    
+    var nom=document.getElementById("nomUser").value;
+    console.log(nom+" est le ");
+    document.getElementById("invisiUser").value=nom;
 }
 
 function recupSaisiePopupLog(){
