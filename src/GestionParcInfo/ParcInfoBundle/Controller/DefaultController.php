@@ -82,6 +82,7 @@ class DefaultController extends Controller
             ->add('editeur','text')
             ->add('nomLog','text')
             ->add('licence','text')
+            ->add('versionLogiciel','text')
             ->add('adMac','text')
             ->add('adIp','text')
             ->add('adPasserelle','text')

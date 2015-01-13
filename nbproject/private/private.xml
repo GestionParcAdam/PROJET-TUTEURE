@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/src/GestionParcInfo/ParcInfoBundle/Tests/Controller/DefaultControllerTest.php</file>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/src/GestionParcInfo/ParcInfoBundle/Entity/Caracteristique.php</file>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/src/GestionParcInfo/ParcInfoBundle/Repository/CaracteristiqueComRepository.php</file>
-            <file>file:/C:/wamp/www/ProjetTut/Symfony2/web/js/script.js</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/web/js/script.js</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
         </group>
     </open-files>
 </project-private>
