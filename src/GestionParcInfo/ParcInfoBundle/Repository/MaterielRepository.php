@@ -37,8 +37,8 @@ class MaterielRepository extends EntityRepository
     public function getMaterielEnPanne()
     {
         $query = $this->getEntityManager()
-                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numStatut = :num')
-                ->setParameter('num', 1);
+                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numEtat = :num')
+                ->setParameter('num', 3);
         $materielsEnPanne = $query->getResult();
         
         return $materielsEnPanne;
