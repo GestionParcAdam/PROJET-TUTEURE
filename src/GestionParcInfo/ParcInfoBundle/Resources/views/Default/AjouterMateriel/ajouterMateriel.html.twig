@@ -191,20 +191,21 @@
                                     <h4 class="modal-title" id="myModalLabel">Ajouter une maintenance</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <label>Date d'intervention : </label>
-                                    <input type="date" id="dateInterv" class="form-control" />
-                                    <br/>
-                                    <label>Objet de l'intervention : </label>
-                                    <input type="text" id="objInterv" class="form-control" />
-                                    <br/>
-                                    <label>Description de l'intervention : </label>
-                                    <textarea cols="5" rows="5" id="descInterv" class="form-control"></textarea>
-                                    <br/>
-                                    <label>Prestataire de l'intervention : </label>
-                                    <input type="text" id="prestaInterv" class="form-control" />
-                                    <br/>
-                                    <label>Cout de l'intervention : </label>
-                                    <input type="text" id="coutInterv" class="form-control" />
+                                    <p class="col-lg-12"><b>Date d'intervention :</b> 
+                                        {{ form_widget(form.dateInterv, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-12"><b>Objet de l'intervention  :</b> 
+                                        {{ form_widget(form.objInterv, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-12"><b>Description de l'intervention :</b> 
+                                        {{ form_widget(form.descInterv, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-12"><b>Prestataire de l'intervention  :</b> 
+                                        {{ form_widget(form.prestaInterv, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
+                                    <p class="col-lg-12"><b>Cout de l'intervention :</b> 
+                                        {{ form_widget(form.coutInterv, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
@@ -224,8 +225,10 @@
                                     <h4 class="modal-title" id="myModalLabel">Ajouter un utilisateur</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <label>Nom de l'utilisateur : </label>
-                                    <input type="text" id="nomUser" class="form-control" />
+                                   
+                                    <p class="col-lg-12"><b>Nom de l'utilisateur  :</b> 
+                                        {{ form_widget(form.nomUser, {'attr': {'class': 'form-control'}}) }}
+                                    </p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
@@ -253,7 +256,7 @@
                                     </p>
                                     <p class="col-lg-6"><b>Licence :</b>
                                         {{ form_widget(form.licence, {'attr': {'class': 'form-control'}}) }}
-                                    </p>00
+                                    </p>
                                     <p class="col-lg-12"><b>Version du logiciel :</b>
                                         {{ form_widget(form.versionLogiciel, {'attr': {'class': 'form-control'}}) }}
                                     </p>

@@ -11,6 +11,8 @@
 namespace GestionParcInfo\ParcInfoBundle\Controller;
 
 use GestionParcInfo\ParcInfoBundle\Entity\Materiel;
+use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
+use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
 use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueCom;
 use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -82,9 +84,18 @@ class DefaultController extends Controller
             ->add('revendeur','entity',array('class' => 'ParcInfoBundle:Revendeur', 
                                              'property' => 'nomRevendeur'))
             ->add('immobilisation','text')
+            ->add('nomUser','text')
             ->add('editeur','text')
             ->add('nomLog','text')
             ->add('licence','text')
+                
+            ->add('dateInterv','date',array('input'  => 'datetime',
+                                           'widget' => 'single_text'))
+            ->add('objInterv','text')
+            ->add('descInterv','textarea')
+            ->add('prestaInterv','text')
+            ->add('coutInterv','text')
+                
             ->add('versionLogiciel','text')
             ->add('adMac','text')
             ->add('adIp','text')
@@ -118,6 +129,20 @@ class DefaultController extends Controller
             $em->persist($materiel);
             $em->flush();
             
+            $fabricant = new Fabricant();
+            
+            $fabricant->setNomFabricant($data['fabricant']);
+            
+            $em->persist($fabricant);
+            $em->flush();
+            
+            $revendeur = new Revendeur();
+            
+            $revendeur->setNomRevendeur($data['revendeur']);
+            
+            $em->persist($revendeur);
+            $em->flush();
+            
             
             $caracDeCom = new CaracteristiqueCom();
             
@@ -125,7 +150,8 @@ class DefaultController extends Controller
             $caracDeCom->setLibelleModele($data['modele']);
             $caracDeCom->setDateAchat($data['dateAchat']);
             $caracDeCom->setNumImmo($data('immobilisation'));
-            
+            $caracDeCom->setNumFabricant($fabricant);
+                    
             $em->persist($caracDeCom);
             $em->flush();
             
@@ -138,6 +164,8 @@ class DefaultController extends Controller
             
             $em->persist($caracDeRes);
             $em->flush(); 
+            
+            
             
             /* ca çà permet de retourner une réponse basique */
             return new Response('<h1>Materiel ajouté !</h1>');
