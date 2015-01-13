@@ -28,11 +28,32 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 <p class="col-lg-2"><button class="btn btn-default">Connexion VNC</button></p>
                                 <p class="col-lg-1"><button class="btn btn-default">PING</button></p>
                                 <p class="col-lg-1"><a href=""><button class="btn btn-default">Editer</button></a></p>
-                                <p class="col-lg-5"><b>Type de matériel :</b> {{materiel.numType.libelleType}}</p>
-                                <p class="col-lg-5"><b>Nom du matériel :</b> {{materiel.nomMat}} </p>
-                                <p class="col-lg-5"><b>Etat du matériel :</b> {{materiel.numEtat.libelleEtat}} </p>
-                                <p class="col-lg-5"><b>Statut du matériel :</b> {{materiel.numStatut.libelleStatut}} </p>
-                                <p class="col-lg-5"><b>Site géographique :</b> {{materiel.numSite.nomSite}}</p>
+                                <p class="col-lg-5"><b>Type de matériel :</b> 
+                                    {%if materiel.numType is not null %}
+                                        {{materiel.numType.libelleType}}
+                                        {%endif%}
+                                    </p>
+                                <p class="col-lg-5"><b>Nom du matériel :</b> 
+                                    {%if materiel.nomMat is not null %}
+                                        {{materiel.nomMat}} 
+                                    {%endif%}
+                                </p>
+                                <p class="col-lg-5"><b>Etat du matériel :</b> 
+                                    
+                                    {%if materiel.numEtat is not null %}
+                                    {{materiel.numEtat.libelleEtat}} 
+                                    {%endif%}
+                                </p>
+                                <p class="col-lg-5"><b>Statut du matériel :</b> 
+                                    {%if materiel.numStatut is not null %}
+                                    {{materiel.numStatut.libelleStatut}} 
+                                    {%endif%}
+                                </p>
+                                <p class="col-lg-5"><b>Site géographique :</b>
+                                    {%if materiel.numSite is not null %}
+                                    {{materiel.numSite.nomSite}}
+                                    {%endif%}
+                                </p>
                                 <p class="col-lg-12"></p>
                                 <div class="systeme_onglets">
                                 <div class="onglets col-sm-12">
@@ -48,25 +69,40 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     {# 1er onglet #}
                                     <div class="contenu_onglet" id="contenu_onglet_1">
                                         <p class="col-lg-12"></p>
-                                        <p class="col-lg-6"><b>Date d'achat :</b>{{materiel.numCarac.numCaracCom.dateAchat|date("d/m/Y")}}
+                                        <p class="col-lg-6"><b>Date d'achat :</b>
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.dateAchat|date("d/m/Y")}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-6"><b>Prix d'achat :</b>   {{materiel.numCarac.numCaracCom.prixAchat}} €                                       
+                                        <p class="col-lg-6"><b>Prix d'achat :</b>  
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.prixAchat}}                                          
+                                            €
+                                            {%endif%}
                                         </p>
 
                                         <p class="col-lg-6"><b>N° facture :</b> 
                                            
                                         </p>
-                                        <p class="col-lg-6"><b>Modèle :</b> {{materiel.numCarac.numCaracCom.libelleModele}}
-                                            
+                                        <p class="col-lg-6"><b>Modèle :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.libelleModele}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-6"><b>Fabricant :</b> {{materiel.numCarac.numCaracCom.numFabricant.nomFabricant}}
-                                            
+                                        <p class="col-lg-6"><b>Fabricant :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.numFabricant.nomFabricant}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-6"><b>Revendeur :</b> {{materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur}}
-                                            
+                                        <p class="col-lg-6"><b>Revendeur :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-6"><b>N° immobilisation :</b> {{materiel.numCarac.numCaracCom.numImmo}}
-                                            
+                                        <p class="col-lg-6"><b>N° immobilisation :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.numImmo}}
+                                            {%endif%}
                                         </p>
                                     </div>
                                     {# 2eme onglet #}
@@ -84,10 +120,26 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{materiel.numCarac.numCaracLog.nomLog}}</td> 
-                                                        <td>{{materiel.numCarac.numCaracLog.nomEditeur}}</td> 
-                                                        <td>{{materiel.numCarac.numCaracLog.licence}}</td> 
-                                                        <td> {{materiel.numCarac.numCaracLog.versionLog}} </td>
+                                                        <td>
+                                                            {%if materiel.numCarac is not null %}
+                                                            {{materiel.numCarac.numCaracLog.nomLog}}
+                                                            {%endif%}
+                                                        </td> 
+                                                        <td>
+                                                            {%if materiel.numCarac is not null %}
+                                                            {{materiel.numCarac.numCaracLog.nomEditeur}}
+                                                            {%endif%}
+                                                        </td> 
+                                                        <td>
+                                                            {%if materiel.numCarac is not null %}
+                                                            {{materiel.numCarac.numCaracLog.licence}}
+                                                            {%endif%}
+                                                        </td> 
+                                                        <td> 
+                                                            {%if materiel.numCarac is not null %}
+                                                            {{materiel.numCarac.numCaracLog.versionLog}} 
+                                                            {%endif%}
+                                                        </td>
                                                     </tr>
                                                 </tbody>                                            
                                             </table>
@@ -97,14 +149,20 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     {# 2eme onglet #}
                                     <div class="contenu_onglet" id="contenu_onglet_3">
                                         <p class="col-lg-12"></p>
-                                        <p class="col-lg-12"><b>@MAC :</b> {{materiel.numCarac.numCaracRes.adressIp}}
-                                            
+                                        <p class="col-lg-12"><b>@MAC :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracRes.adressIp}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-12"><b>@IP :</b> {{materiel.numCarac.numCaracRes.adressMac}}
-                                            
+                                        <p class="col-lg-12"><b>@IP :</b> 
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracRes.adressMac}}
+                                            {%endif%}
                                         </p>
-                                        <p class="col-lg-12"><b>@PASSERELLE :</b>{{materiel.numCarac.numCaracRes.adressPasserelle}}
-                                           
+                                        <p class="col-lg-12"><b>@PASSERELLE :</b>
+                                            {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracRes.adressPasserelle}}
+                                            {%endif%}
                                         </p>
                                     </div> 
                                     {# 3eme onglet #}
@@ -127,7 +185,9 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     {# 4eme onglet #}
                                     <div class="contenu_onglet" id="contenu_onglet_5">
                                         <p class="col-lg-12"></p>
-                                        <p class="col-lg-6"><b>Date de fin de garanti :</b> {{materiel.dateGarantie|date("d/m/Y")}}
+                                        <p class="col-lg-6"><b>Date de fin de garanti :</b> 
+                                            
+                                            {{materiel.dateGarantie|date("d/m/Y")}}
                                            
                                         </p>    
                                     </div>

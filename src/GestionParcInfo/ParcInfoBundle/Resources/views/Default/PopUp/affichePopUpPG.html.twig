@@ -31,7 +31,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 </thead>
                                 <tbody>
                                     {% for materiel in materielPG %}
-                                        <tr onclick="document.location.href = '{# {{ path('parc_info_afficherMat') }} #}'" class="cellule">
+                                        <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
                                             <td>{{ materiel.nomMat }}</td>
                                             <td>{{ materiel.getNumSite.nomSite }}</td>
                                         </tr>

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Utilisateur
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Entity\UtilisateurRepository")
+ * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur
 {
@@ -27,6 +27,10 @@ class Utilisateur
      * @ORM\Column(name="nom_user", type="string", length=255)
      */
     private $nomUser;
+    /**
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="utilisateurs")
+    */
+    private $materiels;
 
 
     /**
@@ -60,5 +64,45 @@ class Utilisateur
     public function getNomUser()
     {
         return $this->nomUser;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiels = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiels
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels
+     * @return Utilisateur
+     */
+    public function addMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
+    {
+        $this->materiels[] = $materiels;
+
+        return $this;
+    }
+
+    /**
+     * Remove materiels
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels
+     */
+    public function removeMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
+    {
+        $this->materiels->removeElement($materiels);
+    }
+
+    /**
+     * Get materiels
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMateriels()
+    {
+        return $this->materiels;
     }
 }

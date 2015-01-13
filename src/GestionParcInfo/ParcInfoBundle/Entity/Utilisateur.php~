@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Utilisateur
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Entity\UtilisateurRepository")
+ * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur
 {
@@ -27,6 +27,10 @@ class Utilisateur
      * @ORM\Column(name="nom_user", type="string", length=255)
      */
     private $nomUser;
+    /**
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="utilisateurs")
+    */
+    private $materiels;
 
 
     /**

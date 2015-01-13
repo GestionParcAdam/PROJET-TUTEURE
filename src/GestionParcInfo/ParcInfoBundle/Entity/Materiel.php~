@@ -61,6 +61,12 @@ class Materiel
     private $historiques;
     
     /**
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur", inversedBy="utilisateurs")
+    * @ORM\JoinTable(name="utilisateurs_materiels")
+    */
+    private $utilisateur;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -277,4 +283,44 @@ class Materiel
     
 
   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->historiques = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add historiques
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques
+     * @return Materiel
+     */
+    public function addHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques)
+    {
+        $this->historiques[] = $historiques;
+
+        return $this;
+    }
+
+    /**
+     * Remove historiques
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques
+     */
+    public function removeHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques)
+    {
+        $this->historiques->removeElement($historiques);
+    }
+
+    /**
+     * Get historiques
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistoriques()
+    {
+        return $this->historiques;
+    }
 }
