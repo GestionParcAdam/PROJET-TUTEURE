@@ -71,6 +71,13 @@ class Materiel
      */
     private $numType;
     
+    /**
+     *
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="dateLastModif", type="date")
+     */
+    private $dateLastModif;
     
     /**
      * Get id
@@ -264,5 +271,28 @@ class Materiel
     public function getNumType()
     {
         return $this->numType;
+    }
+
+    /**
+     * Set dateLastModif
+     *
+     * @param \DateTime $dateLastModif
+     * @return Materiel
+     */
+    public function setDateLastModif($dateLastModif)
+    {
+        $this->dateLastModif = $dateLastModif;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateLastModif
+     *
+     * @return \DateTime 
+     */
+    public function getDateLastModif()
+    {
+        return $this->dateLastModif;
     }
 }

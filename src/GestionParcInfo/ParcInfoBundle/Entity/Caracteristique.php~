@@ -38,7 +38,7 @@ class Caracteristique
      * @ORM\JoinColumn(nullable=false)
      */
     private $numCaracRes;
-
+    
     /**
      * Get id
      *
@@ -117,4 +117,5 @@ class Caracteristique
     {
         return $this->numCaracRes;
     }
+    
 }

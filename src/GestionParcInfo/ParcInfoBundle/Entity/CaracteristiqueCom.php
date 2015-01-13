@@ -48,7 +48,18 @@ class CaracteristiqueCom
      * @ORM\Column(name="numImmo", type="string", length=255)
      */
     private $numImmo;
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $numFabricant;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $numRevendeur;
 
     /**
      * Get id
@@ -150,5 +161,51 @@ class CaracteristiqueCom
     public function getNumImmo()
     {
         return $this->numImmo;
+    }
+
+    /**
+     * Set numFabricant
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant
+     * @return CaracteristiqueCom
+     */
+    public function setNumFabricant(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant)
+    {
+        $this->numFabricant = $numFabricant;
+    
+        return $this;
+    }
+
+    /**
+     * Get numFabricant
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Fabricant 
+     */
+    public function getNumFabricant()
+    {
+        return $this->numFabricant;
+    }
+
+    /**
+     * Set numRevendeur
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur
+     * @return CaracteristiqueCom
+     */
+    public function setNumRevendeur(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur)
+    {
+        $this->numRevendeur = $numRevendeur;
+    
+        return $this;
+    }
+
+    /**
+     * Get numRevendeur
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Revendeur 
+     */
+    public function getNumRevendeur()
+    {
+        return $this->numRevendeur;
     }
 }

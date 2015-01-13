@@ -27,6 +27,13 @@ class CaracteristiqueLog
      * @ORM\Column(name="nomLog", type="string", length=255)
      */
     private $nomLog;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomEditeur", type="string", length=255)
+     */
+    private $nomEditeur;
 
     /**
      * @var string
@@ -36,17 +43,11 @@ class CaracteristiqueLog
     private $versionLog;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="licence", type="string", length=255)
      */
-    private $numFabricant;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $numRevendeur;
-
+    private $licence;
 
     /**
      * Get id
@@ -105,48 +106,48 @@ class CaracteristiqueLog
     }
 
     /**
-     * Set numFabricant
+     * Set nomEditeur
      *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant
+     * @param string $nomEditeur
      * @return CaracteristiqueLog
      */
-    public function setNumFabricant(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant)
+    public function setNomEditeur($nomEditeur)
     {
-        $this->numFabricant = $numFabricant;
-
+        $this->nomEditeur = $nomEditeur;
+    
         return $this;
     }
 
     /**
-     * Get numFabricant
+     * Get nomEditeur
      *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Fabricant 
+     * @return string 
      */
-    public function getNumFabricant()
+    public function getNomEditeur()
     {
-        return $this->numFabricant;
+        return $this->nomEditeur;
     }
 
     /**
-     * Set numRevendeur
+     * Set licence
      *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur
+     * @param string $licence
      * @return CaracteristiqueLog
      */
-    public function setNumRevendeur(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur)
+    public function setLicence($licence)
     {
-        $this->numRevendeur = $numRevendeur;
-
+        $this->licence = $licence;
+    
         return $this;
     }
 
     /**
-     * Get numRevendeur
+     * Get licence
      *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Revendeur 
+     * @return string 
      */
-    public function getNumRevendeur()
+    public function getLicence()
     {
-        return $this->numRevendeur;
+        return $this->licence;
     }
 }
