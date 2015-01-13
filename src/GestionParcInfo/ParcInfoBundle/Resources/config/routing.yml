@@ -27,7 +27,7 @@ parc_info_etat:
     defaults: { _controller: ParcInfoBundle:Default:etat }
     
 parc_info_fiche:
-    path:     /fiche
+    path:     /fiche/{idmat}
     defaults: { _controller: ParcInfoBundle:Default:fiche }
     
     

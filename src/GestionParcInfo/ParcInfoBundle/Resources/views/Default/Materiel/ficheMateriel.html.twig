@@ -14,7 +14,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
         <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-laptop"></i> PC-13</h3>
+                    <h3 class="panel-title"><i class="fa fa-laptop"></i> {{materiel.nomMat}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-lg-12">
@@ -26,12 +26,12 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 <p class="col-lg-8"></p>
                                 <p class="col-lg-2"><button class="btn btn-default">Connexion VNC</button></p>
                                 <p class="col-lg-1"><button class="btn btn-default">PING</button></p>
-                                <p class="col-lg-1"><a href="../../modifierMat/PC1/ficheMateriel1.html"><button class="btn btn-default">Editer</button></a></p>
-                                <p class="col-lg-5"><b>Type de matériel :</b> Ordinateur</p>
-                                <p class="col-lg-5"><b>Nom du matériel :</b> PC-13</p>
-                                <p class="col-lg-5"><b>Etat du matériel :</b> Hors Service</p>
-                                <p class="col-lg-5"><b>Statut du matériel :</b> A renouveler</p>
-                                <p class="col-lg-5"><b>Site géographique :</b> Limoges</p>
+                                <p class="col-lg-1"><a href=""><button class="btn btn-default">Editer</button></a></p>
+                                <p class="col-lg-5"><b>Type de matériel :</b> {{materiel.numType.libelleType}}</p>
+                                <p class="col-lg-5"><b>Nom du matériel :</b> {{materiel.nomMat}} </p>
+                                <p class="col-lg-5"><b>Etat du matériel :</b> {{materiel.numEtat.libelleEtat}} </p>
+                                <p class="col-lg-5"><b>Statut du matériel :</b> {{materiel.numStatut.libelleStatut}} </p>
+                                <p class="col-lg-5"><b>Site géographique :</b> {{materiel.numSite.nomSite}}</p>
                                 <p class="col-lg-12"></p>
                                 <div class="systeme_onglets">
                                 <div class="onglets col-sm-12">
@@ -47,7 +47,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     {# 1er onglet #}
                                     <div class="contenu_onglet" id="contenu_onglet_1">
                                         <p class="col-lg-12"></p>
-                                        <p class="col-lg-6"><b>Date d'achat :</b>
+                                        <p class="col-lg-6"><b>Date d'achat :</b>{{materiel.numCarac.numCaracCom.dateAchat|date("d/m/Y")}}
                                         </p>
                                         <p class="col-lg-6"><b>Prix d'achat :</b>                                           
                                         </p>
@@ -124,7 +124,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     {# 4eme onglet #}
                                     <div class="contenu_onglet" id="contenu_onglet_5">
                                         <p class="col-lg-12"></p>
-                                        <p class="col-lg-6"><b>Date de fin de garanti :</b> 
+                                        <p class="col-lg-6"><b>Date de fin de garanti :</b> {{materiel.dateGarantie|date("d/m/Y")}}
                                            
                                         </p>    
                                     </div>

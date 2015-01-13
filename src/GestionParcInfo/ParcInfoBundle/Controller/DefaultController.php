@@ -214,9 +214,10 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', 
                                 array('materiels' => $mats,'etat'=>$etat));
     }
-    public function ficheAction()
+    public function ficheAction($idmat)
     {
-
-        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->find($idmat);
+        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
 }
