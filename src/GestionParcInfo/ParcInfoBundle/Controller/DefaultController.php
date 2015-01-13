@@ -109,6 +109,12 @@ class DefaultController extends Controller
         
         if($form->isSubmitted())
         {
+            $requete=$this->get('request');
+            if($requete->getMethod() == 'POST'){
+                $user=$_POST['user0'];
+                var_dump($user);
+            }
+             
            /* Ici je récupère les informations du formulaire dans un tableau /*/
             $data = $form->getData();
              
@@ -168,7 +174,7 @@ class DefaultController extends Controller
             
             
             /* ca çà permet de retourner une réponse basique */
-            return new Response('<h1>Materiel ajouté !</h1>');
+            return new Response('<h1>Materiel ajouté !</h1>\n résultat : '.$user);
         }
 
    
