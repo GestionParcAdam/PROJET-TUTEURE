@@ -18,6 +18,7 @@ class Materiel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", cascade={"persist"})
      */
     private $id;
 
@@ -54,7 +55,7 @@ class Materiel
     private $numStatut;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique",mappedBy="id", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $numHistorique;
