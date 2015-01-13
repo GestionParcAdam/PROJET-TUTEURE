@@ -41,9 +41,12 @@ class DefaultController extends Controller
         $materielPG = $em->getRepository('ParcInfoBundle:Materiel')->getMaterielsPG();
         
         $materielEnPanne = $em->getRepository('ParcInfoBundle:Materiel')->getMaterielEnPanne();
+        
+        $dernierModif = $em->getRepository('ParcInfoBundle:Materiel')->getDernierMateriels();
+        
        
         return $this->render('ParcInfoBundle:Default:index.html.twig', 
-                                array('materielHs' => $materiels,'allsite' => $allsite,'materielPG'=>$materielPG,'materielEnPanne'=>$materielEnPanne));
+                                array('materielHs' => $materiels,'allsite' => $allsite,'materielPG'=>$materielPG,'materielEnPanne'=>$materielEnPanne,'dernierModif'=>$dernierModif));
     }
     
     public function ajouterAction(Request $request)

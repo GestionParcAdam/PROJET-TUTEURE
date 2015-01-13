@@ -172,24 +172,17 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>PC-13</td>
-                                <td>Limoges</td>
-                                <td>18/10/2014</td>
-                                <td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>PC-Secretaire01</td>
-                                <td>St-Maur</td>
-                                <td>18/11/2014</td>
-                                <td class="text-center"><a href="."><i class="glyphicon glyphicon-edit"></i></a> </td>
-                            </tr>
-                            <tr>
-                                <td>Impr-HP-03</td>
-                                <td>Limoges</td>
-                                <td>15/09/2013</td>
-                                <td class="text-center"><a href=""><i class="glyphicon glyphicon-edit"></i></a></td>
-                            </tr>
+                            {% if dernierModif != null %}
+                                {% for materiel in dernierModif %}
+                                <tr>
+                                    <td> {{materiel.nomMat}}</td>
+                                    <td>{{materiel.numSite.nomSite}}</td>
+                                    <td> {{materiel.dateLastModif|date('d-m-y')}}</td>
+                                    <td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        
                         </tbody>
                     </table>
                 </div>

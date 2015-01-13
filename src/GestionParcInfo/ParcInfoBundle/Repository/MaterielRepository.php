@@ -43,4 +43,16 @@ class MaterielRepository extends EntityRepository
         
         return $materielsEnPanne;
     }
+    
+    public function getDernierMateriels()
+    {
+        $query = $this->createQueryBuilder('m')
+        ->orderBy('m.dateLastModif', 'DESC')
+        ->setMaxResults(10)
+        ->getQuery();
+
+       $dernierModif = $query->getResult();
+       
+       return $dernierModif;
+    }
 }
