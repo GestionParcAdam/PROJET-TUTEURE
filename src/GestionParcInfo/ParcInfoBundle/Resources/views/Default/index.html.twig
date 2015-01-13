@@ -15,6 +15,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
             {#
                 Ici on regarde l'objet passer en paramètre du render du controller
              #}
+            {# 1er pop up #}
             {% if materielHs != null %}
                 {#
                     Là je créer une variable
@@ -38,6 +39,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                     </div>
                 </div>
             {%endif%}
+            {# 2ème pop up #}
             {% if materielPG != null %}
                 {#
                     Là je créer une variable
@@ -63,7 +65,31 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
         </div>
     </div>
     
-    
+          {# 3ème pop up #}
+            {% if materielEnPanne != null %}
+                {#
+                    Là je créer une variable
+                #}
+                {% set nbMatEnPanne = 0 %}
+
+                {% for materiel in materielEnPanne %}
+                    {% set nbMatEnPanne = nbMatEnPanne + 1 %}
+                {% endfor %}
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <h4> Attention! </h4>
+                        {% if nbMatEnPanne==1%}
+                        <p>  {{ nbMatEnPanne }} Matériel est en panne.  </p>
+                        {% else %}
+                        <p>  {{ nbMatEnPanne }} Matériels  sont en panne.  </p>
+                        {% endif %}
+                        <a href="{{ path('parc_info_matEnPanne', { 'materielEnPanne': materielEnPanne }) }}" ><button class="btn btn-defaut col-lg-offset-9">Accéder à la liste</button></a>      
+                    </div>
+                </div>
+            {%endif%}
+        </div>
+    </div>
 
 <div class="row"> 
     <div class="col-lg-6">

@@ -22,6 +22,7 @@ class MaterielRepository extends EntityRepository
         
         return $materielsHS;
     }
+    
     public function getMaterielsPG()
     {
         $query = $this->getEntityManager()
@@ -31,5 +32,15 @@ class MaterielRepository extends EntityRepository
         $materielsPG = $query->getResult();
         
         return $materielsPG;
+    }
+    
+    public function getMaterielEnPanne()
+    {
+        $query = $this->getEntityManager()
+                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numStatut = :num')
+                ->setParameter('num', 1);
+        $materielsEnPanne = $query->getResult();
+        
+        return $materielsEnPanne;
     }
 }

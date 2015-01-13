@@ -1,0 +1,95 @@
+{#
+Ca c'est une vue
+Ici elle étend la vue principal qui est dans app/ressources/views
+Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}
+    <br/>
+    <div class="row">     
+        <div class="col-lg-7">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel en panne</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-laptop"></i> Ordinateur</h3>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du matériel</th>
+                                        <th>Lieu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for materiel in materielEnPanne %}
+                                        <tr onclick="document.location.href = '{# {{ path('parc_info_afficherMat') }} #}'" class="cellule">
+                                            <td>{{ materiel.nomMat }}</td>
+                                            <td>{{ materiel.getNumSite.nomSite }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {#
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-print"></i> Imprimante</h3>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du matériel</th>
+                                        <th>Lieu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr onclick="document.location.href = './ficheImprimante.html'" class="cellule">
+                                        <td>Impr-Epson-02</td>
+                                        <td>Limoges</td>
+                                    </tr>
+                                    <tr onclick="document.location.href = 'ficheImprimante2.html'" class="cellule">
+                                        <td>Impr-HP-03</td>
+                                        <td>Limoges</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-hdd"></i> Routeur </h3>
+                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom du matériel</th>
+                                        <th>Lieu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr onclick="document.location.href = 'ficheRouteur.html'" class="cellule">
+                                        <td>Routeur-3</td>
+                                        <td>St-Maur</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

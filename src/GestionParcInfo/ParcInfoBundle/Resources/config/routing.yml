@@ -14,6 +14,7 @@ parc_info_rechercher:
 parc_info_matHS:
     path:     /matHS
     defaults: { _controller: ParcInfoBundle:Default:matHS }
+    
 parc_info_matPG:
     path:     /matPG
     defaults: { _controller: ParcInfoBundle:Default:matPG }
@@ -29,5 +30,9 @@ parc_info_etat:
 parc_info_fiche:
     path:     /fiche/{idmat}
     defaults: { _controller: ParcInfoBundle:Default:fiche }
+    
+parc_info_matEnPanne:
+    path:     /matEnPanne
+    defaults: { _controller: ParcInfoBundle:Default:matEnPanne }
     
     
