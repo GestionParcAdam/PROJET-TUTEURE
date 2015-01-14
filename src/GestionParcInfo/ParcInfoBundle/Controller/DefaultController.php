@@ -281,5 +281,131 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
     
+        public function modifierAction($idmat,Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
+        
+         $form = $this->createFormBuilder()
+            ->setMethod('POST')
+            ->setAction($this->generateUrl('parc_info_ajouter'))
+            ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type', 
+                                             'property' => 'libelleType'))
+            ->add('nomMat', 'text')
+            ->add('etatMat', 'entity',array('class' => 'ParcInfoBundle:Etat', 
+                                             'property' => 'libelleEtat'))
+            ->add('statutMat', 'entity', array('class' => 'ParcInfoBundle:Statut', 
+                                             'property' => 'libelleStatut'))
+            ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site', 
+                                             'property' => 'nomSite'))
+            ->add('dateAchat','date',array('input'  => 'datetime',
+                                           'widget' => 'single_text'))
+            ->add('prixAchat','money'/*,array('currency' => 'false')*/)
+            ->add('numFacture','text')
+            ->add('modele','text')
+            ->add('fabricant','entity',array('class' => 'ParcInfoBundle:Fabricant', 
+                                             'property' => 'nomFabricant'))
+            ->add('revendeur','entity',array('class' => 'ParcInfoBundle:Revendeur', 
+                                             'property' => 'nomRevendeur'))
+            ->add('immobilisation','text')
+            ->add('nomUser','text')
+            ->add('editeur','text')
+            ->add('nomLog','text')
+            ->add('licence','text')
+                
+            ->add('dateInterv','date',array('input'  => 'datetime',
+                                           'widget' => 'single_text'))
+            ->add('objInterv','text')
+            ->add('descInterv','textarea')
+            ->add('prestaInterv','text')
+            ->add('coutInterv','text')
+                
+            ->add('versionLogiciel','text')
+            ->add('adMac','text')
+            ->add('adIp','text')
+            ->add('adPasserelle','text')
+            ->add('dateGarantie','date',array('input'  => 'datetime',
+                                           'widget' => 'single_text'))    
+            ->add('ajouter', 'submit')
+            ->getForm();
+        
+        if($form->handleRequest($request)->isSubmitted())
+        {
+            
+            $requete=$this->get('request');
+            if($requete->getMethod() == 'POST'){
+                $user=$_POST['user0'];
+                var_dump($user);
+            }
+           
+           /* Ici je récupère les informations du formulaire dans un tableau */
+            $data = $form->getData();
+            \Doctrine\Common\Util\Debug::dump($data);
+            
+            /* Je créer mon objet à persister dans la base */
+            /*
+             $materiel = new Materiel();
+             
+            
+            $materiel->setNomMat($data['nomMat']);
+            $materiel->setDateGarantie($data['dateGarantie']);
+            $materiel->setNumEtat($data['etatMat']);
+            $materiel->setNumSite($data['siteGeo']);
+            $materiel->setNumType($data['typeMat']);
+            $materiel->setNumStatut($data['statutMat']);
+            $date = new \DateTime();
+            $materiel->setDateLastModif($date);
+            */
+            /* j'ouvre la connexion à la BD Doctrine */
+            /*
+            $em = $this->getDoctrine()->getManager();
+            */
+            /* je dis que je persist l'objet et que j'upload direct en clair */
+            /*
+            $em->persist($materiel);
+            $em->flush();
+            
+            $fabricant = new Fabricant();
+            
+            $fabricant->setNomFabricant($data['fabricant']);
+            
+            $em->persist($fabricant);
+            $em->flush();
+            
+            $revendeur = new Revendeur();
+            
+            $revendeur->setNomRevendeur($data['revendeur']);
+            
+            $em->persist($revendeur);
+            $em->flush();
+            
+            $caracDeCom = new CaracteristiqueCom();
+            
+            $caracDeCom->setPrixAchat($data['prixAchat']);
+            $caracDeCom->setLibelleModele($data['modele']);
+            $caracDeCom->setDateAchat($data['dateAchat']);
+            $caracDeCom->setNumImmo($data('immobilisation'));
+            $caracDeCom->setNumFabricant($fabricant);
+                    
+            $em->persist($caracDeCom);
+            $em->flush();
+            
+            
+            $caracDeRes = new CaracteristiqueRes();
+            
+            $caracDeRes->setAdressIp($data['adIp']);
+            $caracDeRes->setAdressMac($data['adMac']);
+            $caracDeRes->setAdressPasserelle($data['adPasserelle']);
+            
+            $em->persist($caracDeRes);
+            $em->flush(); 
+            */
+            
+            
+            /* ca çà permet de retourner une réponse basique */
+            return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
+        }
 
+        return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
+    }
 }
