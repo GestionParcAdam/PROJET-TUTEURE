@@ -199,15 +199,21 @@ class DefaultController extends Controller
              * User
              * Prévoir bouclage sur le nombre d'user ajouter
              */
-            \Doctrine\Common\Util\Debug::dump($_POST['user1']);
-            \Doctrine\Common\Util\Debug::dump($_POST['user2']);
-            \Doctrine\Common\Util\Debug::dump($_POST['user3']);
-            
-            $user = new Utilisateur();
-            $name = 'user'.
-            $user->setNomUser($_POST['user1']);
+            for ($i = 0; $i < $data['nbUsers']; $i++) {
+                $concat = 'user'.$i; 
+                if(isset($_POST[$concat]))
+                {
+                    $user = new Utilisateur();
+                    
+                    $user->setNomUser($_POST[$concat]);
+                    $user->addMateriel($materiel);
+                }
+            }
            
-            $user->addMateriel($materiel);
+            
+            
+           
+            
            // $materiel->addUtilisateur($user);
             
            
@@ -224,11 +230,11 @@ class DefaultController extends Controller
             $hist = new Historique();
             
             $hist->setMateriel($materiel);
-            $hist->setObjetIntervention($_POST['maintenance0-1-1']);
-            $hist->setCoutIntervention($_POST['maintenance0-1-4']);
-            $hist->setDateIntervention(new \DateTime($_POST['maintenance0-1-0']));
-            $hist->setDescIntervention($_POST['maintenance0-1-2']);
-            $hist->setPrestataireIntervention($_POST['maintenance0-1-3']);
+            $hist->setObjetIntervention($_POST['maintenance1-2']);
+            $hist->setCoutIntervention($_POST['maintenance1-5']);
+            $hist->setDateIntervention(new \DateTime($_POST['maintenance1-1']));
+            $hist->setDescIntervention($_POST['maintenance1-3']);
+            $hist->setPrestataireIntervention($_POST['maintenance1-4']);
 
             $em->persist($hist);
             $em->flush();
