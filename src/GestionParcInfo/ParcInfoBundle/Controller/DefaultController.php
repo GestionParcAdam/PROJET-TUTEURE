@@ -86,9 +86,9 @@ class DefaultController extends Controller
             ->add('revendeur','entity',array('class' => 'ParcInfoBundle:Revendeur', 
                                              'property' => 'nomRevendeur'))
             ->add('immobilisation','text')
-            ->add('nbUsers','hidden')
-            ->add('nbLog','hidden')
-            ->add('nbMaintenance','hidden')
+            ->add('nbUsers','text')
+            ->add('nbLog','text')
+            ->add('nbMaintenance','text')
             ->add('nomUser','text')
             ->add('editeur','text')
             ->add('nomLog','text')
