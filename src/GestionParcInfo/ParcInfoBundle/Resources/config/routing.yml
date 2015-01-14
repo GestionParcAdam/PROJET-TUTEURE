@@ -38,3 +38,10 @@ parc_info_matEnPanne:
 parc_info_modifier:
     path:     /modifier/{idmat}
     defaults: { _controller: ParcInfoBundle:Default:modifier }
+    
+parc_info_listeBienInformatique:
+    path:     /listeBienInformatique/{idmat}
+    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }   
+    
+    
+    
