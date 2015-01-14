@@ -9,7 +9,7 @@ parc_info_ajouter:
     
 parc_info_rechercher:
     path:     /search
-    defaults: { _controller: ParcInfoBundle:Default:rechercher }
+    defaults: { _controller: ParcInfoBundle:Recherche:rechercher }
     
 parc_info_matHS:
     path:     /matHS

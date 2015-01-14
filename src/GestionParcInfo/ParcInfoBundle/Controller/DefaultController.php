@@ -238,30 +238,6 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:AjouterMateriel/ajouterMateriel.html.twig', array('form' => $form->createView()));
     }  
     
-    public function rechercherAction()
-    {
-        $form = $this->createFormBuilder()
-            ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type', 
-                                             'property' => 'libelleType'))
-            ->add('nomMat', 'text')
-            ->add('etatMat', 'entity',array('class' => 'ParcInfoBundle:Etat', 
-                                             'property' => 'libelleEtat'))
-            ->add('statutMat', 'entity', array('class' => 'ParcInfoBundle:Statut', 
-                                             'property' => 'libelleStatut'))
-            ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site', 
-                                             'property' => 'nomSite'))
-            ->add('dateAchat','date',array('input'  => 'datetime',
-                                           'widget' => 'single_text'))
-            ->add('numFacture','text')
-            ->add('modele','text')
-            ->add('fabricant','text')
-            ->add('revendeur','text')
-            ->add('utilisateur','text')     
-            ->getForm();
-        
-        return $this->render('ParcInfoBundle:Default:RechercherMateriel/rechercherMateriel.html.twig', array('form' => $form->createView()));
-    }
-    
     public function matHSAction()
     {
        
