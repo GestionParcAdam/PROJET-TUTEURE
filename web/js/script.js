@@ -68,10 +68,10 @@ function recupSaisiePopupUser(){
     
 }
 
-idLog=0;
+
 j=0;
 function recupSaisiePopupLog(){
- 
+    idLog=0;
     idLog++;
     var tableau = document.getElementById("tabLog");
  
@@ -98,29 +98,30 @@ function recupSaisiePopupLog(){
     var version=document.getElementById("form_versionLogiciel").value;
     console.log(editeur+" "+nom+" "+licence+" "+version+" ");
     
-    plus('cadreLog','log'+j+'-'+(j+1)+'-',idLog);
-    plus('cadreLog','log'+j+'-'+(j+1)+'-',idLog+1);
-    plus('cadreLog','log'+j+'-'+(j+1)+'-',idLog+2);
-    plus('cadreLog','log'+j+'-'+(j+1)+'-',idLog+3);
+    plus('cadreLog','log'+(j+1)+'-',idLog);
+    plus('cadreLog','log'+(j+1)+'-',idLog+1);
+    plus('cadreLog','log'+(j+1)+'-',idLog+2);
+    plus('cadreLog','log'+(j+1)+'-',idLog+3);
     j++;
  
-    console.log('log'+(j-1)+'-'+(j)+'-'+(idLog));
-    console.log('log'+(j-1)+'-'+(j)+'-'+(idLog+1));
-    console.log('log'+(j-1)+'-'+(j)+'-'+(idLog+2));
-    console.log('log'+(j-1)+'-'+(j)+'-'+(idLog+3));
-    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(idLog)).value=editeur;
-    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(idLog+1)).value=nom;
-    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(idLog+2)).value=licence;
-    document.getElementById('log'+(j-1)+'-'+(j)+'-'+(idLog+3)).value=version; 
+    console.log('log'+(j)+'-'+(idLog));
+    console.log('log'+(j)+'-'+(idLog+1));
+    console.log('log'+(j)+'-'+(idLog+2));
+    console.log('log'+(j)+'-'+(idLog+3));
+    document.getElementById('log'+(j)+'-'+(idLog)).value=editeur;
+    document.getElementById('log'+(j)+'-'+(idLog+1)).value=nom;
+    document.getElementById('log'+(j)+'-'+(idLog+2)).value=licence;
+    document.getElementById('log'+(j)+'-'+(idLog+3)).value=version; 
     
     var nb=j;
     console.log((nb)+" est le nombre de logiciel"); 
     document.getElementById('form_nbLog').value=(nb);
        
 }
-idMaintenance=0;
+
 l=0;
 function recupSaisiePopupMaintenance(){
+    idMaintenance=0;
     idMaintenance++;
     var tableau = document.getElementById("tabMaintenance");
     
