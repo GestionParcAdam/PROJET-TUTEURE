@@ -82,6 +82,7 @@ class Utilisateur
     public function addMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
     {
         $this->materiels[] = $materiels;
+        $materiels->addUtilisateur($this);
 
         return $this;
     }

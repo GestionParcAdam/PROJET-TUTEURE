@@ -194,17 +194,19 @@ class DefaultController extends Controller
             $materiel->setDateLastModif($date);
             
             /* je dis que je persist l'objet et que j'upload direct en clair */
+            $em->persist($materiel);
+            $em->flush();
             
             /*
              * User
              * Prévoir bouclage sur le nombre d'user ajouter
              */
             $user = new Utilisateur();
-            $user->addMateriel($materiel);
+           
             $user->setNomUser($_POST['user0']);
-            $materiel->addUtilisateur($user);
+           
             $em->persist($user);
-            $em->persist($materiel);
+            
             $em->flush();
             
             /*
@@ -321,10 +323,8 @@ class DefaultController extends Controller
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
-<<<<<<< HEAD
-=======
     
-        public function modifierAction($idmat,Request $request)
+    public function modifierAction($idmat,Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
@@ -451,5 +451,4 @@ class DefaultController extends Controller
 
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
     }
->>>>>>> origin/master
 }
