@@ -151,23 +151,23 @@ function recupSaisiePopupMaintenance(){
     var cout=document.getElementById("form_coutInterv").value;
     console.log(date+" "+objet+" "+description+" "+prestataire+" "+cout);
     
-    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-',idMaintenance);
-    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-',idMaintenance+1);
-    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-',idMaintenance+2);
-    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-',idMaintenance+3);
-    plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-',idMaintenance+4);
+    plus('cadreMaintenance','maintenance'+(l+1)+'-',idMaintenance);
+    plus('cadreMaintenance','maintenance'+(l+1)+'-',idMaintenance+1);
+    plus('cadreMaintenance','maintenance'+(l+1)+'-',idMaintenance+2);
+    plus('cadreMaintenance','maintenance'+(l+1)+'-',idMaintenance+3);
+    plus('cadreMaintenance','maintenance'+(l+1)+'-',idMaintenance+4);
     l++;
     
-    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance));
-    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+1));
-    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+2));
-    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+3));
-    console.log('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+4));
-    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance)).value=date;
-    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+1)).value=objet;
-    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+2)).value=description;
-    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+3)).value=prestataire; 
-    document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(idMaintenance+4)).value=cout; 
+    console.log('maintenance'+(l)+'-'+(idMaintenance));
+    console.log('maintenance'+(l)+'-'+(idMaintenance+1));
+    console.log('maintenance'+(l)+'-'+(idMaintenance+2));
+    console.log('maintenance'+(l)+'-'+(idMaintenance+3));
+    console.log('maintenance'+(l)+'-'+(idMaintenance+4));
+    document.getElementById('maintenance'+(l)+'-'+(idMaintenance)).value=date;
+    document.getElementById('maintenance'+(l)+'-'+(idMaintenance+1)).value=objet;
+    document.getElementById('maintenance'+(l)+'-'+(idMaintenance+2)).value=description;
+    document.getElementById('maintenance'+(l)+'-'+(idMaintenance+3)).value=prestataire; 
+    document.getElementById('maintenance'+(l)+'-'+(idMaintenance+4)).value=cout; 
     
     var nb=l;
     console.log((nb)+" est le nombre de maitenance"); 
