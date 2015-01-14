@@ -34,6 +34,13 @@ class CaracteristiqueCom
      * @ORM\Column(name="prixAchat", type="string", length=255)
      */
     private $prixAchat;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numFacture", type="string", length=255)
+     */
+    private $numFacture;
 
     /**
      * @var string
@@ -207,5 +214,28 @@ class CaracteristiqueCom
     public function getNumRevendeur()
     {
         return $this->numRevendeur;
+    }
+
+    /**
+     * Set numFacture
+     *
+     * @param string $numFacture
+     * @return CaracteristiqueCom
+     */
+    public function setNumFacture($numFacture)
+    {
+        $this->numFacture = $numFacture;
+    
+        return $this;
+    }
+
+    /**
+     * Get numFacture
+     *
+     * @return string 
+     */
+    public function getNumFacture()
+    {
+        return $this->numFacture;
     }
 }

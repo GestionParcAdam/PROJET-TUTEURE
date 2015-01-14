@@ -34,6 +34,13 @@ class CaracteristiqueCom
      * @ORM\Column(name="prixAchat", type="string", length=255)
      */
     private $prixAchat;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numFacture", type="string", length=255)
+     */
+    private $numFacture;
 
     /**
      * @var string
