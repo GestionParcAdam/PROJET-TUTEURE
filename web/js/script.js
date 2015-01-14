@@ -42,6 +42,7 @@ function moins(i){
     if(c2.length==0){document.getElementById('sup').style.display='none'};
 }
 
+
 function recupSaisiePopupUser(){
     var i;
     
@@ -60,6 +61,10 @@ function recupSaisiePopupUser(){
     i=(c2.length)-1;
     console.log('user'+i);    
     document.getElementById('user'+i).value=nom;
+    
+    var nb=i;
+    console.log((nb+1)+" est le nombre d'utilisateur"); 
+    document.getElementById('nbUsers').value=(nb+1);
     
 }
 j=0;
@@ -106,6 +111,10 @@ function recupSaisiePopupLog(){
     document.getElementById('log'+(j-1)+'-'+(j)+'-'+(i-2)).value=nom;
     document.getElementById('log'+(j-1)+'-'+(j)+'-'+(i-1)).value=licence;
     document.getElementById('log'+(j-1)+'-'+(j)+'-'+i).value=version; 
+    
+    var nb=j;
+    console.log((nb)+" est le nombre de logiciel"); 
+    document.getElementById('nbLog').value=(nb);
        
 }
 l=0;
@@ -157,6 +166,10 @@ function recupSaisiePopupMaintenance(){
     document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-2)).value=description;
     document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+(i-1)).value=prestataire; 
     document.getElementById('maintenance'+(l-1)+'-'+(l)+'-'+i).value=cout; 
+    
+    var nb=l;
+    console.log((nb)+" est le nombre de maitenance"); 
+    document.getElementById('nbMaintenance').value=(nb);
 }
 
 function supprimerLigneMaintenance(r)

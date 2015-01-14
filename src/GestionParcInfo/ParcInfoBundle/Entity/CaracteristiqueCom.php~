@@ -215,4 +215,27 @@ class CaracteristiqueCom
     {
         return $this->numRevendeur;
     }
+
+    /**
+     * Set numFacture
+     *
+     * @param string $numFacture
+     * @return CaracteristiqueCom
+     */
+    public function setNumFacture($numFacture)
+    {
+        $this->numFacture = $numFacture;
+    
+        return $this;
+    }
+
+    /**
+     * Get numFacture
+     *
+     * @return string 
+     */
+    public function getNumFacture()
+    {
+        return $this->numFacture;
+    }
 }

@@ -15,7 +15,7 @@
         <div class="panel-body">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-laptop"></i> Ajout d'un matériel</h3>
+                    <h3 class="panel-title"><i class="fa fa-laptop"></i> Modifier un matériel</h3>
                 </div>
                 <div class="panel-body">
                     {{ form_start(form) }}
@@ -78,10 +78,6 @@
                                     <br/>
                                     <button class="btn btn-default" id="ajouter_log" 
                                             data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
-                                    <div id="cadreNbLog">
-                                   {{ form_widget(form.nbLog, {'attr': {'class': 'form-control'}}) }}
-                                    </div>
-                                
                                 </p>
                                 <p class="col-lg-12">
                                     <table class="table table-striped">
@@ -123,10 +119,6 @@
                                     <br/> 
                                     <button class="btn btn-default" id="ajouter_user" 
                                             data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
-                                <div id="cadreNbUser">
-                                   {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }}
-                                
-                                </div>
                                 </p>
                                 <p class="col-lg-12"><p class="col-lg-12"></p></br>
                                     <table class="table table-striped">
@@ -160,9 +152,6 @@
                                     <br/> 
                                     <button class="btn btn-default" id="ajouter_maintenance" 
                                             data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
-                                    <div id="cadreNbMaintenance">
-                                        {{ form_widget(form.nbMaintenance, {'attr': {'class': 'form-control'}}) }}
-                                    </div>
                                 </p>
                                 
                                 <p class="col-lg-12">
@@ -190,11 +179,9 @@
                     </div>
                     <p class="col-lg-12">
                     <p class="col-lg-11">
-<<<<<<< HEAD
-                   
-=======
-                    
->>>>>>> origin/master
+                    <p class="col-lg-1">
+                        {{ form_widget(form.ajouter,{'attr': {'class': 'btn btn-primary'}})}}
+                    </p>
 
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -223,8 +210,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
                                     <button type="button" class="btn btn-primary" 
-                                            onclick="javascript:recupSaisiePopupMaintenance();" 
-                                            onclick="javascript:recupNbUser();"                                           
+                                            onclick="javascript:recupSaisiePopupMaintenance()" 
                                             data-dismiss="modal">Ajouter</button>
                                 </div>
                             </div>
@@ -284,13 +270,6 @@
                             </div>
                         </div>
                     </div>
-                    <p class="col-lg-1">
-                        {{ form_widget(form.ajouter,{'attr': {'class': 'btn btn-primary'}})}}
-<<<<<<< HEAD
-                    </p>               
-=======
-                    </p>
->>>>>>> origin/master
                     {{ form_end(form) }}
                 </div>
             </div>

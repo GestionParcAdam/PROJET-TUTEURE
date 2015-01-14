@@ -61,7 +61,11 @@ class Materiel
     private $historiques;
     
     /**
+<<<<<<< HEAD
     * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur", inversedBy="materiels")
+=======
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur",inversedBy="materiels")
+>>>>>>> origin/master
     * @ORM\JoinTable(name="utilisateurs_materiels")
     */
     private $utilisateurs;
