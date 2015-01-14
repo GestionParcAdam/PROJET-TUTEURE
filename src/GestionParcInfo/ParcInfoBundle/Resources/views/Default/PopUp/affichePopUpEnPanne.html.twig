@@ -18,6 +18,13 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                 </div>
                 <div class="panel-body">
                     {% for t in type %}
+                        {% set existe = '' %}
+                        {% for materiel in materielEnPanne %}
+                            {% if materiel.numType.id==t.id %}
+                                   {% set existe = 'true' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% if existe %}  
                     <div class="col-lg-12">
                         <div class="panel panel-info">
                             <div class="panel-heading">
@@ -43,6 +50,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             </table>
                         </div>
                     </div>
+                     {% endif %}           
                     {% endfor %}            
                     {#
                     <div class="col-lg-12">
