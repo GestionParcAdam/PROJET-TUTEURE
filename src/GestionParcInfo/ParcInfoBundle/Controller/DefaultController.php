@@ -199,10 +199,12 @@ class DefaultController extends Controller
              * User
              * Prévoir bouclage sur le nombre d'user ajouter
              */
-            for ($i = 0; $i < $data['nbUsers']; $i++) {
+            for ($i = 1; $i <= $data['nbUsers']+1; $i++) {
                 $concat = 'user'.$i; 
+                \Doctrine\Common\Util\Debug::dump($concat);
                 if(isset($_POST[$concat]))
                 {
+                    \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
                     $user = new Utilisateur();
                     
                     $user->setNomUser($_POST[$concat]);
