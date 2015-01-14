@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/web/js/script.js</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Entity/Fabricant.php</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
-=======
-<<<<<<< HEAD
-=======
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/web/js/script.js</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Entity/Utilisateur.php</file>
->>>>>>> origin/master
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
         </group>
     </open-files>
->>>>>>> origin/master
->>>>>>> origin/master
 </project-private>

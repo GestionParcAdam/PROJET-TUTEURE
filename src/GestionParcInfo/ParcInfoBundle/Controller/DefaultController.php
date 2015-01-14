@@ -145,10 +145,10 @@ class DefaultController extends Controller
             /* Prévoir bouclage sur le nombre de log ajouter */
             $caracDeLog = new CaracteristiqueLog();
             
-            $caracDeLog->setLicence($_POST['log0-1-2']);
-            $caracDeLog->setNomEditeur($_POST['log0-1-1']);
-            $caracDeLog->setNomLog($_POST['log0-1-0']);
-            $caracDeLog->setVersionLog($_POST['log0-1-3']);
+            $caracDeLog->setLicence($_POST['log0-1-3']);
+            $caracDeLog->setNomEditeur($_POST['log0-1-2']);
+            $caracDeLog->setNomLog($_POST['log0-1-1']);
+            $caracDeLog->setVersionLog($_POST['log0-1-4']);
             
             $em->persist($caracDeLog);
             $em->flush();
@@ -199,9 +199,13 @@ class DefaultController extends Controller
              * User
              * Prévoir bouclage sur le nombre d'user ajouter
              */
+            \Doctrine\Common\Util\Debug::dump($_POST['user1']);
+            \Doctrine\Common\Util\Debug::dump($_POST['user2']);
+            \Doctrine\Common\Util\Debug::dump($_POST['user3']);
+            
             $user = new Utilisateur();
-           
-            $user->setNomUser($_POST['user0']);
+            $name = 'user'.
+            $user->setNomUser($_POST['user1']);
            
             $user->addMateriel($materiel);
            // $materiel->addUtilisateur($user);
