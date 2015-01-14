@@ -165,20 +165,20 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Nom matériel</th>
-                                <th>Lieu</th>
-                                <th>Date de dernière modification</th>
-                                <th class="text-center">Modifier</th>
+                                <th class="text-center">Nom matériel</th>
+                                <th class="text-center">Lieu</th>
+                                <th class="text-center">Date de dernière modification</th>
+                               <!-- <th class="text-center">Modifier</th>-->
                             </tr>
                         </thead>
                         <tbody>
                             {% if dernierModif != null %}
                                 {% for materiel in dernierModif %}
-                                <tr>
+                                <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule text-center">
                                     <td> {{materiel.nomMat}}</td>
                                     <td>{{materiel.numSite.nomSite}}</td>
                                     <td> {{materiel.dateLastModif|date('d-m-y')}}</td>
-                                    <td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>
+                                    <!--<td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>-->
                                 </tr>
                                 {% endfor %}
                             {% endif %}
