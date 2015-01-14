@@ -34,5 +34,7 @@ parc_info_fiche:
 parc_info_matEnPanne:
     path:     /matEnPanne
     defaults: { _controller: ParcInfoBundle:Default:matEnPanne }
-    
-    
+
+parc_info_modifier:
+    path:     /modifier/{idmat}
+    defaults: { _controller: ParcInfoBundle:Default:modifier }
