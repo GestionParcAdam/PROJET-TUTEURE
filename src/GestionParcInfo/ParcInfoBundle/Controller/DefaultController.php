@@ -222,8 +222,9 @@ class DefaultController extends Controller
        
        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsHS();
+       $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUp.html.twig',
-               array('materielHs' => $materiels));
+               array('materielHs' => $materiels,'type'=>$type));
     }
     public function matPGAction()
     {
@@ -232,8 +233,9 @@ class DefaultController extends Controller
        
        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsPG();
+       $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
-               array('materielPG' => $materiels));
+               array('materielPG' => $materiels,'type'=>$type));
     }
     
         public function matEnPanneAction()
@@ -241,9 +243,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielEnPanne();
-        
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpEnPanne.html.twig',
-               array('materielEnPanne' => $materiels));
+               array('materielEnPanne' => $materiels,'type'=>$type));
     }
     public function editionAction()
     {
@@ -268,15 +270,14 @@ class DefaultController extends Controller
         $mats = $em->getRepository('ParcInfoBundle:Materiel')
                 ->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
         $etat = $em->getRepository('ParcInfoBundle:Etat')->find($idEtat)->getLibelleEtat();
-       
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', 
-                                array('materiels' => $mats,'etat'=>$etat));
+                                array('materiels' => $mats,'etat'=>$etat,'type'=>$type));
     }
     public function ficheAction($idmat)
     {
         $em = $this->getDoctrine()->getManager();
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
-
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
     
