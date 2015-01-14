@@ -40,7 +40,7 @@ parc_info_modifier:
     defaults: { _controller: ParcInfoBundle:Default:modifier }
     
 parc_info_listeBienInformatique:
-    path:     /listeBienInformatique/{idmat}
+    path:     /listeBienInformatique/{numSite}
     defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }   
     
     

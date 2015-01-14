@@ -17,9 +17,11 @@
                 <div class="panel-body">
                     <div class="col-lg-12">
                         <div class="col-lg-9">
-                            <button type="button" class="btn btn-default sameSize">
+                            {% set numSite= 0 %}
+                                {{dump(form.siteGeo)}}
+                           <a href="{{path('parc_info_listeBienInformatique',0)}}"> <button type="button" class="btn btn-default sameSize">
                                 Générer la liste des biens informatique du parc
-                            </button>
+                            </button></a>
                         </div>
                         <div class="col-lg-3">
                             {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}}) }}

@@ -292,6 +292,7 @@ class DefaultController extends Controller
                                              'property' => 'libelleEtat',
                                              'empty_value' => 'Tous les états'))
             ->getForm();
+        
             
        return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
        
@@ -441,5 +442,18 @@ class DefaultController extends Controller
         }
 
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
+    }
+    
+    public function listeBienInformatiqueAction($numSite){
+          /*
+        *  Ici j'initilise la connexion à la base de donnée en clair (em = entityManager)
+        */
+        $em = $this->getDoctrine()->getManager();
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite));
+        if($numSite==0){
+            $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+        }
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+        return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type));
     }
 }
