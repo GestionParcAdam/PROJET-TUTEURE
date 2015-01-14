@@ -28,7 +28,9 @@ class Utilisateur
      */
     private $nomUser;
     /**
-    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="utilisateurs")
+    * @var ArrayCollection Materiel $materiels
+    *  
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="utilisateurs", cascade={"persist", "merge"})
     */
     private $materiels;
 
@@ -73,6 +75,8 @@ class Utilisateur
         $this->materiels = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+
     /**
      * Add materiels
      *
@@ -81,9 +85,10 @@ class Utilisateur
      */
     public function addMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
     {
-        $this->materiels[] = $materiels;
-        $materiels->addUtilisateur($this);
-
+        $materiels->addUtilisateur($this);  // Lie le materiel à user.
+            
+        $this->materiels->add($materiels);
+                
         return $this;
     }
 

@@ -193,9 +193,7 @@ class DefaultController extends Controller
            
             $materiel->setDateLastModif($date);
             
-            /* je dis que je persist l'objet et que j'upload direct en clair */
-            $em->persist($materiel);
-            $em->flush();
+           
             
             /*
              * User
@@ -205,8 +203,14 @@ class DefaultController extends Controller
            
             $user->setNomUser($_POST['user0']);
            
-            $em->persist($user);
+            $user->addMateriel($materiel);
+           // $materiel->addUtilisateur($user);
             
+           
+            
+    
+             /* je dis que je persist l'objet et que j'upload direct en clair */
+            $em->persist($materiel);
             $em->flush();
             
             /*
@@ -221,8 +225,7 @@ class DefaultController extends Controller
             $hist->setDateIntervention(new \DateTime($_POST['maintenance0-1-0']));
             $hist->setDescIntervention($_POST['maintenance0-1-2']);
             $hist->setPrestataireIntervention($_POST['maintenance0-1-3']);
-            
-            
+
             $em->persist($hist);
             $em->flush();
             

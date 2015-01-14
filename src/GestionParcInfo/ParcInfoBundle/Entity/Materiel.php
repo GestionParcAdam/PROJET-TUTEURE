@@ -3,6 +3,7 @@
 namespace GestionParcInfo\ParcInfoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DoctrineCommonCollectionsArrayCollection;
 
 
 /**
@@ -61,7 +62,9 @@ class Materiel
     private $historiques;
     
     /**
-    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur", inversedBy="materiels")
+    * @var ArrayCollection Materiel $utilisateurs
+    * 
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur", inversedBy="materiels", cascade={"persist", "merge"})
     * @ORM\JoinTable(name="utilisateurs_materiels")
     */
     private $utilisateurs;
@@ -279,9 +282,6 @@ class Materiel
     {
         return $this->dateLastModif;
     }
-
-    
-
   
     /**
      * Constructor
@@ -325,37 +325,26 @@ class Materiel
     }
 
     /**
-     * Add utilisateur
+     * Add utilisateurs
      *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs
      * @return Materiel
      */
-    public function addUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur)
+    public function addUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs)
     {
-        $this->utilisateur[] = $utilisateur;
-        $utilisateur->addMateriel($this);
-
+        $this->utilisateurs[] = $utilisateurs;
+        
         return $this;
     }
 
     /**
-     * Remove utilisateur
+     * Remove utilisateurs
      *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs
      */
-    public function removeUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur)
+    public function removeUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs)
     {
-        $this->utilisateur->removeElement($utilisateur);
-    }
-
-    /**
-     * Get utilisateur
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUtilisateur()
-    {
-        return $this->utilisateur;
+        $this->utilisateurs->removeElement($utilisateurs);
     }
 
     /**
