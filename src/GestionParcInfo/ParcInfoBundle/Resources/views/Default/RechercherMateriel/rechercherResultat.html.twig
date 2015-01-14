@@ -9,19 +9,19 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
     Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
 #}
 {% block body %}
-    <br/>
+   <br/>
     <div class="row">     
         <div class="col-lg-7">
             <div class="panel panel-primary">
       
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel - {{etat}}</h3>
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Resultat de la recherche</h3>
                 </div>
                 <div class="panel-body">
                     <div class="col-lg-12">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-laptop"></i> Matériel</h3>
+                                <h3 class="panel-title"><i class="fa fa-laptop"></i> Ordinateur</h3>
                             </div>
                             <table class="table table-striped">
                                 <thead>
@@ -31,12 +31,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for materiel in materiels %}
-                                        <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
-                                            <td>{{ materiel.nomMat }}</td>
-                                            <td>{{ materiel.getNumSite.nomSite }}</td>
-                                        </tr>
-                                    {% endfor %}
+                                    
                                 </tbody>
                             </table>
                         </div>

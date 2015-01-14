@@ -82,7 +82,9 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                         </p>
 
                                         <p class="col-lg-6"><b>N° facture :</b> 
-                                           
+                                           {%if materiel.numCarac is not null %}
+                                            {{materiel.numCarac.numCaracCom.numFacture}}
+                                            {%endif%}
                                         </p>
                                         <p class="col-lg-6"><b>Modèle :</b> 
                                             {%if materiel.numCarac is not null %}

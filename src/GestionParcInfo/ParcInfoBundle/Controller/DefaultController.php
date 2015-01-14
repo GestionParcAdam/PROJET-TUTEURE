@@ -219,7 +219,6 @@ class DefaultController extends Controller
        
        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsHS();
-        
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUp.html.twig',
                array('materielHs' => $materiels));
     }
@@ -230,7 +229,6 @@ class DefaultController extends Controller
        
        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsPG();
-        
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
                array('materielPG' => $materiels));
     }
@@ -275,6 +273,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
+
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
     
