@@ -11,6 +11,8 @@
 namespace GestionParcInfo\ParcInfoBundle\Controller;
 
 use GestionParcInfo\ParcInfoBundle\Entity\Materiel;
+use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
+use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
 use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueCom;
 use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -63,6 +65,8 @@ class DefaultController extends Controller
          */
         
         $form = $this->createFormBuilder()
+            ->setMethod('POST')
+            ->setAction($this->generateUrl('parc_info_ajouter'))
             ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type', 
                                              'property' => 'libelleType'))
             ->add('nomMat', 'text')
@@ -82,9 +86,18 @@ class DefaultController extends Controller
             ->add('revendeur','entity',array('class' => 'ParcInfoBundle:Revendeur', 
                                              'property' => 'nomRevendeur'))
             ->add('immobilisation','text')
+            ->add('nomUser','text')
             ->add('editeur','text')
             ->add('nomLog','text')
             ->add('licence','text')
+                
+            ->add('dateInterv','date',array('input'  => 'datetime',
+                                           'widget' => 'single_text'))
+            ->add('objInterv','text')
+            ->add('descInterv','textarea')
+            ->add('prestaInterv','text')
+            ->add('coutInterv','text')
+                
             ->add('versionLogiciel','text')
             ->add('adMac','text')
             ->add('adIp','text')
@@ -94,15 +107,23 @@ class DefaultController extends Controller
             ->add('ajouter', 'submit')
             ->getForm();
         
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted())
+        if($form->handleRequest($request)->isSubmitted())
         {
-           /* Ici je récupère les informations du formulaire dans un tableau /*/
+            
+            $requete=$this->get('request');
+            if($requete->getMethod() == 'POST'){
+                $user=$_POST['user0'];
+                var_dump($user);
+            }
+           
+           /* Ici je récupère les informations du formulaire dans un tableau */
             $data = $form->getData();
-             
+            \Doctrine\Common\Util\Debug::dump($data);
+            
             /* Je créer mon objet à persister dans la base */
-            $materiel = new Materiel();
+            /*
+             $materiel = new Materiel();
+             
             
             $materiel->setNomMat($data['nomMat']);
             $materiel->setDateGarantie($data['dateGarantie']);
@@ -110,14 +131,31 @@ class DefaultController extends Controller
             $materiel->setNumSite($data['siteGeo']);
             $materiel->setNumType($data['typeMat']);
             $materiel->setNumStatut($data['statutMat']);
-            
+            $date = new \DateTime();
+            $materiel->setDateLastModif($date);
+            */
             /* j'ouvre la connexion à la BD Doctrine */
+            /*
             $em = $this->getDoctrine()->getManager();
-            
+            */
             /* je dis que je persist l'objet et que j'upload direct en clair */
+            /*
             $em->persist($materiel);
             $em->flush();
             
+            $fabricant = new Fabricant();
+            
+            $fabricant->setNomFabricant($data['fabricant']);
+            
+            $em->persist($fabricant);
+            $em->flush();
+            
+            $revendeur = new Revendeur();
+            
+            $revendeur->setNomRevendeur($data['revendeur']);
+            
+            $em->persist($revendeur);
+            $em->flush();
             
             $caracDeCom = new CaracteristiqueCom();
             
@@ -125,7 +163,8 @@ class DefaultController extends Controller
             $caracDeCom->setLibelleModele($data['modele']);
             $caracDeCom->setDateAchat($data['dateAchat']);
             $caracDeCom->setNumImmo($data('immobilisation'));
-            
+            $caracDeCom->setNumFabricant($fabricant);
+                    
             $em->persist($caracDeCom);
             $em->flush();
             
@@ -138,9 +177,11 @@ class DefaultController extends Controller
             
             $em->persist($caracDeRes);
             $em->flush(); 
+            */
+            
             
             /* ca çà permet de retourner une réponse basique */
-            return new Response('<h1>Materiel ajouté !</h1>');
+            return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
         }
 
    
@@ -233,7 +274,7 @@ class DefaultController extends Controller
     public function ficheAction($idmat)
     {
         $em = $this->getDoctrine()->getManager();
-        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->find($idmat);
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
     }
     

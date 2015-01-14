@@ -18,10 +18,14 @@ class Historique
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", cascade={"persist"})
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", inversedBy="historiques", cascade={"persist","remove"});
+     */
+    protected $materiel;
+    
     /**
      * @var \DateTime
      *
@@ -56,7 +60,6 @@ class Historique
      * @ORM\Column(name="cout_intervention", type="string", length=255)
      */
     private $coutIntervention;
-
 
     /**
      * Get id
@@ -181,5 +184,28 @@ class Historique
     public function getCoutIntervention()
     {
         return $this->coutIntervention;
+    }
+
+    /**
+     * Set materiel
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiel
+     * @return Historique
+     */
+    public function setMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiel = null)
+    {
+        $this->materiel = $materiel;
+
+        return $this;
+    }
+
+    /**
+     * Get materiel
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Materiel 
+     */
+    public function getMateriel()
+    {
+        return $this->materiel;
     }
 }

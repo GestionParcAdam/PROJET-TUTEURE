@@ -4,6 +4,7 @@ namespace GestionParcInfo\ParcInfoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Materiel
  *
@@ -18,7 +19,7 @@ class Materiel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", cascade={"persist"})
+     * 
      */
     private $id;
 
@@ -55,10 +56,15 @@ class Materiel
     private $numStatut;
     
     /**
-     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique",mappedBy="id", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", mappedBy="materiel")
      */
-    private $numHistorique;
+    private $historiques;
+    
+    /**
+    * @ORM\ManyToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Utilisateur")
+    * @ORM\JoinTable(name="utilisateurs_materiels")
+    */
+    private $utilisateurs;
     
     /**
      * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", cascade={"persist","remove"})
@@ -204,30 +210,7 @@ class Materiel
     {
         return $this->numStatut;
     }
-
-    /**
-     * Set numHistorique
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Historique $numHistorique
-     * @return Materiel
-     */
-    public function setNumHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $numHistorique)
-    {
-        $this->numHistorique = $numHistorique;
-
-        return $this;
-    }
-
-    /**
-     * Get numHistorique
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Historique 
-     */
-    public function getNumHistorique()
-    {
-        return $this->numHistorique;
-    }
-
+    
     /**
      * Set numCarac
      *
@@ -295,5 +278,92 @@ class Materiel
     public function getDateLastModif()
     {
         return $this->dateLastModif;
+    }
+
+    
+
+  
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->historiques = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add historiques
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques
+     * @return Materiel
+     */
+    public function addHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques)
+    {
+        $this->historiques[] = $historiques;
+
+        return $this;
+    }
+
+    /**
+     * Remove historiques
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques
+     */
+    public function removeHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques)
+    {
+        $this->historiques->removeElement($historiques);
+    }
+
+    /**
+     * Get historiques
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHistoriques()
+    {
+        return $this->historiques;
+    }
+
+    /**
+     * Add utilisateur
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur
+     * @return Materiel
+     */
+    public function addUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateur[] = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Remove utilisateur
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur
+     */
+    public function removeUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateur->removeElement($utilisateur);
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Get utilisateurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUtilisateurs()
+    {
+        return $this->utilisateurs;
     }
 }

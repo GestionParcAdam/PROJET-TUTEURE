@@ -50,11 +50,11 @@ function recupSaisiePopupUser(){
     var ligne = tableau.insertRow(-1);//on a ajouté une ligne
 
     var colonne = ligne.insertCell(0);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("nomUser").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_nomUser").value;//on y met le contenu de titre
     var colonne2 = ligne.insertCell(1);
     colonne2.innerHTML += '<a onclick="supprimerLigneUser(this)">X</a>'; 
     
-    var nom=document.getElementById("nomUser").value;
+    var nom=document.getElementById("form_nomUser").value;
     console.log(nom+" est le ");
     plus('cadreUser','user');
     i=(c2.length)-1;
@@ -116,28 +116,28 @@ function recupSaisiePopupMaintenance(){
     var ligne = tableau.insertRow(-1);//on a ajouté une ligne
 
     var colonne = ligne.insertCell(0);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("dateInterv").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_dateInterv").value;//on y met le contenu de titre
     
     var colonne = ligne.insertCell(1);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("objInterv").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_objInterv").value;//on y met le contenu de titre
     
     var colonne = ligne.insertCell(2);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("descInterv").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_descInterv").value;//on y met le contenu de titre
     
     var colonne = ligne.insertCell(3);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("prestaInterv").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_prestaInterv").value;//on y met le contenu de titre
     
     var colonne = ligne.insertCell(4);//on a une ajouté une cellule
-    colonne.innerHTML += document.getElementById("coutInterv").value;//on y met le contenu de titre
+    colonne.innerHTML += document.getElementById("form_coutInterv").value;//on y met le contenu de titre
     
     var colonne2 = ligne.insertCell(5);
     colonne2.innerHTML += '<a onclick="supprimerLigneMaintenance(this)">X</a>';  
     
-    var date=document.getElementById("dateInterv").value;
-    var objet=document.getElementById("objInterv").value;
-    var description=document.getElementById("descInterv").value;
-    var prestataire=document.getElementById("prestaInterv").value;
-    var cout=document.getElementById("coutInterv").value;
+    var date=document.getElementById("form_dateInterv").value;
+    var objet=document.getElementById("form_objInterv").value;
+    var description=document.getElementById("form_descInterv").value;
+    var prestataire=document.getElementById("form_prestaInterv").value;
+    var cout=document.getElementById("form_coutInterv").value;
     console.log(date+" "+objet+" "+description+" "+prestataire+" "+cout);
     
     plus('cadreMaintenance','maintenance'+l+'-'+(l+1)+'-');
