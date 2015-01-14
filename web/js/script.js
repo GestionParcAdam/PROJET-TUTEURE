@@ -71,7 +71,7 @@ function recupSaisiePopupUser(){
 idLog=0;
 j=0;
 function recupSaisiePopupLog(){
-    var i;
+ 
     idLog++;
     var tableau = document.getElementById("tabLog");
  
@@ -187,6 +187,7 @@ function supprimerLigneUser(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabUser').deleteRow(i-1);
+    console.log(i);
     moins(i-1);
     document.getElementById('form_nbUsers').value--;
 }
