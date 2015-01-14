@@ -78,6 +78,10 @@
                                     <br/>
                                     <button class="btn btn-default" id="ajouter_log" 
                                             data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
+                                    <div id="cadreNbLog">
+                                   {{ form_widget(form.nbLog, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                
                                 </p>
                                 <p class="col-lg-12">
                                     <table class="table table-striped">
@@ -119,6 +123,10 @@
                                     <br/> 
                                     <button class="btn btn-default" id="ajouter_user" 
                                             data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
+                                <div id="cadreNbUser">
+                                   {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }}
+                                
+                                </div>
                                 </p>
                                 <p class="col-lg-12"><p class="col-lg-12"></p></br>
                                     <table class="table table-striped">
@@ -152,6 +160,9 @@
                                     <br/> 
                                     <button class="btn btn-default" id="ajouter_maintenance" 
                                             data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
+                                    <div id="cadreNbMaintenance">
+                                        {{ form_widget(form.nbMaintenance, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </p>
                                 
                                 <p class="col-lg-12">
@@ -210,7 +221,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
                                     <button type="button" class="btn btn-primary" 
-                                            onclick="javascript:recupSaisiePopupMaintenance()" 
+                                            onclick="javascript:recupSaisiePopupMaintenance();" 
+                                            onclick="javascript:recupNbUser();"                                           
                                             data-dismiss="modal">Ajouter</button>
                                 </div>
                             </div>
