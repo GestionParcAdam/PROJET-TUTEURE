@@ -123,7 +123,12 @@ class DefaultController extends Controller
            
            /* Ici je récupère les informations du formulaire dans un tableau */
             $data = $form->getData();
-            \Doctrine\Common\Util\Debug::dump($data);
+            /* \Doctrine\Common\Util\Debug::dump($data); */
+            
+            /*
+             * Init l'obj carac
+             */
+            $carac = new Caracteristique();
             
             /*
              *  Init l'obj des carac de com 
@@ -138,21 +143,9 @@ class DefaultController extends Controller
             $caracDeCom->setNumRevendeur($data['revendeur']);
             $caracDeCom->setNumFacture($data['numFacture']);
                     
+            \Doctrine\Common\Util\Debug::dump($caracDeCom);
+            
             $em->persist($caracDeCom);
-            $em->flush();
-            
-            /*
-             * <!>
-             */
-            /* Prévoir bouclage sur le nombre de log ajouter */
-            $caracDeLog = new CaracteristiqueLog();
-            
-            $caracDeLog->setLicence($_POST['log0-1-3']);
-            $caracDeLog->setNomEditeur($_POST['log0-1-2']);
-            $caracDeLog->setNomLog($_POST['log0-1-1']);
-            $caracDeLog->setVersionLog($_POST['log0-1-4']);
-            
-            $em->persist($caracDeLog);
             $em->flush();
             
             /*
@@ -167,17 +160,38 @@ class DefaultController extends Controller
             $em->persist($caracDeRes);
             $em->flush();
             
-            /*
-             * Init l'obj carac
-             */
-            $carac = new Caracteristique();
-            
             $carac->setNumCaracCom($caracDeCom);
-            $carac->setNumCaracLog($caracDeLog);
             $carac->setNumCaracRes($caracDeRes);
             
-            $em->persist($carac);
-            $em->flush();
+            /*
+             * <!>
+             */
+            /* Prévoir bouclage sur le nombre de log ajouter */
+            for ($i = 0; $i <= $data['nbLog']+1; $i++) 
+            {                
+                $concat = 'log'.$i.'-1'; 
+                
+                \Doctrine\Common\Util\Debug::dump($concat);
+                if(isset($_POST[$concat]))
+                { 
+                        $concat2 = 'log'.$i;
+                        
+                        $caracDeLog = new CaracteristiqueLog();
+
+                        $caracDeLog->setLicence($_POST[$concat2.'-3']);
+                        $caracDeLog->setNomEditeur($_POST[$concat2.'-2']);
+                        $caracDeLog->setNomLog($_POST[$concat2.'-1']);
+                        $caracDeLog->setVersionLog($_POST[$concat2.'-4']);
+                        
+                        $caracDeLog->setCarac($carac);
+                        $carac->addNumCaracLog($caracDeLog);
+                        
+                        \Doctrine\Common\Util\Debug::dump($caracDeLog);
+                        
+                        $em->persist($caracDeLog);
+                        $em->flush();
+                }
+            }               
 
             /* Je créer mon objet à persister dans la base */
             
@@ -195,7 +209,10 @@ class DefaultController extends Controller
            
             $materiel->setDateLastModif($date);
             
-           
+            
+            
+            $em->persist($carac);
+            $em->flush();
             
             /*
              * User
@@ -213,17 +230,8 @@ class DefaultController extends Controller
                     $user->addMateriel($materiel);
                 }
             }
-           
-            
-            
-           
-            
-           // $materiel->addUtilisateur($user);
-            
-           
-            
-    
-             /* je dis que je persist l'objet et que j'upload direct en clair */
+
+            /* je dis que je persist l'objet et que j'upload direct en clair */
             $em->persist($materiel);
             $em->flush();
             
@@ -231,24 +239,28 @@ class DefaultController extends Controller
              * Hist
              * Prévoir bouclage sur le nombre d'historique ajouter
              */
-            $hist = new Historique();
+            for ($i = 1; $i <= $data['nbMaintenance']; $i++) {
+                
+                $hist = new Historique();
             
-            $hist->setMateriel($materiel);
-            $hist->setObjetIntervention($_POST['maintenance1-2']);
-            $hist->setCoutIntervention($_POST['maintenance1-5']);
-            $hist->setDateIntervention(new \DateTime($_POST['maintenance1-1']));
-            $hist->setDescIntervention($_POST['maintenance1-3']);
-            $hist->setPrestataireIntervention($_POST['maintenance1-4']);
+                $hist->setMateriel($materiel);
+                $hist->setObjetIntervention($_POST['maintenance'.$i.'-2']);
+                $hist->setCoutIntervention($_POST['maintenance'.$i.'-5']);
+                $hist->setDateIntervention(new \DateTime($_POST['maintenance'.$i.'-1']));
+                $hist->setDescIntervention($_POST['maintenance'.$i.'-3']);
+                $hist->setPrestataireIntervention($_POST['maintenance'.$i.'-4']);
+                
+                $materiel->addHistorique($hist);
+                $hist->setMateriel($materiel);
 
-            $em->persist($hist);
-            $em->flush();
+                $em->persist($hist);
+                $em->flush();
+            }
             
-           
             /* ca çà permet de retourner une réponse basique */
             return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
         }
 
-   
         return $this->render('ParcInfoBundle:Default:AjouterMateriel/ajouterMateriel.html.twig', array('form' => $form->createView()));
     }  
     

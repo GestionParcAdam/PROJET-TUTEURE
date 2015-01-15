@@ -27,6 +27,7 @@ class Utilisateur
      * @ORM\Column(name="nom_user", type="string", length=255)
      */
     private $nomUser;
+    
     /**
     * @var ArrayCollection Materiel $materiels
     *  

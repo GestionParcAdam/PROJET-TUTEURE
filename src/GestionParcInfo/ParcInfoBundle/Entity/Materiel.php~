@@ -3,6 +3,7 @@
 namespace GestionParcInfo\ParcInfoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DoctrineCommonCollectionsArrayCollection;
 
 
 /**
@@ -332,7 +333,7 @@ class Materiel
     public function addUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs)
     {
         $this->utilisateurs[] = $utilisateurs;
-    
+        
         return $this;
     }
 

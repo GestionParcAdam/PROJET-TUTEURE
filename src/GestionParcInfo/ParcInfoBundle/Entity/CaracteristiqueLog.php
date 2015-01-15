@@ -50,6 +50,13 @@ class CaracteristiqueLog
     private $licence;
 
     /**
+     *  @var Caracteristique $carac
+     * 
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", inversedBy="numLogCarac", cascade={"persist","remove"});
+     */
+    private $carac;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -149,5 +156,29 @@ class CaracteristiqueLog
     public function getLicence()
     {
         return $this->licence;
+    }
+
+
+    /**
+     * Set carac
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac
+     * @return CaracteristiqueLog
+     */
+    public function setCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac = null)
+    {
+        $this->carac = $carac;
+    
+        return $this;
+    }
+
+    /**
+     * Get carac
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique 
+     */
+    public function getCarac()
+    {
+        return $this->carac;
     }
 }

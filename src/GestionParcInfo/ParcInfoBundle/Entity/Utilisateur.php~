@@ -27,6 +27,7 @@ class Utilisateur
      * @ORM\Column(name="nom_user", type="string", length=255)
      */
     private $nomUser;
+    
     /**
     * @var ArrayCollection Materiel $materiels
     *  
@@ -76,4 +77,39 @@ class Utilisateur
     }
 
 
+
+    /**
+     * Add materiels
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels
+     * @return Utilisateur
+     */
+    public function addMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
+    {
+        $materiels->addUtilisateur($this);  // Lie le materiel à user.
+            
+        $this->materiels->add($materiels);
+                
+        return $this;
+    }
+
+    /**
+     * Remove materiels
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels
+     */
+    public function removeMateriel(\GestionParcInfo\ParcInfoBundle\Entity\Materiel $materiels)
+    {
+        $this->materiels->removeElement($materiels);
+    }
+
+    /**
+     * Get materiels
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMateriels()
+    {
+        return $this->materiels;
+    }
 }

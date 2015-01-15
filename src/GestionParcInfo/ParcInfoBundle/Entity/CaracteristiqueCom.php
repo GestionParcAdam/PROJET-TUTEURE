@@ -68,6 +68,8 @@ class CaracteristiqueCom
      */
     private $numRevendeur;
 
+   
+
     /**
      * Get id
      *
@@ -87,7 +89,7 @@ class CaracteristiqueCom
     public function setDateAchat($dateAchat)
     {
         $this->dateAchat = $dateAchat;
-
+    
         return $this;
     }
 
@@ -110,7 +112,7 @@ class CaracteristiqueCom
     public function setPrixAchat($prixAchat)
     {
         $this->prixAchat = $prixAchat;
-
+    
         return $this;
     }
 
@@ -125,6 +127,29 @@ class CaracteristiqueCom
     }
 
     /**
+     * Set numFacture
+     *
+     * @param string $numFacture
+     * @return CaracteristiqueCom
+     */
+    public function setNumFacture($numFacture)
+    {
+        $this->numFacture = $numFacture;
+    
+        return $this;
+    }
+
+    /**
+     * Get numFacture
+     *
+     * @return string 
+     */
+    public function getNumFacture()
+    {
+        return $this->numFacture;
+    }
+
+    /**
      * Set libelleModele
      *
      * @param string $libelleModele
@@ -133,7 +158,7 @@ class CaracteristiqueCom
     public function setLibelleModele($libelleModele)
     {
         $this->libelleModele = $libelleModele;
-
+    
         return $this;
     }
 
@@ -146,7 +171,7 @@ class CaracteristiqueCom
     {
         return $this->libelleModele;
     }
-    
+
     /**
      * Set numImmo
      *
@@ -156,7 +181,7 @@ class CaracteristiqueCom
     public function setNumImmo($numImmo)
     {
         $this->numImmo = $numImmo;
-
+    
         return $this;
     }
 
@@ -214,28 +239,5 @@ class CaracteristiqueCom
     public function getNumRevendeur()
     {
         return $this->numRevendeur;
-    }
-
-    /**
-     * Set numFacture
-     *
-     * @param string $numFacture
-     * @return CaracteristiqueCom
-     */
-    public function setNumFacture($numFacture)
-    {
-        $this->numFacture = $numFacture;
-    
-        return $this;
-    }
-
-    /**
-     * Get numFacture
-     *
-     * @return string 
-     */
-    public function getNumFacture()
-    {
-        return $this->numFacture;
     }
 }

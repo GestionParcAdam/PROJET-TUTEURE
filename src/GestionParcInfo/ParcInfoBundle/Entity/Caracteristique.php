@@ -28,7 +28,9 @@ class Caracteristique
     private $numCaracCom;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog", cascade={"persist","remove"})
+     * @var ArrayCollection $numCaracLog
+     * 
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog", mappedBy="carac", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $numCaracLog;
@@ -38,7 +40,15 @@ class Caracteristique
      * @ORM\JoinColumn(nullable=false)
      */
     private $numCaracRes;
-    
+ 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->numCaracLog = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -58,7 +68,7 @@ class Caracteristique
     public function setNumCaracCom(\GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueCom $numCaracCom)
     {
         $this->numCaracCom = $numCaracCom;
-
+    
         return $this;
     }
 
@@ -73,22 +83,32 @@ class Caracteristique
     }
 
     /**
-     * Set numCaracLog
+     * Add numCaracLog
      *
      * @param \GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog $numCaracLog
      * @return Caracteristique
      */
-    public function setNumCaracLog(\GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog $numCaracLog)
+    public function addNumCaracLog(\GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog $numCaracLog)
     {
-        $this->numCaracLog = $numCaracLog;
-
+        $this->numCaracLog[] = $numCaracLog;
+    
         return $this;
+    }
+
+    /**
+     * Remove numCaracLog
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog $numCaracLog
+     */
+    public function removeNumCaracLog(\GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog $numCaracLog)
+    {
+        $this->numCaracLog->removeElement($numCaracLog);
     }
 
     /**
      * Get numCaracLog
      *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getNumCaracLog()
     {
@@ -104,7 +124,7 @@ class Caracteristique
     public function setNumCaracRes(\GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes $numCaracRes)
     {
         $this->numCaracRes = $numCaracRes;
-
+    
         return $this;
     }
 
@@ -117,5 +137,4 @@ class Caracteristique
     {
         return $this->numCaracRes;
     }
-    
 }
