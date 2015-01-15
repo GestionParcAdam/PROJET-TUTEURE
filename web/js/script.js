@@ -35,7 +35,9 @@ function plus(cadre,type,nb){
     return c2.length;
 }
 
-function moins(i){
+function moins(i,cadre){
+    c=document.getElementById(cadre);
+    c2=c.getElementsByTagName('input');
     if(c2.length>0){
             c.removeChild(c2[i]);
     }
@@ -53,7 +55,7 @@ function recupSaisiePopupUser(){
     var colonne = ligne.insertCell(0);//on a une ajouté une cellule
     colonne.innerHTML += document.getElementById("form_nomUser").value;//on y met le contenu de titre
     var colonne2 = ligne.insertCell(1);
-    colonne2.innerHTML += '<a onclick="supprimerLigneUser(this)">X</a>'; 
+    colonne2.innerHTML += '<a onclick="supprimerLigneUser(this)" class="glyphicon glyphicon-trash"></a>'; 
     
     var nom=document.getElementById("form_nomUser").value;
     console.log(nom+" est le ");
@@ -90,7 +92,7 @@ function recupSaisiePopupLog(){
     colonne4.innerHTML += document.getElementById("form_versionLogiciel").value;//on y met le contenu de titre
     
     var colonne5 = ligne.insertCell(4);
-    colonne5.innerHTML += '<a onclick="supprimerLigneLog(this)">X</a>'; 
+    colonne5.innerHTML += '<a onclick="supprimerLigneLog(this)" class="glyphicon glyphicon-trash"></a>'; 
     
     var nom=document.getElementById("form_nomLog").value;
     var editeur=document.getElementById("form_editeur").value;
@@ -143,7 +145,7 @@ function recupSaisiePopupMaintenance(){
     colonne.innerHTML += document.getElementById("form_coutInterv").value;//on y met le contenu de titre
     
     var colonne2 = ligne.insertCell(5);
-    colonne2.innerHTML += '<a onclick="supprimerLigneMaintenance(this)">X</a>';  
+    colonne2.innerHTML += '<a onclick="supprimerLigneMaintenance(this)" class="glyphicon glyphicon-trash"></a>';  
     
     var date=document.getElementById("form_dateInterv").value;
     var objet=document.getElementById("form_objInterv").value;
@@ -180,7 +182,7 @@ function supprimerLigneMaintenance(r)
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabMaintenance').deleteRow(i-1);
     for(var k=0;k<5;k++)
-        moins(i-1);
+        moins(i-1,'cadreLog');
     document.getElementById('form_nbMaintenance').value--;
 }
 
@@ -188,9 +190,16 @@ function supprimerLigneUser(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabUser').deleteRow(i-1);
-    console.log(i);
-    moins(i-1);
+    console.log((i-1)+" est la ligne a suprimer ");
+    moins(i-1,'cadreUser');
     document.getElementById('form_nbUsers').value--;
+}
+function supprimerLigneSelectUser(r)
+{
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById('tabSelectUser').deleteRow(i-1);
+    console.log((i-1)+" est la ligne a suprimer ");
+    moins(i-1,'cadreSelectUser');
 }
 
 function supprimerLigneLog(r)
@@ -198,7 +207,30 @@ function supprimerLigneLog(r)
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabLog').deleteRow(i-1);
     for(var k=0;k<4;k++)
-        moins(i-1);
+        moins(i-1,'cadreMaintenance');
     document.getElementById('form_nbLog').value--;
+}
+
+idSelectUser=0;
+function recupSelectionUser(){
+    idSelectUser++;
+    var tableau = document.getElementById("tabSelectUser");
+    
+    var ligne = tableau.insertRow(-1);//on a ajouté une ligne
+
+    var colonne = ligne.insertCell(0);//on a une ajouté une cellule
+
+    console.log(document.getElementById("form_selectUser").options[document.getElementById('form_selectUser').selectedIndex].text);
+    colonne.innerHTML += document.getElementById("form_selectUser").options[document.getElementById('form_selectUser').selectedIndex].text;//on y met le contenu de titre
+    var colonne2 = ligne.insertCell(1);
+    colonne2.innerHTML += '<a onclick="supprimerLigneSelectUser(this)" class="glyphicon glyphicon-trash"></a>'; 
+    
+    var nom=document.getElementById("form_selectUser").value;
+    console.log(nom+" est le ");
+    plus('cadreSelectUser','selectUser',idSelectUser);
+    
+    console.log('selectUser'+idSelectUser);    
+    document.getElementById('selectUser'+idSelectUser).value=nom;
+    
 }
 

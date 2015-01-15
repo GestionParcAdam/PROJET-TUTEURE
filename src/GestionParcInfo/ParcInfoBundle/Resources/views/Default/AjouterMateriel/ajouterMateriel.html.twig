@@ -121,14 +121,25 @@
                             <div class="contenu_onglet" id="contenu_onglet_4">
                                 <p class="col-lg-12">
                                     <br/> 
-                                    <button class="btn btn-default" id="ajouter_user" 
-                                            data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
-                                <div id="cadreNbUser">
-                                   {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }}
-                                
-                                </div>
+                                    <div class="col-lg-12">
+                                        
+                                        <p class="col-lg-6 form-inline">
+                                            <b>Choisir un utilisateur : </b>
+                                            {{ form_widget(form.selectUser, {'attr': {'class': 'form-control'}}) }}
+                                            <button type="button"  id="selectionUser" class="btn btn-primary" 
+                                            onclick="javascript:recupSelectionUser();" 
+                                            data-dismiss="modal">Ajouter</button>
+                                        </p>
+                                        <button class="btn btn-default col-lg-2 col-lg-push-3" id="ajouter_user" 
+                                                data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
+                                        <div id="cadreNbUser">
+                                           {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }}
+                                           
+                                        </div>
+                                    </div>
                                 </p>
                                 <p class="col-lg-12"><p class="col-lg-12"></p></br>
+                                
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
@@ -140,10 +151,20 @@
                                             
                                         </tbody>                                            
                                     </table>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <td>Nom des utilisateurs affectés</td> 
+                                                <td>Supprimer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabSelectUser">
+                                            
+                                        </tbody>                                            
+                                    </table>
                                 </br>
-                                <div id="cadreUser">
-                                    
-                                </div>
+                                <div id="cadreUser"></div>                            
+                                <div id="cadreSelectUser"></div>
                                 
                                 </p>
                             </div>
@@ -217,8 +238,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
                                     <button type="button" class="btn btn-primary" 
-                                            onclick="javascript:recupSaisiePopupMaintenance();" 
-                                            onclick="javascript:recupNbUser();"                                           
+                                            onclick="javascript:recupSaisiePopupMaintenance();"                                          
                                             data-dismiss="modal">Ajouter</button>
                                 </div>
                             </div>
