@@ -282,18 +282,27 @@ class DefaultController extends Controller
        return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpEnPanne.html.twig',
                array('materielEnPanne' => $materiels,'type'=>$type));
     }
-    public function editionAction()
+    public function editionAction(Request $request)
     {
         $form = $this->createFormBuilder()
+            ->setMethod('POST')
+            ->setAction($this->generateUrl('parc_info_edition'))
             ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site', 
                                              'property' => 'nomSite',
                                              'empty_value' => 'Tous les sites'))  
             ->add('etatMat', 'entity',array('class' => 'ParcInfoBundle:Etat', 
                                              'property' => 'libelleEtat',
                                              'empty_value' => 'Tous les états'))
+            ->add('btnSiteGeo', 'submit')          
             ->getForm();
-        
-            
+    
+        if($form->handleRequest($request)->isSubmitted())
+        {
+            if(isset($_POST['form[btnSiteGeo]'])){
+                return new \Symfony\Component\BrowserKit\Response($_POST);
+            }
+            return new \Symfony\Component\BrowserKit\Response($_POST);
+        }
        return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
        
     }
