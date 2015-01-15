@@ -289,19 +289,56 @@ class DefaultController extends Controller
             ->setAction($this->generateUrl('parc_info_edition'))
             ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site', 
                                              'property' => 'nomSite',
-                                             'empty_value' => 'Tous les sites'))  
+                                             'empty_value' => 'Tous les sites','required'=>false))  
             ->add('etatMat', 'entity',array('class' => 'ParcInfoBundle:Etat', 
                                              'property' => 'libelleEtat',
-                                             'empty_value' => 'Tous les états'))
-            ->add('btnSiteGeo', 'submit')          
+                                             'empty_value' => 'Tous les états','required'=>false))
+            ->add('btnSiteGeo', 'submit') 
+            ->add('btnBienFinGar', 'submit') 
+            ->add('btnMatEtat', 'submit') 
+            ->add('btnListLog', 'submit') 
             ->getForm();
     
         if($form->handleRequest($request)->isSubmitted())
         {
-            if(isset($_POST['form[btnSiteGeo]'])){
-                return new \Symfony\Component\BrowserKit\Response($_POST);
+            $form=$_POST['form'];
+            if(isset($form['btnSiteGeo'])){
+                $numSite=$form['siteGeo'];
+                $em = $this->getDoctrine()->getManager();
+                $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite));
+                if($numSite==''){
+                    $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+                }
+                $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type));
             }
-            return new \Symfony\Component\BrowserKit\Response($_POST);
+            if(isset($form['btnBienFinGar'])){
+                 
+                   $em = $this->getDoctrine()->getManager();
+                   $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                       ->getMaterielFinGarantie();
+                    $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+                   return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig',
+                   array('materiels' => $materiels,'type'=>$type));
+            }
+            if(isset($form['btnMatEtat'])){
+                $idEtat=$form['etatMat'];
+                $em = $this->getDoctrine()->getManager();
+                $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numEtat'=>$idEtat));
+                if($idEtat==''){
+                    $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+                }
+                $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+            }
+            if(isset($form['btnListLog'])){
+              
+               $em = $this->getDoctrine()->getManager();
+               $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
+       
+               return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig',array("logiciel"=>  $logiciel));
+            }
+            return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
        return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
        
@@ -453,20 +490,8 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
     }
     
-    public function listeBienInformatiqueAction($numSite,$idEtat){
-          /*
-        *  Ici j'initilise la connexion à la base de donnée en clair (em = entityManager)
-        */
-        $em = $this->getDoctrine()->getManager();
-        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
-        if($numSite==0){
-            $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
-        }
-        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-        return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type));
-    }
     
-     public function listeBienFinGarantieAction($numSite,$idEtat){
+     public function listeBienFinGarantieAction(){
          $em = $this->getDoctrine()->getManager();
         $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielFinGarantie($numSite,$idEtat);
@@ -474,8 +499,8 @@ class DefaultController extends Controller
        return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig',
                array('materiels' => $materiels,'type'=>$type));
     }
-     public function listeBienEtatAction($numSite,$idEtat){
-            $em = $this->getDoctrine()->getManager();
+     public function listeBienEtatAction(){
+        $em = $this->getDoctrine()->getManager();
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
         if($numSite==0){
             $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();

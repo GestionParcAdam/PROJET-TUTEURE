@@ -56,14 +56,12 @@ class MaterielRepository extends EntityRepository
        return $dernierModif;
     }
     
-    public function getMaterielFinGarantie($numSite,$idEtat)
+    public function getMaterielFinGarantie()
     {
        $today = date("y.m.d");    
        $query = $this->getEntityManager()
-                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.dateGarantie > :date and m.numSite = :numSite and m.numEtat = :idEtat')
-                ->setParameter('date', $today)
-                ->setParameter('numSite', $numSite)
-                ->setParameter('idEtat', $idEtat);
+                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.dateGarantie > :date')
+                ->setParameter('date', $today);
         $materiels = $query->getResult();
         
         return $materiels;
