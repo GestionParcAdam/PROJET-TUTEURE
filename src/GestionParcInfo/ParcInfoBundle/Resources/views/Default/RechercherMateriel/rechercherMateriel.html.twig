@@ -11,7 +11,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
 {% block body %}
     <div class="col-lg-12"><br/></div>
                 <div class="col-lg-8">
-                    
+                    {{ form_start(form) }}
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Recherche multicritères</h3>
@@ -63,11 +63,12 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             </p>
                             <div class="col-lg-12"></div>
                             <p class="col-lg-4 col-lg-push-8">
-                                <button class="btn btn-default" type="submit" id="Valider">Lancer la recherche</button>
+                                {{ form_widget(form.lancerLaRecherche, {'attr': {'class': 'btn btn-default'}}) }}
                             </p>
                         </div>
                         
                     </div>
+                    {{ form_end(form) }}
                 </div>
             <div class="col-lg-4"><i class="glyphicon glyphicon-warning-sign">&nbsp;Les champs non renseignés ne seront pas pris en compte</i></div>
           

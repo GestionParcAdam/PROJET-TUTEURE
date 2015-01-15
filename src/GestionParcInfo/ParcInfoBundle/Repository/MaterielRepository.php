@@ -55,4 +55,15 @@ class MaterielRepository extends EntityRepository
        
        return $dernierModif;
     }
+    public function getRechercheMateriels($Mat)
+    {
+        \Doctrine\Common\Util\Debug::dump($Mat);
+        $query = $this->getEntityManager()->createQuery('Select m from ParcInfoBundle:Materiel m WHERE m.numSite =:num')
+                ->setParameter('num', $Mat['numSite']);
+
+       $result = $query->getResult();
+       
+       return $result;
+    }
+    
 }
