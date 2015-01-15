@@ -40,10 +40,13 @@ parc_info_modifier:
     defaults: { _controller: ParcInfoBundle:Default:modifier }
     
 parc_info_listeBienInformatique:
-    path:     /listeBienInformatique/{numSite}
-    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }   
+    path:     /listeBienInformatique
+    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }     
 
 parc_info_resultatRecherche:
     path:     /ResultatRecherche
     defaults: { _controller: ParcInfoBundle:Recherche:resultat }   
+
+   
+  
     

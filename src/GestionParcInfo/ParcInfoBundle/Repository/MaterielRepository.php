@@ -55,6 +55,7 @@ class MaterielRepository extends EntityRepository
        
        return $dernierModif;
     }
+
     public function getRechercheMateriels($Mat)
     {
         \Doctrine\Common\Util\Debug::dump($Mat);
@@ -66,4 +67,17 @@ class MaterielRepository extends EntityRepository
        return $result;
     }
     
+
+    
+    public function getMaterielFinGarantie()
+    {
+       $today = date("y.m.d");    
+       $query = $this->getEntityManager()
+                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.dateGarantie > :date')
+                ->setParameter('date', $today);
+        $materiels = $query->getResult();
+        
+        return $materiels;
+    }
+
 }
