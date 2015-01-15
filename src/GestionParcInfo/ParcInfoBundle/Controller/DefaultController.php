@@ -372,8 +372,9 @@ class DefaultController extends Controller
     public function ficheAction($idmat)
     {
         $em = $this->getDoctrine()->getManager();
+        $car= $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findBy(array('carac'=>$idmat));
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
-        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
+        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel,'caracLog'=>$car));
     }
     
     public function modifierAction($idmat,Request $request)
