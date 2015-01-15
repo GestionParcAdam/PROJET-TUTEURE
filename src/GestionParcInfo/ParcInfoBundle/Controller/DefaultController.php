@@ -453,16 +453,41 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
     }
     
-    public function listeBienInformatiqueAction($numSite){
+    public function listeBienInformatiqueAction($numSite,$idEtat){
           /*
         *  Ici j'initilise la connexion à la base de donnée en clair (em = entityManager)
         */
         $em = $this->getDoctrine()->getManager();
-        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite));
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
         if($numSite==0){
             $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
         }
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+    }
+    
+     public function listeBienFinGarantieAction($numSite,$idEtat){
+         $em = $this->getDoctrine()->getManager();
+        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                       ->getMaterielFinGarantie($numSite,$idEtat);
+         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+       return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig',
+               array('materiels' => $materiels,'type'=>$type));
+    }
+     public function listeBienEtatAction($numSite,$idEtat){
+            $em = $this->getDoctrine()->getManager();
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
+        if($numSite==0){
+            $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+        }
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+        return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+    }
+    
+    public function listeLogicielAction(){
+        $em = $this->getDoctrine()->getManager();
+        $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
+       
+        return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig',array("logiciel"=>  $logiciel));
     }
 }

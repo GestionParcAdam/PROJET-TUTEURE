@@ -40,8 +40,18 @@ parc_info_modifier:
     defaults: { _controller: ParcInfoBundle:Default:modifier }
     
 parc_info_listeBienInformatique:
-    path:     /listeBienInformatique/{numSite}
-    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }   
+    path:     /listeBienInformatique/{numSite}/{idEtat}
+    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }  
+
+parc_info_listeBienFinGarantie:
+    path:     /listeBienFinGarantie/{numSite}/{idEtat}
+    defaults: { _controller: ParcInfoBundle:Default:listeBienFinGarantie }
     
+parc_info_listeBienEtat:
+    path:     /listeBienEtat/{numSite}/{idEtat}
+    defaults: { _controller: ParcInfoBundle:Default:listeBienEtat } 
     
+parc_info_listeLogiciel:
+    path:     /listeLogiciel
+    defaults: { _controller: ParcInfoBundle:Default:listeLogiciel }    
     
