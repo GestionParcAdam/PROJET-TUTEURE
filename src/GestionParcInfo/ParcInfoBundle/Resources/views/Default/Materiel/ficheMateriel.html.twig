@@ -121,28 +121,30 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for car in materiel.numCarac.numCaracLog%}
                                                     <tr>
                                                         <td>
                                                             {%if materiel.numCarac is not null %}
-                                                            {{materiel.numCarac.numCaracLog.nomLog}}
+                                                            {{car.nomLog}}
                                                             {%endif%}
                                                         </td> 
                                                         <td>
                                                             {%if materiel.numCarac is not null %}
-                                                            {{materiel.numCarac.numCaracLog.nomEditeur}}
+                                                            {{car.nomEditeur}}
                                                             {%endif%}
                                                         </td> 
                                                         <td>
                                                             {%if materiel.numCarac is not null %}
-                                                            {{materiel.numCarac.numCaracLog.licence}}
+                                                            {{car.licence}}
                                                             {%endif%}
                                                         </td> 
                                                         <td> 
                                                             {%if materiel.numCarac is not null %}
-                                                            {{materiel.numCarac.numCaracLog.versionLog}} 
+                                                            {{car.versionLog}} 
                                                             {%endif%}
                                                         </td>
                                                     </tr>
+                                                    {%endfor%}
                                                 </tbody>                                            
                                             </table>
                                         </p>
