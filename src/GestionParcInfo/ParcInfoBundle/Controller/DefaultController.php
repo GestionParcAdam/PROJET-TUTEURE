@@ -123,7 +123,9 @@ class DefaultController extends Controller
               
                 /* j'ouvre la connexion à la BD Doctrine */
                 $em = $this->getDoctrine()->getManager();
-
+                
+                $data = $form->getData();
+                
                /* Ici je récupère les informations du formulaire dans un tableau */
 
                 /*
@@ -380,9 +382,18 @@ class DefaultController extends Controller
     public function ficheAction($idmat)
     {
         $em = $this->getDoctrine()->getManager();
-        $car= $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findBy(array('carac'=>$idmat));
+<<<<<<< HEAD
+        
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
+        
+        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel));
+=======
+        $car= $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findBy(array('carac'=>$idmat));
+        
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id'=>$idmat));
+        
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig',array("materiel"=>  $materiel,'caracLog'=>$car));
+>>>>>>> origin/master
     }
     
     public function modifierAction($idmat,Request $request)

@@ -121,7 +121,9 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {% for car in caracLog%}
+                                                    
+                                                    {% for car in materiel.numCarac.numCaracLog %}
+
                                                     <tr>
                                                         <td>
                                                             {%if materiel.numCarac is not null %}
