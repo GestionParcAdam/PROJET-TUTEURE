@@ -69,7 +69,7 @@ class MaterielRepository extends EntityRepository
         $fabricant=$Mat['fabricant'];
         $revendeur=$Mat['revendeur'];
         $utilisateur=$Mat['utilisateur'];
-        $and=' and ';
+        $firstCo=true;
         $first='';
         $req='';     
         
@@ -123,30 +123,87 @@ class MaterielRepository extends EntityRepository
             $req.=$statutMat;
         }
         if($dateAchat!=''){
+
             if($first==''){
                 $req=' where ';
                 $first='false';
-                $dateAchat='cc.dateAchat='.$dateAchat;
+                $dateAchat="co.dateAchat >= '$dateAchat'";
             }else{
            
-                $dateAchat='and c.numCaracCom.dateAchat='.$dateAchat;
-            }
+                $dateAchat='and co.dateAchat>='.$dateAchat->getTimestamp();
+            } 
+            $req.=$dateAchat;
             
-            $req.=$statutMat;
+            $req=' join c.numCaracCom co '.$req;
+            
             $req=' join m.numCarac c '.$req;
+            $firstCo=false;
+           
         }
-        /*if($numFacture!=''){
-            $numFacture='m.numType='.$numFacture;
+        if($numFacture!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $numFacture=" co.numFacture like '%$numFacture%'";
+            }else{
+                $numFacture=" and co.numFacture like '%$numFacture%'";
+            } 
+            $req.=$numFacture;
+            if($firstCo){
+                $req=' join c.numCaracCom co '.$req;
+
+                $req=' join m.numCarac c '.$req;
+                $firstCo=false;
+            }
         }
-        /*if($modele!=''){
-            $modele='m.numType='.$modele;
+        if($modele!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $modele=" co.numFacture like '%$modele%'";
+            }else{ 
+                $modele=" and m.numType like '%$modele%'";
+            } 
+            $req.=$modele;
+            if($firstCo){
+                $req=' join c.numCaracCom co '.$req;
+
+                $req=' join m.numCarac c '.$req;
+                $firstCo=false;
+            }
         }
-        /*if($fabricant!=''){
-            $fabricant='m.numType='.$fabricant;
+        if($fabricant!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $fabricant='co.numFabricant='.$fabricant;
+            }else{ 
+                $fabricant=' and co.numFabricant='.$fabricant;
+            } 
+            $req.=$fabricant;
+            if($firstCo){
+                $req=' join c.numCaracCom co '.$req;
+
+                $req=' join m.numCarac c '.$req;
+                $firstCo=false;
+            }
         }
-        /*if($revendeur!=''){
-            $revendeur='m.numType='.$revendeur;
-        }*/
+        if($revendeur!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $revendeur=' co.numRevendeur='.$revendeur;
+            }else{
+                $revendeur=' and co.numRevendeur='.$revendeur;
+            } 
+            $req.=$revendeur;
+            if($firstCo){
+                $req=' join c.numCaracCom co '.$req;
+
+                $req=' join m.numCarac c '.$req;
+                $firstCo=false;
+            }
+        }
         if($utilisateur!=''){
             if($first==''){
                 $req=' where ';
