@@ -118,147 +118,150 @@ class DefaultController extends Controller
         
         if($form->handleRequest($request)->isSubmitted())
         {
-             /* j'ouvre la connexion à la BD Doctrine */
-            $em = $this->getDoctrine()->getManager();
-           
-           /* Ici je récupère les informations du formulaire dans un tableau */
-            $data = $form->getData();
-            /* \Doctrine\Common\Util\Debug::dump($data); */
-            
-            /*
-             * Init l'obj carac
-             */
-            $carac = new Caracteristique();
-            
-            /*
-             *  Init l'obj des carac de com 
-             */
-            $caracDeCom = new CaracteristiqueCom();
-            
-            $caracDeCom->setPrixAchat($data['prixAchat']);
-            $caracDeCom->setLibelleModele($data['modele']);
-            $caracDeCom->setDateAchat($data['dateAchat']);
-            $caracDeCom->setNumImmo($data['immobilisation']);
-            $caracDeCom->setNumFabricant($data['fabricant']);
-            $caracDeCom->setNumRevendeur($data['revendeur']);
-            $caracDeCom->setNumFacture($data['numFacture']);
-                    
-            \Doctrine\Common\Util\Debug::dump($caracDeCom);
-            
-            $em->persist($caracDeCom);
-            $em->flush();
-            
-            /*
-             * Init l'obj des carac de res
-             */
-            $caracDeRes = new CaracteristiqueRes();
-            
-            $caracDeRes->setAdressIp($data['adIp']);
-            $caracDeRes->setAdressMac($data['adMac']);
-            $caracDeRes->setAdressPasserelle($data['adPasserelle']);
-            
-            $em->persist($caracDeRes);
-            $em->flush();
-            
-            $carac->setNumCaracCom($caracDeCom);
-            $carac->setNumCaracRes($caracDeRes);
-            
-            /*
-             * <!>
-             */
-            /* Prévoir bouclage sur le nombre de log ajouter */
-            for ($i = 0; $i <= $data['nbLog']+1; $i++) 
-            {                
-                $concat = 'log'.$i.'-1'; 
-                
-                \Doctrine\Common\Util\Debug::dump($concat);
-                if(isset($_POST[$concat]))
-                { 
-                        $concat2 = 'log'.$i;
-                        
-                        $caracDeLog = new CaracteristiqueLog();
+            if($form->get('ajouter')->isClicked())
+            {
+              
+                /* j'ouvre la connexion à la BD Doctrine */
+                $em = $this->getDoctrine()->getManager();
 
-                        $caracDeLog->setLicence($_POST[$concat2.'-3']);
-                        $caracDeLog->setNomEditeur($_POST[$concat2.'-2']);
-                        $caracDeLog->setNomLog($_POST[$concat2.'-1']);
-                        $caracDeLog->setVersionLog($_POST[$concat2.'-4']);
-                        
-                        $caracDeLog->setCarac($carac);
-                        $carac->addNumCaracLog($caracDeLog);
-                        
-                        \Doctrine\Common\Util\Debug::dump($caracDeLog);
-                        
-                        $em->persist($caracDeLog);
-                        $em->flush();
-                }
-            }               
+               /* Ici je récupère les informations du formulaire dans un tableau */
 
-            /* Je créer mon objet à persister dans la base */
-            
-            $materiel = new Materiel();
-            
-            $materiel->setNomMat($data['nomMat']);
-            $materiel->setDateGarantie($data['dateGarantie']);
-            $materiel->setNumEtat($data['etatMat']);
-            $materiel->setNumSite($data['siteGeo']);
-            $materiel->setNumType($data['typeMat']);
-            $materiel->setNumStatut($data['statutMat']);
-            $materiel->setNumCarac($carac);
+                /*
+                 * Init l'obj carac
+                 */
+                $carac = new Caracteristique();
 
-            $date = new \DateTime('now');
-           
-            $materiel->setDateLastModif($date);
-            
-            
-            
-            $em->persist($carac);
-            $em->flush();
-            
-            /*
-             * User
-             * Prévoir bouclage sur le nombre d'user ajouter
-             */
-            for ($i = 1; $i <= $data['nbUsers']+1; $i++) {
-                $concat = 'user'.$i; 
-                \Doctrine\Common\Util\Debug::dump($concat);
-                if(isset($_POST[$concat]))
-                {
-                    \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
-                    $user = new Utilisateur();
-                    
-                    $user->setNomUser($_POST[$concat]);
-                    $user->addMateriel($materiel);
-                }
-            }
+                /*
+                 *  Init l'obj des carac de com 
+                 */
+                $caracDeCom = new CaracteristiqueCom();
 
-            /* je dis que je persist l'objet et que j'upload direct en clair */
-            $em->persist($materiel);
-            $em->flush();
-            
-            /*
-             * Hist
-             * Prévoir bouclage sur le nombre d'historique ajouter
-             */
-            for ($i = 1; $i <= $data['nbMaintenance']; $i++) {
-                
-                $hist = new Historique();
-            
-                $hist->setMateriel($materiel);
-                $hist->setObjetIntervention($_POST['maintenance'.$i.'-2']);
-                $hist->setCoutIntervention($_POST['maintenance'.$i.'-5']);
-                $hist->setDateIntervention(new \DateTime($_POST['maintenance'.$i.'-1']));
-                $hist->setDescIntervention($_POST['maintenance'.$i.'-3']);
-                $hist->setPrestataireIntervention($_POST['maintenance'.$i.'-4']);
-                
-                $materiel->addHistorique($hist);
-                $hist->setMateriel($materiel);
+                $caracDeCom->setPrixAchat($data['prixAchat']);
+                $caracDeCom->setLibelleModele($data['modele']);
+                $caracDeCom->setDateAchat($data['dateAchat']);
+                $caracDeCom->setNumImmo($data['immobilisation']);
+                $caracDeCom->setNumFabricant($data['fabricant']);
+                $caracDeCom->setNumRevendeur($data['revendeur']);
+                $caracDeCom->setNumFacture($data['numFacture']);
 
-                $em->persist($hist);
+                \Doctrine\Common\Util\Debug::dump($caracDeCom);
+
+                $em->persist($caracDeCom);
                 $em->flush();
+
+                /*
+                 * Init l'obj des carac de res
+                 */
+                $caracDeRes = new CaracteristiqueRes();
+
+                $caracDeRes->setAdressIp($data['adIp']);
+                $caracDeRes->setAdressMac($data['adMac']);
+                $caracDeRes->setAdressPasserelle($data['adPasserelle']);
+
+                $em->persist($caracDeRes);
+                $em->flush();
+
+                $carac->setNumCaracCom($caracDeCom);
+                $carac->setNumCaracRes($caracDeRes);
+
+                /*
+                 * <!>
+                 */
+                /* Prévoir bouclage sur le nombre de log ajouter */
+                for ($i = 0; $i <= $data['nbLog']+1; $i++) 
+                {                
+                    $concat = 'log'.$i.'-1'; 
+
+                    \Doctrine\Common\Util\Debug::dump($concat);
+                    if(isset($_POST[$concat]))
+                    { 
+                            $concat2 = 'log'.$i;
+
+                            $caracDeLog = new CaracteristiqueLog();
+
+                            $caracDeLog->setLicence($_POST[$concat2.'-3']);
+                            $caracDeLog->setNomEditeur($_POST[$concat2.'-2']);
+                            $caracDeLog->setNomLog($_POST[$concat2.'-1']);
+                            $caracDeLog->setVersionLog($_POST[$concat2.'-4']);
+
+                            $caracDeLog->setCarac($carac);
+                            $carac->addNumCaracLog($caracDeLog);
+
+                            \Doctrine\Common\Util\Debug::dump($caracDeLog);
+
+                            $em->persist($caracDeLog);
+                            $em->flush();
+                    }
+                }               
+
+                /* Je créer mon objet à persister dans la base */
+
+                $materiel = new Materiel();
+
+                $materiel->setNomMat($data['nomMat']);
+                $materiel->setDateGarantie($data['dateGarantie']);
+                $materiel->setNumEtat($data['etatMat']);
+                $materiel->setNumSite($data['siteGeo']);
+                $materiel->setNumType($data['typeMat']);
+                $materiel->setNumStatut($data['statutMat']);
+                $materiel->setNumCarac($carac);
+
+                $date = new \DateTime('now');
+
+                $materiel->setDateLastModif($date);
+
+
+
+                $em->persist($carac);
+                $em->flush();
+
+                /*
+                 * User
+                 * Prévoir bouclage sur le nombre d'user ajouter
+                 */
+                for ($i = 1; $i <= $data['nbUsers']+1; $i++) {
+                    $concat = 'user'.$i; 
+                    \Doctrine\Common\Util\Debug::dump($concat);
+                    if(isset($_POST[$concat]))
+                    {
+                        \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
+                        $user = new Utilisateur();
+
+                        $user->setNomUser($_POST[$concat]);
+                        $user->addMateriel($materiel);
+                    }
+                }
+
+                /* je dis que je persist l'objet et que j'upload direct en clair */
+                $em->persist($materiel);
+                $em->flush();
+
+                /*
+                 * Hist
+                 * Prévoir bouclage sur le nombre d'historique ajouter
+                 */
+                for ($i = 1; $i <= $data['nbMaintenance']; $i++) {
+
+                    $hist = new Historique();
+
+                    $hist->setMateriel($materiel);
+                    $hist->setObjetIntervention($_POST['maintenance'.$i.'-2']);
+                    $hist->setCoutIntervention($_POST['maintenance'.$i.'-5']);
+                    $hist->setDateIntervention(new \DateTime($_POST['maintenance'.$i.'-1']));
+                    $hist->setDescIntervention($_POST['maintenance'.$i.'-3']);
+                    $hist->setPrestataireIntervention($_POST['maintenance'.$i.'-4']);
+
+                    $materiel->addHistorique($hist);
+                    $hist->setMateriel($materiel);
+
+                    $em->persist($hist);
+                    $em->flush();
+                }
+                
+                 /* ca çà permet de retourner une réponse basique */
+                return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
             }
-            
-            /* ca çà permet de retourner une réponse basique */
-            return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
+ 
         }
 
         return $this->render('ParcInfoBundle:Default:AjouterMateriel/ajouterMateriel.html.twig', array('form' => $form->createView()));
