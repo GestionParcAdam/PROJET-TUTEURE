@@ -76,8 +76,8 @@
                             <div class="contenu_onglet" id="contenu_onglet_2">
                                 <p class="col-lg-12">
                                     <br/>
-                                    <button class="btn btn-default" id="ajouter_log" 
-                                            data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
+                                    <input class="btn btn-default" id="ajouter_log" 
+                                            data-toggle="modal" data-target="#myModal3" value="Ajouter un logiciel" />
                                     <div id="cadreNbLog">
                                    {{ form_widget(form.nbLog, {'attr': {'class': 'form-control'}}) }}
                                     </div>
@@ -126,12 +126,12 @@
                                         <p class="col-lg-6 form-inline">
                                             <b>Choisir un utilisateur : </b>
                                             {{ form_widget(form.selectUser, {'attr': {'class': 'form-control'}}) }}
-                                            <button type="button"  id="selectionUser" class="btn btn-primary" 
+                                            <input id="selectionUser" class="btn btn-primary" 
                                             onclick="javascript:recupSelectionUser();" 
-                                            data-dismiss="modal">Ajouter</button>
+                                            data-dismiss="modal" value="Ajouter"/>
                                         </p>
-                                        <button class="btn btn-default col-lg-2 col-lg-push-3" id="ajouter_user" 
-                                                data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
+                                        <input class="btn btn-default col-lg-2 col-lg-push-3" id="ajouter_user" 
+                                                data-toggle="modal" data-target="#myModal2" value="Ajouter un utilisateur" /> 
                                         <div id="cadreNbUser">
                                            {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }}
                                            
@@ -179,8 +179,8 @@
                             <div class="contenu_onglet" id="contenu_onglet_6">
                                 <p class="col-lg-12">
                                     <br/> 
-                                    <button class="btn btn-default" id="ajouter_maintenance" 
-                                            data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
+                                    <input class="btn btn-default" id="ajouter_maintenance" 
+                                            data-toggle="modal" data-target="#myModal" value="Ajouter une maintenance" />
                                     <div id="cadreNbMaintenance">
                                         {{ form_widget(form.nbMaintenance, {'attr': {'class': 'form-control'}}) }}
                                     </div>
@@ -237,9 +237,9 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
-                                    <button type="button" class="btn btn-primary" 
+                                    <input type="button" class="btn btn-primary" 
                                             onclick="javascript:recupSaisiePopupMaintenance();"                                          
-                                            data-dismiss="modal">Ajouter</button>
+                                            data-dismiss="modal" value="Ajouter" />
                                 </div>
                             </div>
                         </div>
@@ -260,9 +260,9 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
-                                    <button type="button"  id="validerUser" class="btn btn-primary" 
+                                    <input type="button"  id="validerUser" class="btn btn-primary" 
                                             onclick="javascript:recupSaisiePopupUser();" 
-                                            data-dismiss="modal">Ajouter</button>
+                                            data-dismiss="modal" value="Ajouter" />
                                 </div>
                             </div>
                         </div>
@@ -290,10 +290,10 @@
                                     </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
-                                    <button type="button" class="btn btn-primary" 
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Quitter"/>
+                                    <input type="button" class="btn btn-primary" 
                                             onclick="javascript:recupSaisiePopupLog()" 
-                                            data-dismiss="modal">Ajouter</button>
+                                            data-dismiss="modal"value="Ajouter"/>
                                 </div>
                             </div>
                         </div>
