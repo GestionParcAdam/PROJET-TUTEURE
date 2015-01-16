@@ -292,7 +292,28 @@ class DefaultController extends Controller
                array('materielPG' => $materiels,'type'=>$type));
     }
     
-        public function matEnPanneAction()
+    public function imprimAction(){
+             
+       
+                $em = $this->getDoctrine()->getManager();
+                $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+                $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+                $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
+ 
+                
+            
+                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',
+                        array("materiels"=>  $materiel,'type'=>$type,'site'=>$site)); 
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+                $html2pdf->pdf->SetDisplayMode('real');
+                $html2pdf->writeHTML($html);
+                $html2pdf->Output('text.pdf');
+                return new Response();
+             
+    }
+
+
+    public function matEnPanneAction()
     {
         $em = $this->getDoctrine()->getManager();
         $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
@@ -332,7 +353,8 @@ class DefaultController extends Controller
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
                  
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'site'=>$site));       
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'site'=>$site));  
+                
             }
             
             if(isset($form['btnBienFinGar'])){
