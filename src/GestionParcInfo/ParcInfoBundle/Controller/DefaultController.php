@@ -316,7 +316,8 @@ class DefaultController extends Controller
         if($form->handleRequest($request)->isSubmitted())
         {
             $form=$_POST['form'];
-            if(isset($form['btnSiteGeo'])){
+            if(isset($form['btnSiteGeo']))
+             {
                 $numSite=$form['siteGeo'];
                 $em = $this->getDoctrine()->getManager();
                 $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite));
@@ -324,8 +325,30 @@ class DefaultController extends Controller
                     $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+                $form2 = $this->createFormBuilder()
+                ->setMethod('POST')
+                ->setAction($this->generateUrl('parc_info_listeBienInformatique'))
+                ->add('btnGenerer', 'submit')
+                ->getForm();
+                
+                if($form2->handleRequest($request)->isSubmitted())
+                {
+                   
+                     if(isset($form2['btnGenerer']))
+                     {
+                           $html = $this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'form2' => $form2->createView()));      
+                           $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');       
+                           $html2pdf->pdf->SetDisplayMode('real');      
+                           $html2pdf->writeHTML($html);
+                           $html2pdf->Output('ListeBienInformatique.pdf');
+                    
+                     }
+                 }
+                
+                 
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'form2' => $form2->createView()));       
             }
+            
             if(isset($form['btnBienFinGar'])){
                  
                    $em = $this->getDoctrine()->getManager();
@@ -505,4 +528,29 @@ class DefaultController extends Controller
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
     }
     
+    
+     public function listeBienFinGarantieAction(){
+         $em = $this->getDoctrine()->getManager();
+        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                       ->getMaterielFinGarantie($numSite,$idEtat);
+         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+       return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig',
+               array('materiels' => $materiels,'type'=>$type));
+    }
+     public function listeBienEtatAction(){
+        $em = $this->getDoctrine()->getManager();
+        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
+        if($numSite==0){
+            $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+        }
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+        return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+    }
+    
+    public function listeLogicielAction(){
+        $em = $this->getDoctrine()->getManager();
+        $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
+       
+        return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig',array("logiciel"=>  $logiciel));
+    }
 }
