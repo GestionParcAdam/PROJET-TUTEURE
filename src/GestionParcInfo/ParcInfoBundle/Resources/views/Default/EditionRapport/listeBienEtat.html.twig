@@ -12,11 +12,11 @@
                     <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel</h3>
                 </div>
                 <div class="panel-body">
-                   {% for materiel in materiels %}
+                   {% for e in etat  %}
                        
                         {% set existe = '' %}
-                          {% for t in type %}
-                            {% if materiel.numType.id==t.id %}
+                          {% for materiel in materiels %}
+                            {% if materiel.numEtat.id==e.id %}
                                    {% set existe = 'true' %}
                             {% endif %}
                         {% endfor %}
@@ -24,7 +24,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-laptop"></i> {{materiel.numEtat.libelleEtat}}</h3>
+                                <h3 class="panel-title"><i class="fa fa-laptop"></i> {{e.libelleEtat}}</h3>
                             </div>
                             <table class="table table-striped">
                                 <thead>
@@ -36,8 +36,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     {% for t in type %}
-                                        {% if materiel.numType.id==t.id %}
+                                     {% for materiel in materiels %}
+                                        {% if  materiel.numEtat.id==e.id %}
                                         <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
                                             <td>{{ materiel.nomMat }}</td>
                                             <td>{{ materiel.getNumSite.nomSite }}</td>

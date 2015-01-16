@@ -325,28 +325,9 @@ class DefaultController extends Controller
                     $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-                $form2 = $this->createFormBuilder()
-                ->setMethod('POST')
-                ->setAction($this->generateUrl('parc_info_listeBienInformatique'))
-                ->add('btnGenerer', 'submit')
-                ->getForm();
-                
-                if($form2->handleRequest($request)->isSubmitted())
-                {
-                   
-                     if(isset($form2['btnGenerer']))
-                     {
-                           $html = $this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'form2' => $form2->createView()));      
-                           $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');       
-                           $html2pdf->pdf->SetDisplayMode('real');      
-                           $html2pdf->writeHTML($html);
-                           $html2pdf->Output('ListeBienInformatique.pdf');
-                    
-                     }
-                 }
-                
+               $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
                  
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'form2' => $form2->createView()));       
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',array("materiels"=>  $materiel,'type'=>$type,'site'=>$site));       
             }
             
             if(isset($form['btnBienFinGar'])){
@@ -366,7 +347,8 @@ class DefaultController extends Controller
                     $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type));
+                $etat = $em->getRepository('ParcInfoBundle:Etat')->findAll();
+                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type,'etat'=>$etat));
             }
             if(isset($form['btnListLog'])){
               
