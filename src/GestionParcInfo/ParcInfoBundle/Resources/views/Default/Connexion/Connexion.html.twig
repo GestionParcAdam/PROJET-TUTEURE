@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connnexion au Parc informatique ADAM SAS</title>
+
+    
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/local.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('bootstrap/js/jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+
+</head>
+<body id="container1">
+
+
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title text-center">Se Connecter</h2>
+                    </div>
+                    <div class="panel-body">
+                        {{ form_start(form) }}
+                            <div class="form-group text-center">
+                                <label>ADAM SAS</label>
+                            </div>
+                                <div class="col-xs-6 col-sm-6 col-md-push-3">
+                                    <div class="form-group">
+                                        {{ form_widget(form.motDePasse, {'attr': {'placeholder': 'Mot de Passe','class': 'form-control'}}) }}
+                                    </div>
+
+                                {{ form_widget(form.connexion, {'attr': {'class': 'btn btn-info btn-block'}}) }}
+                                </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+</body>
+</html>

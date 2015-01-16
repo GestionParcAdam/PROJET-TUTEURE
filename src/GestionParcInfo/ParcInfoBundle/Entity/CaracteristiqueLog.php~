@@ -158,4 +158,27 @@ class CaracteristiqueLog
         return $this->licence;
     }
 
+
+    /**
+     * Set carac
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac
+     * @return CaracteristiqueLog
+     */
+    public function setCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac = null)
+    {
+        $this->carac = $carac;
+    
+        return $this;
+    }
+
+    /**
+     * Get carac
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique 
+     */
+    public function getCarac()
+    {
+        return $this->carac;
+    }
 }
