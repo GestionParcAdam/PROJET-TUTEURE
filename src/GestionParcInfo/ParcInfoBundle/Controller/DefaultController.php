@@ -307,10 +307,10 @@ class DefaultController extends Controller
             ->add('etatMat', 'entity',array('class' => 'ParcInfoBundle:Etat', 
                                              'property' => 'libelleEtat',
                                              'empty_value' => 'Tous les états','required'=>false))
-            ->add('btnSiteGeo', 'submit') 
-            ->add('btnBienFinGar', 'submit') 
-            ->add('btnMatEtat', 'submit') 
-            ->add('btnListLog', 'submit') 
+            ->add('btnSiteGeo', 'submit',array('label'=>'Générer la liste des biens informatique du parc')) 
+            ->add('btnBienFinGar', 'submit',array('label'=>'Générer la liste des biens en fin de garantie')) 
+            ->add('btnMatEtat', 'submit',array('label'=>'Générer la liste des matériels en fonction de son état')) 
+            ->add('btnListLog', 'submit',array('label'=>'Générer la liste des logiciels')) 
             ->getForm();
     
         if($form->handleRequest($request)->isSubmitted())

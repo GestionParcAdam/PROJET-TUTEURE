@@ -16,30 +16,31 @@
                 </div>
                 <div class="panel-body">
                 {{form_start(form)}}
-                    <div >
-                       
-                       
+                    <div class="col-lg-12">
+                        <div class="col-lg-9">
                            {{form_widget(form.btnSiteGeo, {'attr': {'class': 'btn btn-default sameSize'}}) }}                                                 
+                        </div>
+                        <div class="col-lg-3">
                            {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}}) }}
-                   
-                      
+                        </div>
+<div class="col-lg-12"></div> 
+                        <div class="col-lg-9">
                             {{ form_widget(form.btnBienFinGar, {'attr': {'class': 'btn btn-default sameSize '}}) }}
-                   
-                          
+                        </div>
+<div class="col-lg-12"></div> 
+                        <div class="col-lg-9">
                             {{form_widget(form.btnMatEtat, {'attr': {'class': 'btn btn-default sameSize'}}) }}                        
+                        </div>
+                        <div class="col-lg-3">
                             {{ form_widget(form.etatMat, {'attr': {'class': 'form-control '}}) }}
-                            
-                        
+                        </div>
+<div class="col-lg-12"></div>  
+                        <div class="col-lg-9">
                             {{form_widget(form.btnListLog, {'attr': {'class': 'btn btn-default sameSize '}}) }}
                         
-                        
-                        
+                         </div>
                     </div>
                     {{form_end(form)}}
-                        
-                        
-                        
-                    
                 </div> 
             </div>
         </div>

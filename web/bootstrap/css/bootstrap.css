@@ -1,4 +1,18 @@
-/*!
+
+#container1 {
+    background-color: #999;
+}
+
+.centered-form {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.centered-form .panel {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.5) 20px 20px 20px;
+    border-radius: 12px;
+}/*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)

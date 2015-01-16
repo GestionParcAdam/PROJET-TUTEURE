@@ -58,9 +58,107 @@ class MaterielRepository extends EntityRepository
 
     public function getRechercheMateriels($Mat)
     {
-        \Doctrine\Common\Util\Debug::dump($Mat);
-        $query = $this->getEntityManager()->createQuery('Select m from ParcInfoBundle:Materiel m WHERE m.numSite =:num')
-                ->setParameter('num', $Mat['numSite']);
+        $numSite=$Mat['numSite'];
+        $typeMat=$Mat['numType'];
+        $nomMat=$Mat['nomMat'];
+        $etatMat=$Mat['etatmat'];
+        $statutMat=$Mat['statutMat'];
+        $dateAchat=$Mat['dateAchat'];
+        $numFacture=$Mat['numFacture'];
+        $modele=$Mat['modele'];
+        $fabricant=$Mat['fabricant'];
+        $revendeur=$Mat['revendeur'];
+        $utilisateur=$Mat['utilisateur'];
+        $and=' and ';
+        $first='';
+        $req='';     
+        
+        if($numSite!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+            }
+            $numSite='m.numSite='.$numSite;
+            $req.=$numSite;
+        }
+        if($typeMat!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $typeMat=' m.numType='.$typeMat;
+            }else{
+                $typeMat=' and m.numType='.$typeMat;
+            }
+            
+            $req.=$typeMat;
+        }
+        if($nomMat!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $nomMat=" m.nomMat like '%$nomMat%'";
+            }else{
+                $nomMat=" and m.nomMat like '%$nomMat%'";
+            }
+            $req.= $nomMat;           
+        }
+        if($etatMat!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $etatMat=' m.numEtat='.$etatMat;
+            }else{
+                $etatMat=' and m.numEtat='.$etatMat;
+            }
+            $req.=$etatMat;
+        }
+        if($statutMat!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $statutMat='m.numStatut='.$statutMat;
+            }else{
+                $statutMat='and m.numStatut='.$statutMat;
+            }
+            $req.=$statutMat;
+        }
+        /*if($dateAchat!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $dateAchat='m.numType='.$dateAchat;
+            }else{
+           
+                $dateAchat='m.numType='.$dateAchat;
+            }
+        }
+        /*if($numFacture!=''){
+            $numFacture='m.numType='.$numFacture;
+        }
+        if($modele!=''){
+            $modele='m.numType='.$modele;
+        }
+        if($fabricant!=''){
+            $fabricant='m.numType='.$fabricant;
+        }
+        if($revendeur!=''){
+            $revendeur='m.numType='.$revendeur;
+        }*/
+        if($utilisateur!=''){
+            if($first==''){
+                $req=' where ';
+                $first='false';
+                $utilisateur=' u.id='.$utilisateur.'';
+            }else{
+                $utilisateur=' and u.id ='.$utilisateur;
+            }
+            $req.=$utilisateur;
+            $req = ' join m.utilisateurs u '.$req;
+        }
+        
+        $query = $this->getEntityManager()
+                ->createQuery('Select m from ParcInfoBundle:Materiel m '
+                        . $req);
 
        $result = $query->getResult();
        

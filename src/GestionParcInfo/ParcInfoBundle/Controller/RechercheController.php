@@ -66,27 +66,23 @@ class RechercheController extends Controller
     }
      public function resultatAction(Request $request)
     {
-        $siteGeo=$_POST['form']['siteGeo'];
-        $typeMat=$_POST['form']['typeMat'];
-        $nomMat=$_POST['form']['nomMat'];
-        $etatMat=$_POST['form']['etatMat'];
-        $statutMat=$_POST['form']['statutMat'];
-        $dateAchat=$_POST['form']['dateAchat'];
-        $numFacture=$_POST['form']['numFacture'];
-        $modele=$_POST['form']['modele'];
-        $fabricant=$_POST['form']['fabricant'];
-        $revendeur=$_POST['form']['revendeur'];
-        $utilisateur=$_POST['form']['utilisateur'];
-         $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
          
          
          $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
-                       ->getRechercheMateriels(array('numSite'=>$siteGeo,
-                           'numType'=>$typeMat,
-                           'nomMat'=>$typeMat
-                           ));
+                       ->getRechercheMateriels(array('numSite'=>$_POST['form']['siteGeo'],
+                           'numType'=>$_POST['form']['typeMat'],
+                           'nomMat'=>$_POST['form']['nomMat'],
+                           'etatmat'=>$_POST['form']['etatMat'],
+                           'statutMat'=>$_POST['form']['statutMat'],
+                           'dateAchat'=>$_POST['form']['dateAchat'],
+                           'numFacture'=>$_POST['form']['numFacture'],
+                           'modele'=>$_POST['form']['modele'],
+                           'fabricant'=>$_POST['form']['fabricant'],
+                           'revendeur'=>$_POST['form']['revendeur'],
+                           'utilisateur'=>$_POST['form']['utilisateur']));
         
           
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
