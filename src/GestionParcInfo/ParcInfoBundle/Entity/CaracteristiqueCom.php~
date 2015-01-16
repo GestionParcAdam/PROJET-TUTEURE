@@ -67,8 +67,10 @@ class CaracteristiqueCom
      * @ORM\JoinColumn(nullable=false)
      */
     private $numRevendeur;
-
-   
+    /**
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", mappedBy="numCaracCom",cascade={"persist","remove"})
+     */
+    private $carac;
 
     /**
      * Get id
@@ -239,5 +241,45 @@ class CaracteristiqueCom
     public function getNumRevendeur()
     {
         return $this->numRevendeur;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carac = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carac
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac
+     * @return CaracteristiqueCom
+     */
+    public function addCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac)
+    {
+        $this->carac[] = $carac;
+
+        return $this;
+    }
+
+    /**
+     * Remove carac
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac
+     */
+    public function removeCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac)
+    {
+        $this->carac->removeElement($carac);
+    }
+
+    /**
+     * Get carac
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCarac()
+    {
+        return $this->carac;
     }
 }

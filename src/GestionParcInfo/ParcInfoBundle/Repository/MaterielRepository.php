@@ -122,26 +122,30 @@ class MaterielRepository extends EntityRepository
             }
             $req.=$statutMat;
         }
-        /*if($dateAchat!=''){
+        if($dateAchat!=''){
             if($first==''){
                 $req=' where ';
                 $first='false';
-                $dateAchat='m.numType='.$dateAchat;
+                $dateAchat='cc.dateAchat='.$dateAchat;
             }else{
            
-                $dateAchat='m.numType='.$dateAchat;
+                $dateAchat='and cc.dateAchat='.$dateAchat;
             }
+            
+            $req.=$statutMat;
+            $req=' join m.numCarac c '.$req;
+            $req=' ,join  c.numCaracCom cc '.$req;
         }
         /*if($numFacture!=''){
             $numFacture='m.numType='.$numFacture;
         }
-        if($modele!=''){
+        /*if($modele!=''){
             $modele='m.numType='.$modele;
         }
-        if($fabricant!=''){
+        /*if($fabricant!=''){
             $fabricant='m.numType='.$fabricant;
         }
-        if($revendeur!=''){
+        /*if($revendeur!=''){
             $revendeur='m.numType='.$revendeur;
         }*/
         if($utilisateur!=''){
