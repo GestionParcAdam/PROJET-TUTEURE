@@ -87,6 +87,6 @@ class RechercheController extends Controller
           
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:RechercherMateriel/rechercherResultat.html.twig',
-                array('type'=>$type,'materiels'=>$materiels,'test'=>$_POST));
+                array('type'=>$type,'materiels'=>$materiels));
     }
  }
