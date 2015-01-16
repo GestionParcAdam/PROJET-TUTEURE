@@ -1,0 +1,12 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/ficheMateriel.html.twig
+#
+

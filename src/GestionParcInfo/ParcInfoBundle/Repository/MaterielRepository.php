@@ -129,12 +129,11 @@ class MaterielRepository extends EntityRepository
                 $dateAchat='cc.dateAchat='.$dateAchat;
             }else{
            
-                $dateAchat='and cc.dateAchat='.$dateAchat;
+                $dateAchat='and c.numCaracCom.dateAchat='.$dateAchat;
             }
             
             $req.=$statutMat;
             $req=' join m.numCarac c '.$req;
-            $req=' ,join  c.numCaracCom cc '.$req;
         }
         /*if($numFacture!=''){
             $numFacture='m.numType='.$numFacture;
