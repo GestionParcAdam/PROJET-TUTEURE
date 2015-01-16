@@ -36,7 +36,7 @@ class Caracteristique
     private $numCaracLog;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes", cascade={"persist","remove"})
+     * @ORM\OneToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $numCaracRes;

@@ -89,7 +89,7 @@ class CaracteristiqueCom
     public function setDateAchat($dateAchat)
     {
         $this->dateAchat = $dateAchat;
-    
+
         return $this;
     }
 
@@ -112,7 +112,7 @@ class CaracteristiqueCom
     public function setPrixAchat($prixAchat)
     {
         $this->prixAchat = $prixAchat;
-    
+
         return $this;
     }
 
@@ -135,7 +135,7 @@ class CaracteristiqueCom
     public function setNumFacture($numFacture)
     {
         $this->numFacture = $numFacture;
-    
+
         return $this;
     }
 
@@ -158,7 +158,7 @@ class CaracteristiqueCom
     public function setLibelleModele($libelleModele)
     {
         $this->libelleModele = $libelleModele;
-    
+
         return $this;
     }
 
@@ -181,7 +181,7 @@ class CaracteristiqueCom
     public function setNumImmo($numImmo)
     {
         $this->numImmo = $numImmo;
-    
+
         return $this;
     }
 
@@ -204,7 +204,7 @@ class CaracteristiqueCom
     public function setNumFabricant(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant)
     {
         $this->numFabricant = $numFabricant;
-    
+
         return $this;
     }
 
@@ -227,7 +227,7 @@ class CaracteristiqueCom
     public function setNumRevendeur(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur)
     {
         $this->numRevendeur = $numRevendeur;
-    
+
         return $this;
     }
 
