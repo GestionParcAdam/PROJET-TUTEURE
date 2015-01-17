@@ -18,7 +18,7 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "knplabs/knp-snappy-bundle": "1.2.*@dev"
+        "obtao/html2pdf-bundle": "master-dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

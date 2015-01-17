@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion du Parc informatique ADAM SAS</title>
 
     
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/local.css') }}" />
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('css/local.css') }}" />
 
-    <script type="text/javascript" src="{{ asset('bootstrap/js/jquery-1.10.2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/js/jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('js/script.js') }}"></script>
 
 </head>
 <body>

@@ -70,3 +70,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# knp snappy config
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     C:/wamp/www/PROJET-TUTEURE/wkhtmltopdf.exe
+        options:    []
