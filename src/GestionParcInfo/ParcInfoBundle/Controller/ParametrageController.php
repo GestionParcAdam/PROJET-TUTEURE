@@ -31,11 +31,11 @@ class ParametrageController extends Controller
         $f=$this->createFormBuilder()
                             ->setAction($this->generateUrl('parc_info_parametrageType'))
                             ->add('ajtype', 'text')
-                            ->add('ajouter', 'submit',array('label'=>'Ajouter un Type de matériel'))
+                            ->add('ajouter', 'submit',array('label'=>' '))
                             ->add('types', 'entity',array('class' => 'ParcInfoBundle:Type', 
                                                              'property' => 'libelleType',
                                                               'empty_value' => 'Aucun','expanded'=>false,'multiple'=>true))
-                            ->add('supprimer', 'submit',array('label'=>'Supprimer un ou plusieurs type(s)'))->getForm();
+                            ->add('supprimer', 'submit',array('label'=>' '))->getForm();
                     return $this->render('ParcInfoBundle:Default:Parametrage/parametrageType.html.twig', array('form' => $f->createView()));
                     
     }
