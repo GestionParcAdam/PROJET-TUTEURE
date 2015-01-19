@@ -294,22 +294,18 @@ class DefaultController extends Controller
     
     public function imprimAction(){
              
-       
                 $em = $this->getDoctrine()->getManager();
-                $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
+       
+                $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                                ->getMaterielsPG();
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-                $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
- 
-                
-            
-                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig',
-                        array("materiels"=>  $materiel,'type'=>$type,'site'=>$site)); 
-                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
-                $html2pdf->pdf->SetDisplayMode('real');
-                $html2pdf->writeHTML($html);
-                $html2pdf->Output('text.pdf');
-                return new Response();
-             
+
+                $this->get('knp_snappy.pdf')->generateFromHtml(
+                        $this->renderView('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
+                        array('materielPG' => $materiels,'type'=>$type)),
+                        'c:\wamp\essaiePDF.pdf');
+              
+                return new Response();       
     }
 
 
