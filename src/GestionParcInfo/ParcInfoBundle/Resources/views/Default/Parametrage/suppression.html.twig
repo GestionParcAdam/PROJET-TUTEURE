@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <br/>
+    <div class="row"> 
+        <div class="col-lg-12">
+            {{ form_start(form) }}
+            <h1>Suppression</h1>
+            <br/>
+            <div class="col-lg-6">
+                <select name="liste" class="form-control">
+                {% if categorie == 'types' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.libelleType }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'statuts' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.libelleStatut }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'etats' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.libelleEtat }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'users' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.nomUser }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'siteGeo' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.nomSite }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'fabricant' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.nomFabricant }}</option>            
+                    {% endfor %}
+                {% endif %}
+                {% if categorie == 'revendeur' %}  
+                    {% for option in liste %}
+                        <option value="{{ option.id }}">{{ option.nomRevendeur }}</option>            
+                    {% endfor %}
+                {% endif %}
+                </select>
+            </div>
+            
+                <a href="{{ path('parc_info_suppression', {'categorie': categorie }) }}">
+                    {{ form_widget(form.Supprimer) }}
+                </a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
