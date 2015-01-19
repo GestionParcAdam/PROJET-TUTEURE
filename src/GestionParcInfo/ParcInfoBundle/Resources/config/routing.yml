@@ -52,8 +52,40 @@ parc_info_resultatRecherche:
     defaults: { _controller: ParcInfoBundle:Recherche:resultat } 
 parc_info_connexion:
     path:     /Connexion
-    defaults: { _controller: ParcInfoBundle:Connexion:connexion } 
+    defaults: { _controller: ParcInfoBundle:Connexion:connexion }
 
-   
-  
+parc_info_parametrage:
+    path:     /Parametrage
+    defaults: { _controller: ParcInfoBundle:Parametrage:parametrage }
+
+parc_info_parametrageType:
+    path:     /Parametrage/Type
+    defaults: { _controller: ParcInfoBundle:Parametrage:type }  
+
+parc_info_parametrageStatut:
+    path:     /Parametrage/Statut
+    defaults: { _controller: ParcInfoBundle:Parametrage:statut }
     
+parc_info_parametrageEtat:
+    path:     /Parametrage/Etat
+    defaults: { _controller: ParcInfoBundle:Parametrage:etat }
+    
+parc_info_parametrageSite:
+    path:     /Parametrage/Site
+    defaults: { _controller: ParcInfoBundle:Parametrage:site }
+
+parc_info_parametrageSession:
+    path:     /Parametrage/Session
+    defaults: { _controller: ParcInfoBundle:Parametrage:session }
+
+parc_info_parametrageFabricant:
+    path:     /Parametrage/Fabricant
+    defaults: { _controller: ParcInfoBundle:Parametrage:fabricant }
+
+parc_info_parametrageRevendeur:
+    path:     /Parametrage/Revendeur
+    defaults: { _controller: ParcInfoBundle:Parametrage:revendeur }
+
+parc_info_parametrageUser:
+    path:     /Parametrage/Utilisateur
+    defaults: { _controller: ParcInfoBundle:Parametrage:user }

@@ -294,6 +294,7 @@ class DefaultController extends Controller
     
     public function imprimAction(){
              
+<<<<<<< HEAD
                 $em = $this->getDoctrine()->getManager();
        
                 $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
@@ -306,6 +307,20 @@ class DefaultController extends Controller
                         'c:\wamp\essaiePDF.pdf');
               
                 return new Response();       
+=======
+            
+            
+            $em = $this->getDoctrine()->getManager();
+
+            $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                            ->getMaterielsPG();
+            $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+
+            $html = $this->renderView('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
+            array('materielPG' => $materiels,'type'=>$type ));
+            $this->get('knp_snappy.pdf')->generateFromHtml($html,'c:/wamp/www/file.pdf');
+             
+>>>>>>> origin/master
     }
 
 
@@ -533,7 +548,7 @@ class DefaultController extends Controller
 
         return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig',array("materiel"=>  $materiel,'form' => $form->createView()));
     }
-    
+    /*
     public function listeBienFinGarantieAction()
     {
          $em = $this->getDoctrine()->getManager();
@@ -558,6 +573,6 @@ class DefaultController extends Controller
         $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
        
         return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig',array("logiciel"=>  $logiciel));
-    }
+    }*/
 }
 

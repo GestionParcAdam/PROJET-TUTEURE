@@ -17,7 +17,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new GestionParcInfo\ParcInfoBundle\ParcInfoBundle(),
+<<<<<<< HEAD
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle()
+=======
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+>>>>>>> origin/master
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
