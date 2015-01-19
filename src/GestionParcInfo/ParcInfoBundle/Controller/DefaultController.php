@@ -293,34 +293,17 @@ class DefaultController extends Controller
     }
     
     public function imprimAction(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
+                        ->getMaterielsPG();
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+
+        $html = $this->renderView('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
+                                    array('materielPG' => $materiels,'type'=>$type ));
+        $this->get('knp_snappy.pdf')->generateFromHtml($html,'c:/wamp/www/file.pdf');
              
-<<<<<<< HEAD
-                $em = $this->getDoctrine()->getManager();
-       
-                $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
-                                ->getMaterielsPG();
-                $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-
-                $this->get('knp_snappy.pdf')->generateFromHtml(
-                        $this->renderView('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
-                        array('materielPG' => $materiels,'type'=>$type)),
-                        'c:\wamp\essaiePDF.pdf');
-              
-                return new Response();       
-=======
-            
-            
-            $em = $this->getDoctrine()->getManager();
-
-            $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
-                            ->getMaterielsPG();
-            $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-
-            $html = $this->renderView('ParcInfoBundle:Default:PopUp/affichePopUpPG.html.twig',
-            array('materielPG' => $materiels,'type'=>$type ));
-            $this->get('knp_snappy.pdf')->generateFromHtml($html,'c:/wamp/www/file.pdf');
-             
->>>>>>> origin/master
     }
 
 
