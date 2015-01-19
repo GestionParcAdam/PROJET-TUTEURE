@@ -1,50 +1,154 @@
 {% extends "::base.html.twig" %}
+
 {% block body %}
     <br/>
     <div class="row">   
-        
         <div class="col-lg-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Paramètres </h3>
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Paramètrages </h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-12 col-lg-push-1">
-                        
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageType') }}"><button class="btn btn-primary sameSize" >Gérer les Types</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageStatut') }}"><button class="btn btn-primary sameSize">Gérer les Statuts</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageEtat') }}"><button class="btn btn-primary sameSize">Gérer les Etats</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageUser') }}"><button class="btn btn-primary sameSize">Gérer les Utilisateurs</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageSite') }}"><button class="btn btn-primary sameSize">Gérer les Sites Géographiques</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageFabricant') }}"><button class="btn btn-primary sameSize">Gérer les Fabricants</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageRevendeur') }}"><button class="btn btn-primary sameSize">Gérer les Revendeurs</button></a>
-                            </div>
-                            <br><br><div class="col-lg-12"></div> 
-                            <div class="col-lg-10">
-                                <a href="{{ path('parc_info_parametrageSession') }}"><button class="btn btn-primary sameSize">Gérer la Session d'administration</button></a>
-                            </div>
-                        <br>
+                    <div class="col-lg-12">
+                        <div class="row"> 
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Catégories</th>
+                                        <th>Opérations</th>   
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Gérer les types</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les statuts</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les états</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les utilisateurs</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les sites géographiques</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les fabricants</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer les revendeurs</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>Gérer la session d'administration</td>
+                                        <td>
+                                            <button class="btn btn-success">
+                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-danger">
+                                                Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                            </button>
+                                        </td>   
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
                     </div>
                 </div>
+
+                <!-- CODE GERMAIN 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageType') }}"><button class="btn btn-primary sameSize" >Gérer les Types</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageStatut') }}"><button class="btn btn-primary sameSize">Gérer les Statuts</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageEtat') }}"><button class="btn btn-primary sameSize">Gérer les Etats</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageUser') }}"><button class="btn btn-primary sameSize">Gérer les Utilisateurs</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageSite') }}"><button class="btn btn-primary sameSize">Gérer les Sites Géographiques</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageFabricant') }}"><button class="btn btn-primary sameSize">Gérer les Fabricants</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageRevendeur') }}"><button class="btn btn-primary sameSize">Gérer les Revendeurs</button></a>
+                </div>
+                <br><br><div class="col-lg-12"></div> 
+                <div class="col-lg-10">
+                    <a href="{{ path('parc_info_parametrageSession') }}"><button class="btn btn-primary sameSize">Gérer la Session d'administration</button></a>
+                </div>
+                <br>
+                -->
             </div>
         </div>
     </div>
