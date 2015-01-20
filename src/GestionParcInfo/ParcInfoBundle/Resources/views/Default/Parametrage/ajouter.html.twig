@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <br/>
+    <div class="row"> 
+        <div class="col-lg-12">
+            {{ form_start(form) }}
+            <h1>Ajout</h1>
+            <br/>
+            <div class="col-lg-6">
+                {{ form_widget(form.nom , {'attr': {'class': 'form-control' }}) }}
+                {{ form_widget(form.Ajouter, {'attr': {'class':'btn btn-success glyphicon glyphicon-plus-sign' }}) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

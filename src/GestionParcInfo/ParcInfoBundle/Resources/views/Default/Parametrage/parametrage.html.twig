@@ -22,9 +22,11 @@
                                     <tr>
                                         <td>Gérer les types</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'types' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'types' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -35,9 +37,11 @@
                                     <tr>
                                         <td>Gérer les statuts</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'statuts' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'statuts' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -48,9 +52,11 @@
                                     <tr>
                                         <td>Gérer les états</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'etats' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'etats' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -61,10 +67,12 @@
                                     <tr>
                                         <td>Gérer les utilisateurs</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
-                                            <a href ='{{ path('parc_info_suppression', { 'categorie': 'users' }) }}'>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'Utilisateur' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
+                                            <a href ='{{ path('parc_info_suppression', { 'categorie': 'Utilisateur' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
                                                 </button>
@@ -74,9 +82,11 @@
                                     <tr>
                                         <td>Gérer les sites géographiques</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'siteGeo' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'siteGeo' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -87,9 +97,11 @@
                                     <tr>
                                         <td>Gérer les fabricants</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'fabricant' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'fabricant' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -100,9 +112,11 @@
                                     <tr>
                                         <td>Gérer les revendeurs</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'revendeur' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'revendeur' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
@@ -113,9 +127,11 @@
                                     <tr>
                                         <td>Gérer la session d'administration</td>
                                         <td>
-                                            <button class="btn btn-success">
-                                                Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                                            </button>
+                                            <a href ='{{ path('parc_info_ajoutParam', { 'categorie': 'admin' }) }}'>
+                                                <button class="btn btn-success">
+                                                    Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'admin' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>

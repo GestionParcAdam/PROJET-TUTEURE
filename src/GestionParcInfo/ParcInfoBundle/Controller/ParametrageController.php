@@ -34,10 +34,35 @@ class ParametrageController extends Controller {
         # TEST pour un USER pour commencer avant de faire tout le reste !
 
         if ($form->handleRequest($request)->isSubmitted()) {
+            
             $id = $_POST['liste'];
             \Doctrine\Common\Util\Debug::dump($id);
             $em = $this->getDoctrine()->getManager();
-            $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur::class, $id);
+            
+            if($categorie == 'Utilisateur'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur::class, $id);
+            }
+            
+            if($categorie == 'types'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Type::class, $id);
+            }
+            
+            if($categorie == 'siteGeo'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Site::class, $id);
+            }
+            
+            if($categorie == 'status'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Statut::class, $id);
+            }
+            
+            if($categorie == 'fabricant'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant::class, $id);
+            }
+            
+            if($categorie == 'revendeur'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur::class, $id);
+            }
+            
             $em->remove($obj);
             $em->flush();
 
@@ -62,10 +87,10 @@ class ParametrageController extends Controller {
                         'categorie' => 'etats',
                         'form' => $form->createView()));
         }
-        if ($categorie == 'users') {
+        if ($categorie == 'Utilisateur'){
             $liste = $em->getRepository('ParcInfoBundle:Utilisateur')->findAll();
             return $this->render('ParcInfoBundle:Default:Parametrage/suppression.html.twig', array('liste' => $liste,
-                        'categorie' => 'users',
+                        'categorie' => 'Utilisateur',
                         'form' => $form->createView()));
         }
         if ($categorie == 'siteGeo') {
@@ -92,8 +117,93 @@ class ParametrageController extends Controller {
                         'categorie' => 'admin',
                         'form' => $form->createView()));
         }
-
+        
         return new Response('Catégorie inconnue !');
     }
 
+    public function ajouterAction(Request $request, $categorie){
+        
+        if ($categorie == 'types') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter le type'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'statuts') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter le statut'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'etats') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter l\'état'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'Utilisateur'){
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter l\'utilisateur'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'siteGeo') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter le site géographique'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'fabricant') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter le fabricant'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'revendeur') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter le revendeur'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        if ($categorie == 'admin') {
+            $form = $this->createFormBuilder()
+                    ->add('nom','text')
+                    ->add('Ajouter','submit',array('label' => 'Ajouter l\'admin'))
+                    ->getForm();
+            
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+        }
+        
+        return new Response('Mauvais type');
+    }
 }
