@@ -14,6 +14,13 @@ namespace GestionParcInfo\ParcInfoBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use GestionParcInfo\ParcInfoBundle\Entity\Type;
+use GestionParcInfo\ParcInfoBundle\Entity\Statut;
+use GestionParcInfo\ParcInfoBundle\Entity\Etat;
+use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
+use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
+use GestionParcInfo\ParcInfoBundle\Entity\Site;
+use GestionParcInfo\ParcInfoBundle\Entity\Utilisateur;
 
 class ParametrageController extends Controller {
 
@@ -30,8 +37,6 @@ class ParametrageController extends Controller {
                 ->getForm();
 
         $em = $this->getDoctrine()->getManager();
-
-        # TEST pour un USER pour commencer avant de faire tout le reste !
 
         if ($form->handleRequest($request)->isSubmitted()) {
             
@@ -51,7 +56,7 @@ class ParametrageController extends Controller {
                 $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Site::class, $id);
             }
             
-            if($categorie == 'status'){
+            if($categorie == 'statuts'){
                 $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Statut::class, $id);
             }
             
@@ -61,6 +66,10 @@ class ParametrageController extends Controller {
             
             if($categorie == 'revendeur'){
                 $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur::class, $id);
+            }
+            
+            if($categorie == 'etats'){
+                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Etat::class, $id);
             }
             
             $em->remove($obj);
@@ -123,11 +132,26 @@ class ParametrageController extends Controller {
 
     public function ajouterAction(Request $request, $categorie){
         
+        $em = $this->getDoctrine()->getManager();
+        
         if ($categorie == 'types') {
             $form = $this->createFormBuilder()
                     ->add('nom','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter le type'))
                     ->getForm();
+            
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Type();
+                
+                $obj->setLibelleType($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Type AJOUTER !');
+            }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
@@ -139,6 +163,19 @@ class ParametrageController extends Controller {
                     ->add('Ajouter','submit',array('label' => 'Ajouter le statut'))
                     ->getForm();
             
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Statut();
+                
+                $obj->setLibelleStatut($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Statut AJOUTER !');
+            }
+            
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
                         'form' => $form->createView()));
@@ -148,6 +185,19 @@ class ParametrageController extends Controller {
                     ->add('nom','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter l\'état'))
                     ->getForm();
+            
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Etat();
+                
+                $obj->setLibelleEtat($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Etat AJOUTER !');
+            }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
@@ -159,6 +209,19 @@ class ParametrageController extends Controller {
                     ->add('Ajouter','submit',array('label' => 'Ajouter l\'utilisateur'))
                     ->getForm();
             
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Utilisateur();
+                
+                $obj->setNomUser($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Utilisateur AJOUTER !');
+            }
+            
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
                         'form' => $form->createView()));
@@ -168,6 +231,20 @@ class ParametrageController extends Controller {
                     ->add('nom','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter le site géographique'))
                     ->getForm();
+            
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Site();
+                
+                #il faut aussi mettre un champ adresse 
+                $obj->setNomSite($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Site géo AJOUTER !');
+            }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
@@ -179,6 +256,19 @@ class ParametrageController extends Controller {
                     ->add('Ajouter','submit',array('label' => 'Ajouter le fabricant'))
                     ->getForm();
             
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Fabricant();
+                
+                $obj->setNomFabricant($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Fabricant AJOUTER !');
+            }
+            
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
                         'form' => $form->createView()));
@@ -189,6 +279,19 @@ class ParametrageController extends Controller {
                     ->add('Ajouter','submit',array('label' => 'Ajouter le revendeur'))
                     ->getForm();
             
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Revendeur();
+                
+                $obj->setNomRevendeur($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Revendeur AJOUTER !');
+            }
+            
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
                         'form' => $form->createView()));
@@ -198,6 +301,19 @@ class ParametrageController extends Controller {
                     ->add('nom','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter l\'admin'))
                     ->getForm();
+            #A voir avec l'equipe !
+            if($form->handleRequest($request)->isSubmitted())
+            {
+                $data = $form->getData();
+                $obj = new Statut();
+                
+                $obj->setLibelleStatut($data['nom']);
+                
+                $em->persist($obj);
+                $em->flush();
+                
+                return new Response('Statut AJOUTER !');
+            }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,

@@ -5,9 +5,9 @@
         <group>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/parametrage.html.twig</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/ParametrageController.php</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/ajouter.html.twig</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/suppression.html.twig</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
         </group>
     </open-files>
 </project-private>
