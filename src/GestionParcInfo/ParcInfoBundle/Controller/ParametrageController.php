@@ -229,6 +229,7 @@ class ParametrageController extends Controller {
         if ($categorie == 'siteGeo') {
             $form = $this->createFormBuilder()
                     ->add('nom','text')
+                    ->add('adresse','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter le site géographique'))
                     ->getForm();
             
@@ -237,8 +238,8 @@ class ParametrageController extends Controller {
                 $data = $form->getData();
                 $obj = new Site();
                 
-                #il faut aussi mettre un champ adresse 
                 $obj->setNomSite($data['nom']);
+                $obj->setAdresseSite($data['adresse']);
                 
                 $em->persist($obj);
                 $em->flush();

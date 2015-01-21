@@ -8,7 +8,12 @@
             <h1>Ajout</h1>
             <br/>
             <div class="col-lg-6">
+                <label> {{ categorie }} : </label>
                 {{ form_widget(form.nom , {'attr': {'class': 'form-control' }}) }}
+                {% if categorie == 'siteGeo' %}
+                    <label> Adresse :</label>
+                     {{ form_widget(form.adresse , {'attr': {'class': 'form-control' }}) }}
+                {% endif %}
                 {{ form_widget(form.Ajouter, {'attr': {'class':'btn btn-success glyphicon glyphicon-plus-sign' }}) }}
             </div>
             {{ form_end(form) }}
