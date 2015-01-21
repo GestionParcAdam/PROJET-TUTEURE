@@ -45,31 +45,31 @@ class ParametrageController extends Controller {
             $em = $this->getDoctrine()->getManager();
             
             if($categorie == 'Utilisateur'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Utilisateur')->find($id);
             }
             
             if($categorie == 'types'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Type::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Type')->find($id);
             }
             
             if($categorie == 'siteGeo'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Site::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Site')->find($id);
             }
             
             if($categorie == 'statuts'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Statut::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Statut')->find($id);
             }
             
             if($categorie == 'fabricant'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Fabricant')->find($id);
             }
             
             if($categorie == 'revendeur'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Revendeur')->find($id);
             }
             
             if($categorie == 'etats'){
-                $obj = $em->find(\GestionParcInfo\ParcInfoBundle\Entity\Etat::class, $id);
+                $obj = $em->getRepository('ParcInfoBundle:Etat')->find($id);
             }
             
             $em->remove($obj);
