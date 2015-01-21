@@ -33,8 +33,8 @@ class ConnexionController extends Controller
                 
                 $data = $form->getData();
                 
-               $co= $em->getRepository('ParcInfoBundle:Connexion')->findOneBy(array('id'=>1));
-               if($co->getMdp()==sha1($data['motDePasse'])){
+               $co= $em->getRepository('ParcInfoBundle:Connexion')->findOneBy(array('id'=>$data['motDePasse']));
+               if(!empty($co)){
                    $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getMaterielsHS();
         $allsite = $em->getRepository('ParcInfoBundle:Site')->findAll();
