@@ -25,7 +25,7 @@ function plus(cadre,type,nb){
     ch1.setAttribute('value', 'etiquette'+c2.length/2);
     ch1.setAttribute('style','border:none');
     */
-    ch2.setAttribute('type','hidden');
+    ch2.setAttribute('type','text');
     ch2.setAttribute('name',type+nb);
     ch2.setAttribute('id',type+nb);
     ch2.setAttribute('readonly','readonly'); 
@@ -182,7 +182,7 @@ function supprimerLigneMaintenance(r)
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabMaintenance').deleteRow(i-1);
     for(var k=0;k<5;k++)
-        moins(i-1,'cadreLog');
+        moins(i-1,'cadreMaintenance');
     document.getElementById('form_nbMaintenance').value--;
 }
 /*
@@ -208,8 +208,9 @@ function supprimerLigneLog(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById('tabLog').deleteRow(i-1);
+    console.log((i-1)+" est la ligne a suprimer ");
     for(var k=0;k<4;k++)
-        moins(i-1,'cadreMaintenance');
+        moins(i-1,'cadreLog');
     document.getElementById('form_nbLog').value--;
 }
 
