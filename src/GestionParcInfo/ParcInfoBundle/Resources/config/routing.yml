@@ -40,7 +40,7 @@ parc_info_matEnPanne:
 
 parc_info_modifier:
     path:     /modifier/{idmat}
-    defaults: { _controller: ParcInfoBundle:Default:modifier }
+    defaults: { _controller: ParcInfoBundle:Modifier:modifier }
     
 parc_info_listeBienInformatique:
     path:     /listeBienInformatique
@@ -49,6 +49,7 @@ parc_info_listeBienInformatique:
 parc_info_resultatRecherche:
     path:     /ResultatRecherche
     defaults: { _controller: ParcInfoBundle:Recherche:resultat } 
+    
 parc_info_connexion:
     path:     /Connexion
     defaults: { _controller: ParcInfoBundle:Connexion:connexion }
