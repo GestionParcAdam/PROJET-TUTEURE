@@ -25,7 +25,7 @@ function plus(cadre,type,nb){
     ch1.setAttribute('value', 'etiquette'+c2.length/2);
     ch1.setAttribute('style','border:none');
     */
-    ch2.setAttribute('type','text');
+    ch2.setAttribute('type','hidden');
     ch2.setAttribute('name',type+nb);
     ch2.setAttribute('id',type+nb);
     ch2.setAttribute('readonly','readonly'); 
@@ -43,7 +43,7 @@ function moins(i,cadre){
     }
     //if(c2.length===0){document.getElementById('form_nbUsers').value=0;};
 }
-
+/*
 idUser=0;
 function recupSaisiePopupUser(){
 
@@ -70,7 +70,7 @@ function recupSaisiePopupUser(){
     
 }
 
-
+*/
 j=0;
 function recupSaisiePopupLog(){
     idLog=0;
@@ -185,7 +185,7 @@ function supprimerLigneMaintenance(r)
         moins(i-1,'cadreLog');
     document.getElementById('form_nbMaintenance').value--;
 }
-
+/*
 function supprimerLigneUser(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
@@ -194,6 +194,7 @@ function supprimerLigneUser(r)
     moins(i-1,'cadreUser');
     document.getElementById('form_nbUsers').value--;
 }
+*/
 function supprimerLigneSelectUser(r)
 {
     var i = r.parentNode.parentNode.rowIndex;
