@@ -72,9 +72,9 @@ swiftmailer:
     spool:     { type: memory }
 
 # knp snappy config
-knp_snappy:
-    pdf:
-        enabled:    true
-        binary:     C:/wamp/www/PROJET-TUTEURE/wkhtmltopdf.exe
-        options:    []
+#knp_snappy:
+ #   pdf:
+  #      enabled:    true
+   #     binary:     C:/wamp/www/PROJET-TUTEURE/wkhtmltopdf.exe
+    #    options:    []
 

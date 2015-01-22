@@ -213,13 +213,13 @@ class DefaultController extends Controller {
                  * Prévoir bouclage sur le nombre d'user ajouter
                  */
                 for ($i = 1; $i <= $data['nbUsers'] + 1; $i++) {
-                    $concat = 'user' . $i;
+                    $concat = 'selectUser' . $i;
                     \Doctrine\Common\Util\Debug::dump($concat);
                     if (isset($_POST[$concat])) {
                         \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
-                        $user = new Utilisateur();
+                        $user = $em->getRepository('ParcInfoBundle:Utilisateur')->find($_POST[$concat]);
 
-                        $user->setNomUser($_POST[$concat]);
+                      // $user->setNomUser($_POST[$concat]);
                         $user->addMateriel($materiel);
                     }
                 }

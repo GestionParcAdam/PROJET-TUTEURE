@@ -200,6 +200,7 @@ function supprimerLigneSelectUser(r)
     document.getElementById('tabSelectUser').deleteRow(i-1);
     console.log((i-1)+" est la ligne a suprimer ");
     moins(i-1,'cadreSelectUser');
+    document.getElementById('form_nbUsers').value--;
 }
 
 function supprimerLigneLog(r)
@@ -231,6 +232,10 @@ function recupSelectionUser(){
     
     console.log('selectUser'+idSelectUser);    
     document.getElementById('selectUser'+idSelectUser).value=nom;
+    
+    var nb=idSelectUser;
+    console.log((nb)+" est le nombre d'utilisateur"); 
+    document.getElementById('form_nbUsers').value=(c2.length);
     
 }
 
