@@ -1,60 +1,46 @@
+<body>
+    <br/>     
 
-{% extends "::base.html.twig" %}
+    <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}">
+ <br/> 
+    <h3 style="text-align: center;"> Liste du Matériel par Site</h3>
 
-{% block body %}
-    <br/>
-    <div class="row">     
-        <div class="col-lg-7">
-            <div class="panel panel-primary">
-                    
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Matériel</h3>
-                </div>
-                <div class="panel-body">
-                    {% for s in site %}
-                        {% set existe = '' %}
-                        {% for materiel in materiels %}
-                            {% if materiel.numSite.id==s.id %}
-                                   {% set existe = 'true' %}
-                            {% endif %}
-                        {% endfor %}
-                    {% if existe %}    
-                    <div class="col-lg-12">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-laptop"></i> {{s.nomSite}}</h3>
-                            </div>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Nom du matériel</th>
-                                        <th> Type de matériel</th>
-                                      
-                                        
-                                        <th> Statut </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for materiel in materiels %}
-                                        {% if materiel.numSite.id==s.id %}
-                                        <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
-                                            <td>{{ materiel.nomMat }}</td>
-                                           <td>{{ materiel.numType.libelleType}}</td>
-                                            
-                                            
-                                           <td>{{  materiel.numStatut.libelleStatut}}</td>
-                                        </tr>
-                                        {% endif %}
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    {% endif %}           
-                    {% endfor %}
-                </div>
+<br/> 
+    {% for s in site %}
+        {% set existe = '' %}
+        {% for materiel in materiels %}
+            {% if materiel.numSite.id==s.id %}
+                   {% set existe = 'true' %}
+            {% endif %}
+        {% endfor %}
+    {% if existe %}
+            <div class="panel-heading">
+                <h4 style="text-align: center;"> {{s.nomSite}}</h4>
             </div>
-        </div>
-    </div>
+            <table class="table table-striped" style="width: 100%; font-size: 14px; border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;border-color: gray;margin: auto;">
+                <thead>
+                    <tr>
+                        <th>Nom du matériel &nbsp;&nbsp;</th>
+                        <th> Type de matériel &nbsp;&nbsp;</th>
+                        <th> Statut </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for materiel in materiels %}
+                        {% if materiel.numSite.id==s.id %}
+                        <tr>
+                            <td>{{ materiel.nomMat }}</td>
+                           <td>{{ materiel.numType.libelleType}}</td>
+                           <td>{{  materiel.numStatut.libelleStatut}}</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+                <br/>
+    {% endif %}           
+    {% endfor %}
+            
     
-{% endblock %}
+ </body>

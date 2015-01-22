@@ -326,7 +326,33 @@ class DefaultController extends Controller {
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                 $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
 
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
+                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
+                //on instancie la classe Html2Pdf_Html2Pdf en lui passant en paramètre
+                //le sens de la page "portrait" => p ou "paysage" => l
+                //le format A4,A5...
+                //la langue du document fr,en,it...
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+                //SetDisplayMode définit la manière dont le document PDF va être affiché par l’utilisateur
+                //fullpage : affiche la page entière sur l'écran
+                //fullwidth : utilise la largeur maximum de la fenêtre
+                //real : utilise la taille réelle
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+
+                //writeHTML va tout simplement prendre la vue stocker dans la variable $html pour la convertir en format PDF
+                $html2pdf->writeHTML($html);
+                
+                if($numSite==''){
+                    $v = "Liste_Bien_Tous_Sites.pdf";
+                }else{
+                    $ville=$em->getRepository('ParcInfoBundle:Site')->findOneBy(array('id'=>$numSite))->getNomSite();
+                    $v = "Liste_Bien_$ville.pdf";
+                }
+                
+                
+                //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
+                $html2pdf->Output($v,'D');
+                return new Response();
             }
 
             if (isset($form['btnBienFinGar'])) {
