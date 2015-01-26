@@ -429,7 +429,7 @@ class DefaultController extends Controller {
 
     public function ficheAction($idmat,  Request $request) {
         $form = $this->createFormBuilder()
-            ->add('connexionVNC', 'button',array('label'=>'Connexion VNC'))
+            ->add('connexionVNC', 'submit',array('label'=>'Connexion VNC'))
             ->getForm();
         $form1 = $this->createFormBuilder()
             ->add('ping', 'submit')
@@ -443,7 +443,7 @@ class DefaultController extends Controller {
             $process->run();
 
             if($process->isSuccessful()){
-                $couleur='green';
+                $couleur='#00FF00';
             }else{
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
@@ -451,14 +451,19 @@ class DefaultController extends Controller {
                 $process = new Process('ping '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
-                    $couleur='green';
+                    $couleur='#00FF00';
                 }else{
-                    $couleur='red';
+                    $couleur='#8B0000';
                 }
                
             }
         }
-
+        $form->handleRequest($request);
+        if ($form->get('connexionVNC')->isClicked()) {            
+            $proc = new Process('vncviewer.exe 127.0.0.1 -password 01');
+            $proc->run();
+            //exec('vncviewer.exe');
+        }
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
 

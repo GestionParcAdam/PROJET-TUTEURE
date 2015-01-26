@@ -14,14 +14,17 @@ namespace GestionParcInfo\ParcInfoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GestionParcInfo\ParcInfoBundle\Entity\Connexion;
-
+use Symfony\Component\Process\Process;
 
 class ConnexionController extends Controller
 {
     
      public function connexionAction(Request $request)
     {
-         
+         $process = new Process('ping localhost');
+            $process->run();
+            $mes=  explode(' ', $process->getOutput());
+            $mes=$mes[5];
          $form = $this->createFormBuilder()
             ->setAction($this->generateUrl('parc_info_connexion'))
             ->add('motDePasse', 'password')
@@ -50,6 +53,6 @@ class ConnexionController extends Controller
                                 array('materielHs' => $materiels,'allsite' => $allsite,'materielPG'=>$materielPG,'materielEnPanne'=>$materielEnPanne,'dernierModif'=>$dernierModif));
                }
         }
-        return $this->render('ParcInfoBundle:Default:Connexion/Connexion.html.twig', array('form' => $form->createView()));
+        return $this->render('ParcInfoBundle:Default:Connexion/Connexion.html.twig', array('form' => $form->createView(),'nom'=>$mes));
     }
  }

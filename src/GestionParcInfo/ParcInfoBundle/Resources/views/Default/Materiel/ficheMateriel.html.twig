@@ -25,11 +25,16 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             </div>
                             <div class="panel-body">
                                 <p class="col-lg-8"></p>
-                                <p class="col-lg-2"><button class="btn btn-default">Connexion VNC</button></p>
-                                
-                                    {{ form_start(form1) }}
-                                    <p class="col-lg-1" >{{ form_widget(form1.ping, {'attr': {'class': 'btn btn-default','style':'background-color:'~couleur~';'}}) }}</p>
-                                    {{ form_end(form1) }}
+                                {{ form_start(form) }}
+                                <p class="col-lg-2">
+                                    {{ form_widget(form.connexionVNC, {'attr': {'class': 'btn btn-default'}}) }}
+                                </p>
+                                {{ form_end(form) }}                                
+                                {{ form_start(form1) }}
+                                <p class="col-lg-1" >
+                                    {{ form_widget(form1.ping, {'attr': {'class': 'btn btn-default','style':'background-color:'~couleur~';'}}) }}
+                                </p>
+                                {{ form_end(form1) }}
                                 
                                 <p class="col-lg-1"><a href="{{path('parc_info_modifier',{'idmat':materiel.id})}}"><button class="btn btn-default">Editer</button></a></p>
                                 <p class="col-lg-5"><b>Type de matériel :</b> 
@@ -160,12 +165,12 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                         <p class="col-lg-12"></p>
                                         <p class="col-lg-12"><b>@MAC :</b> 
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracRes.adressIp}}
+                                            {{materiel.numCarac.numCaracRes.adressMac}}
                                             {%endif%}
                                         </p>
                                         <p class="col-lg-12"><b>@IP :</b> 
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracRes.adressMac}}
+                                            {{materiel.numCarac.numCaracRes.adressIp}}
                                             {%endif%}
                                         </p>
                                         <p class="col-lg-12"><b>@PASSERELLE :</b>
