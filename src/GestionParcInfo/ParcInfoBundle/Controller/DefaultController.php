@@ -460,9 +460,9 @@ class DefaultController extends Controller {
         }
         $form->handleRequest($request);
         if ($form->get('connexionVNC')->isClicked()) {            
-            $proc = new Process('vncviewer.exe 127.0.0.1 -password 01');
-            $proc->run();
-            //exec('vncviewer.exe');
+            //$proc = new Process('vncviewer.exe 127.0.0.1 -password 01');
+            //$proc->run();
+            exec("C:/wamp/www/PROJET-TUTEURE/web/vncviewer.exe");
         }
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
