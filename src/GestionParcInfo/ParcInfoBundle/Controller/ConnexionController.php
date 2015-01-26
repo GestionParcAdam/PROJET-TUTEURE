@@ -28,7 +28,7 @@ class ConnexionController extends Controller
             ->add('connexion', 'submit')
             ->getForm();
         if($form->handleRequest($request)->isSubmitted()){
-            /* j'ouvre la connexion à la BD Doctrine */
+            
                 $em = $this->getDoctrine()->getManager();
                 
                 $data = $form->getData();

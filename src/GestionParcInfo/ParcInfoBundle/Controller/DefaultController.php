@@ -23,6 +23,7 @@ use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Process\Process;
 
 class DefaultController extends Controller {
 
@@ -326,7 +327,25 @@ class DefaultController extends Controller {
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                 $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
 
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
+                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
+                
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+
+                $html2pdf->writeHTML($html);
+                
+                if($numSite==''){
+                    $v = "Liste_Bien_Tous_Sites.pdf";
+                }else{
+                    $ville=$em->getRepository('ParcInfoBundle:Site')->findOneBy(array('id'=>$numSite))->getNomSite();
+                    $v = "Liste_Bien_$ville.pdf";
+                }
+                
+                
+                //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
+                $html2pdf->Output($v,'D');
+                return new Response();
             }
 
             if (isset($form['btnBienFinGar'])) {
@@ -335,7 +354,19 @@ class DefaultController extends Controller {
                 $materiels = $em->getRepository('ParcInfoBundle:Materiel')
                         ->getMaterielFinGarantie();
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig', array('materiels' => $materiels, 'type' => $type));
+                
+                $html = $this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig', array('materiels' => $materiels, 'type' => $type));
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+
+                $html2pdf->writeHTML($html);
+
+                $v = "Liste_Bien_Fin_Garantie.pdf";
+
+                $html2pdf->Output($v,'D');
+                return new Response();
+                
             }
             if (isset($form['btnMatEtat'])) {
                 $idEtat = $form['etatMat'];
@@ -346,14 +377,40 @@ class DefaultController extends Controller {
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                 $etat = $em->getRepository('ParcInfoBundle:Etat')->findAll();
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig', array("materiels" => $materiel, 'type' => $type, 'etat' => $etat));
+                
+                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig', array("materiels" => $materiel, 'type' => $type, 'etat' => $etat));
+            
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+
+                $html2pdf->writeHTML($html);
+
+                if($idEtat==''){
+                    $e = "Liste_Bien_Tous_Etat.pdf";
+                }else{
+                    $etat=$em->getRepository('ParcInfoBundle:Etat')->findOneBy(array('id'=>$idEtat))->getLibelleEtat();
+                    $e = "Liste_Bien_$etat.pdf";
+                }
+
+                $html2pdf->Output($e,'D');
+                return new Response();
             }
             if (isset($form['btnListLog'])) {
-
+                
                 $em = $this->getDoctrine()->getManager();
                 $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
 
-                return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig', array("logiciel" => $logiciel));
+                $html= $this->renderView('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig', array("logiciel" => $logiciel));
+            
+                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+
+                $html2pdf->writeHTML($html);
+
+                $html2pdf->Output('Liste_Logiciels.pdf','D');
+                return new Response();
             }
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
@@ -370,12 +427,39 @@ class DefaultController extends Controller {
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
     }
 
-    public function ficheAction($idmat) {
+    public function ficheAction($idmat,  Request $request) {
+        $form = $this->createFormBuilder()
+            ->add('connexionVNC', 'button',array('label'=>'Connexion VNC'))
+            ->getForm();
+        $form1 = $this->createFormBuilder()
+            ->add('ping', 'submit')
+            ->getForm();
         $em = $this->getDoctrine()->getManager();
-
+        $form1->handleRequest($request);
+        $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
+        if ($form1->get('ping')->isClicked()) {
+            $process = new Process('ping '.$materiel->getNomMat());
+            $process->run();
 
-        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel));
+            if($process->isSuccessful()){
+                $couleur='green';
+            }else{
+                $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
+                        ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
+                $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
+                $process = new Process('ping '.$adr);
+                $process->run();
+                if($process->isSuccessful()){
+                    $couleur='green';
+                }else{
+                    $couleur='red';
+                }
+               
+            }
+        }
+
+        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
 
     public function modifierAction($idmat, Request $request) {

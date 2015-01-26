@@ -16,9 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new GestionParcInfo\ParcInfoBundle\ParcInfoBundle(),
-          //  new Knp\Bundle\SnappyBundle\KnpSnappyBundle()
-
+            new GestionParcInfo\ParcInfoBundle\ParcInfoBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
