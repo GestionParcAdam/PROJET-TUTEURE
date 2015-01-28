@@ -2,25 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/vendor/symfony/symfony/src/Symfony/Component/Process/Process.php</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/ConnexionController.php</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
             <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/ficheMateriel.html.twig</file>
         </group>
-=======
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/web/js/script.js</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/EditionRapport.html.twig</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienInformatique.html.twig</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
-        </group>
-=======
-        <group/>
->>>>>>> origin/master
->>>>>>> origin/master
     </open-files>
 </project-private>
