@@ -24,6 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Process;
+use Obtao\Bundle\Html2PdfBundle;
 
 class DefaultController extends Controller {
 
@@ -329,7 +330,7 @@ class DefaultController extends Controller {
 
                 $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
                 
-                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+                $html2pdf = new Html2Pdf_Html2Pdf('P','A4','fr');
 
                 $html2pdf->pdf->SetDisplayMode('fullpage');
 
