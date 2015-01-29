@@ -439,31 +439,33 @@ class DefaultController extends Controller {
         $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
         if ($form1->get('ping')->isClicked()) {
-            $process = new Process('ping '.$materiel->getNomMat());
+            $process = new Process('ping -n 1 '.$materiel->getNomMat());
             $process->run();
 
             if($process->isSuccessful()){
-                $couleur='#00FF00';
+                $couleur='green';
             }else{
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
                 $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
-                $process = new Process('ping '.$adr);
+                $process = new Process('ping -n 1 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
-                    $couleur='#00FF00';
+                    $couleur='green';
                 }else{
-                    $couleur='#8B0000';
+                    $couleur='red';
                 }
                
             }
         }
-        $form->handleRequest($request);
+        /*$form->handleRequest($request);
         if ($form->get('connexionVNC')->isClicked()) {            
-            //$proc = new Process('vncviewer.exe 127.0.0.1 -password 01');
+            //$proc = new Process('vnc.bat');
             //$proc->run();
-            exec("C:/wamp/www/PROJET-TUTEURE/web/vncviewer.exe");
-        }
+            //system("C:/wamp/www/PROJET-TUTEURE/web/vncviewer.exe");
+            return $this->render('http://www.google.fr');
+            
+        }*/
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
 
