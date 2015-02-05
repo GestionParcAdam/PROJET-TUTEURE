@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+26/1/2015 17:22   Connection received from 164.81.154.27
+26/1/2015 17:22   Connection received from 164.81.154.27
+26/1/2015 17:23   Connection received from 164.81.154.27
+26/1/2015 17:23   Connection received from 164.81.154.27
+26/1/2015 17:24   Client 164.81.154.27 disconnected
+26/1/2015 17:25   Client 164.81.154.27 disconnected
+27/1/2015 11:49   Connection received from 127.0.0.1
+27/1/2015 11:49   Invalid attempt from client 127.0.0.1
+27/1/2015 11:50   Client 127.0.0.1 disconnected
+27/1/2015 13:04   Connection received from 192.168.173.1
+27/1/2015 13:04   Invalid attempt from client 192.168.173.1
+27/1/2015 13:05   Client 192.168.173.1 disconnected
+28/1/2015 13:21   Connection received from 164.81.154.27
+28/1/2015 13:21   Invalid attempt from client 164.81.154.27
+28/1/2015 13:22   Client 164.81.154.27 disconnected
+28/1/2015 13:22   Connection received from 164.81.154.27
+28/1/2015 13:22   Invalid attempt from client 164.81.154.27
+28/1/2015 13:24   Client 164.81.154.27 disconnected
+=======
 28/1/2015 18:06   Connection received from 192.168.0.11
 28/1/2015 18:06   Invalid attempt from client 192.168.0.11
 28/1/2015 18:11   Client 192.168.0.11 disconnected
@@ -10,3 +30,13 @@
 28/1/2015 18:39   Connection received from 192.168.0.11
 28/1/2015 18:39   Invalid attempt from client 192.168.0.11
 28/1/2015 18:39   Client 192.168.0.11 disconnected
+>>>>>>> origin/master
+29/1/2015 14:14   Connection received from 164.81.153.51
+29/1/2015 14:14   Invalid attempt from client 164.81.153.51
+29/1/2015 14:14   Client 164.81.153.51 disconnected
+29/1/2015 14:15   Invalid attempt from client 164.81.153.51
+29/1/2015 14:15   Invalid attempt from client 164.81.153.51
+29/1/2015 14:16   Invalid attempt from client 164.81.153.51
+29/1/2015 14:16   Invalid attempt from client 164.81.153.51
+29/1/2015 14:17   Invalid attempt from client 164.81.153.51
+29/1/2015 14:17   Invalid attempt from client 164.81.153.51

@@ -427,47 +427,7 @@ class DefaultController extends Controller {
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
     }
 
-    public function ficheAction($idmat,  Request $request) {
-        $form = $this->createFormBuilder()
-            ->add('connexionVNC', 'submit',array('label'=>'Connexion VNC'))
-            ->getForm();
-        $form1 = $this->createFormBuilder()
-            ->add('ping', 'submit')
-            ->getForm();
-        $em = $this->getDoctrine()->getManager();
-        $form1->handleRequest($request);
-        $couleur='#fff';
-        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
-        if ($form1->get('ping')->isClicked()) {
-            $process = new Process('ping -n 1 '.$materiel->getNomMat());
-            $process->run();
-
-            if($process->isSuccessful()){
-                $couleur='green';
-            }else{
-                $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
-                        ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
-                $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
-                $process = new Process('ping -n 1 '.$adr);
-                $process->run();
-                if($process->isSuccessful()){
-                    $couleur='green';
-                }else{
-                    $couleur='red';
-                }
-               
-            }
-        }
-        /*$form->handleRequest($request);
-        if ($form->get('connexionVNC')->isClicked()) {            
-            //$proc = new Process('vnc.bat');
-            //$proc->run();
-            //system("C:/wamp/www/PROJET-TUTEURE/web/vncviewer.exe");
-            return $this->render('http://www.google.fr');
-            
-        }*/
-        return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
-    }
+    
 
     public function modifierAction($idmat, Request $request) {
         $em = $this->getDoctrine()->getManager();

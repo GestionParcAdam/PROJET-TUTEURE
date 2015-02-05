@@ -2,3 +2,12 @@ parc_info:
     resource: "@ParcInfoBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    pattern:   /login
+    defaults:  { _controller: ParcInfoBundle:Connexion:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
