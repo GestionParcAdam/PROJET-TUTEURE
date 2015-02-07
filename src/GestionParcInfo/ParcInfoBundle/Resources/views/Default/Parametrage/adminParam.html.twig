@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <br/>
+    <div class="row"> 
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+      
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i>  Paramètrage de la session d'administration</h3>
+                </div>
+                <div class="panel-body">
+                       
+                    <div class="col-lg-5">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> Modifier le mot de passe </h3>
+                            </div>
+                            <br>
+                            <div class="col-lg-10">
+                                <div class="center-block">
+                                    <form action="" method="post">
+                                        <input type="password" class="form-control" placeholder="Ancien mot de passe"/>
+                                        <div class="col-lg-10"></div>
+                                        <input type="password" class="form-control" placeholder="Nouveau mot de passe"/>
+                                        <div class="col-lg-10"></div>
+                                        <input type="password" class="form-control" placeholder="Confirmation du nouveau mot de passe"/>
+                                        <br>
+                                        <div class="">
+                                        <input type="submit" class="btn btn-defaut" value="enregistrer">
+                                        </div>
+                                        <div class="col-lg-10"></div>
+                                        <div class="col-lg-10"></div>
+                                    </form>  
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+{% endblock %}

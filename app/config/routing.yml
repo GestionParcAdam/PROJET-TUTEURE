@@ -2,5 +2,17 @@ parc_info:
     resource: "@ParcInfoBundle/Resources/config/routing.yml"
     prefix:   /
 
+<<<<<<< HEAD
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+=======
+login:
+    pattern:   /login
+    defaults:  { _controller: ParcInfoBundle:Connexion:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+>>>>>>> origin/master

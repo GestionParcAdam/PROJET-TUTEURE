@@ -16,8 +16,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+<<<<<<< HEAD
             new FOS\UserBundle\FOSUserBundle(),
             new GestionParcInfo\ParcInfoBundle\ParcInfoBundle()
+=======
+            new GestionParcInfo\ParcInfoBundle\ParcInfoBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
+>>>>>>> origin/master
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

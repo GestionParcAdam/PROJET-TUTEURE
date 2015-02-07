@@ -389,6 +389,7 @@ class DefaultController extends Controller {
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
         return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
+<<<<<<< HEAD
     }    
     
     public function ficheAction($idmat,  Request $request) {
@@ -432,6 +433,21 @@ class DefaultController extends Controller {
         }*/
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
+=======
+    }
+
+    public function etatAction($numSite, $idEtat) {
+        $em = $this->getDoctrine()->getManager();
+
+        $mats = $em->getRepository('ParcInfoBundle:Materiel')
+                ->findBy(array('numSite' => $numSite, 'numEtat' => $idEtat));
+        $etat = $em->getRepository('ParcInfoBundle:Etat')->find($idEtat)->getLibelleEtat();
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+        return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
+    }
+
+    
+>>>>>>> origin/master
 
     public function modifierAction($idmat, Request $request) {
         $em = $this->getDoctrine()->getManager();
