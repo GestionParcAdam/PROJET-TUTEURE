@@ -98,8 +98,6 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                     <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Etat du parc</h3>
                 </div>
                 <div class="panel-body">
-
-
                    {% if allsite != null %}
                      {% set nbMatHS = 0 %}
 
@@ -108,13 +106,13 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             {% set nbMatPan = 0 %}
                             {% set nbMatHs = 0 %}
                             {% for materiel in site.materiels %}
-                                {% if materiel.numEtat.id==1 %}
+                                {% if materiel.numEtat.id==2 %}
                                     {% set nbMatService = nbMatService + 1 %}
                                 {% endif %}
-                                {% if materiel.numEtat.id==2 %}
+                                {% if materiel.numEtat.id==3 %}
                                     {% set nbMatHs = nbMatHs + 1 %}
                                 {% endif %}
-                                {% if materiel.numEtat.id==3 %}
+                                {% if materiel.numEtat.id==4 %}  
                                     {% set nbMatPan = nbMatPan + 1 %}
                                 {% endif %}
                             {% endfor%}
@@ -131,15 +129,15 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 1,'numSite':site.id }) }}'" class="cellule">
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En Service</td>
                                                 <td>{{nbMatService}}</td>
                                             </tr>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 4,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En panne</td>
                                                 <td>{{nbMatPan}}</td>
                                             </tr>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
                                                 <td>HS</td>
                                                 <td>{{nbMatHs}}</td>
                                             </tr>
@@ -176,7 +174,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 {% for materiel in dernierModif %}
                                 <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule text-center">
                                     <td> {{materiel.nomMat}}</td>
-                                    <td>{{materiel.numSite.nomSite}}</td>
+                                    <td> {{materiel.numSite.nomSite}}</td>
                                     <td> {{materiel.dateLastModif|date('d-m-y')}}</td>
                                     <!--<td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>-->
                                 </tr>

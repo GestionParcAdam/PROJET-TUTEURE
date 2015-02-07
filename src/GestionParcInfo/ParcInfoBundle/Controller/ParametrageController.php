@@ -75,7 +75,7 @@ class ParametrageController extends Controller {
             $em->remove($obj);
             $em->flush();
 
-            return new Response('SUPPRESSION');
+            return $this->redirect($this->generateUrl('parc_info_parametrage'));
         }
 
         if ($categorie == 'types') {
@@ -126,8 +126,6 @@ class ParametrageController extends Controller {
                         'categorie' => 'admin',
                         'form' => $form->createView()));
         }
-        
-        return new Response('Catégorie inconnue !');
     }
 
     public function ajouterAction(Request $request, $categorie){
@@ -150,7 +148,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Type AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -173,7 +171,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Statut AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -196,7 +194,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Etat AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -219,7 +217,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Utilisateur AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -244,7 +242,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Site géo AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -267,7 +265,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Fabricant AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -290,7 +288,7 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Revendeur AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -313,14 +311,12 @@ class ParametrageController extends Controller {
                 $em->persist($obj);
                 $em->flush();
                 
-                return new Response('Statut AJOUTER !');
+                return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
                 array('categorie' => $categorie,
                         'form' => $form->createView()));
         }
-        
-        return new Response('Mauvais type');
     }
 }

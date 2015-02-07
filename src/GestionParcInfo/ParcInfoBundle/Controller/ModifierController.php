@@ -1,15 +1,8 @@
 <?php
-
-/* 
- * Ca c'est ce qui va faire le lien entre nos routes/vues 
- */
-
-
 /*
  * Les includes comme en Java 
  */
 namespace GestionParcInfo\ParcInfoBundle\Controller;
-
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ModifierController extends Controller
 {
-    
      public function modifierAction(Request $request, $idmat)
     {
         $em = $this->getDoctrine()->getManager();
@@ -60,7 +52,7 @@ class ModifierController extends Controller
                     'property' => 'nomFabricant','required' => false, 
                     'data' => $materiel->getNumCarac()
                                        ->getNumCaracCom()
-                                       ->getNUmFabricant()))
+                                       ->getNumFabricant()))
                 ->add('revendeur', 'entity', array('class' => 'ParcInfoBundle:Revendeur',
                     'property' => 'nomRevendeur','required' => false, 
                     'data' => $materiel->getNumCarac()
@@ -127,10 +119,9 @@ class ModifierController extends Controller
                 
                 $em->flush();
                 
-                return new Response('modifier !!!!!!!!!!');
+                return $this->redirect($this->generateUrl('parc_info_fiche',array("idmat" => $idmat)));
             }
-         }
-         
+         }  
          return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig', array("materiel" => $materiel, 'form' => $form->createView()));
     }
  }

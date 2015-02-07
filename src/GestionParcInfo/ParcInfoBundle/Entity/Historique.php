@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Historique
  *
- * @ORM\Table()
+ * @ORM\Table("historique")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\HistoriqueRepository")
  */
 class Historique

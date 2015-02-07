@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -23,6 +23,12 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+
+#FOS
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: GestionParcInfo\ParcInfoBundle\Entity\User
 
 # Twig Configuration
 twig:

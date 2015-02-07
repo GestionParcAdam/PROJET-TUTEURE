@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Utilisateur
  *
- * @ORM\Table()
+ * @ORM\Table("utilisateur")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur
