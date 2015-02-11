@@ -32,7 +32,7 @@ parc_info_etat:
     
 parc_info_fiche:
     path:     /fiche/{idmat}
-    defaults: { _controller: ParcInfoBundle:Fiche:fiche }
+    defaults: { _controller: ParcInfoBundle:Default:fiche }
     
 parc_info_matEnPanne:
     path:     /matEnPanne
@@ -50,6 +50,10 @@ parc_info_resultatRecherche:
     path:     /ResultatRecherche
     defaults: { _controller: ParcInfoBundle:Recherche:resultat } 
     
+parc_info_connexion:
+    path:     /Connexion
+    defaults: { _controller: ParcInfoBundle:Connexion:connexion }
+
 parc_info_parametrage:
     path:     /Parametrage
     defaults: { _controller: ParcInfoBundle:Parametrage:parametrage }
