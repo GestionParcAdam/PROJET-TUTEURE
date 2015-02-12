@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CaracteristiqueCom
  *
- * @ORM\Table()
+ * @ORM\Table("caracteristiquecom")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\CaracteristiqueComRepository")
  */
 class CaracteristiqueCom

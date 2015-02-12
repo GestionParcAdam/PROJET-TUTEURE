@@ -16,7 +16,7 @@ class MaterielRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
                     ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numEtat = :num')
-                    ->setParameter('num', 2);
+                    ->setParameter('num', 3);
         
         $materielsHS = $query->getResult();
         
@@ -27,7 +27,7 @@ class MaterielRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
                     ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numStatut = :num')
-                    ->setParameter('num', 3);
+                    ->setParameter('num', 6);
         
         $materielsPG = $query->getResult();
         
@@ -38,7 +38,7 @@ class MaterielRepository extends EntityRepository
     {
         $query = $this->getEntityManager()
                 ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numEtat = :num')
-                ->setParameter('num', 3);
+                ->setParameter('num', 4);
         $materielsEnPanne = $query->getResult();
         
         return $materielsEnPanne;

@@ -1,14 +1,5 @@
 <?php
 
-/*
- * Ca c'est ce qui va faire le lien entre nos routes/vues 
- */
-
-
-/*
- * Les includes comme en Java 
- */
-
 namespace GestionParcInfo\ParcInfoBundle\Controller;
 
 use GestionParcInfo\ParcInfoBundle\Entity\Materiel;
@@ -42,6 +33,7 @@ class DefaultController extends Controller {
          */
         $materiels = $em->getRepository('ParcInfoBundle:Materiel')
                 ->getMaterielsHS();
+        
         $allsite = $em->getRepository('ParcInfoBundle:Site')->findAll();
 
         $materielPG = $em->getRepository('ParcInfoBundle:Materiel')->getMaterielsPG();
@@ -138,9 +130,7 @@ class DefaultController extends Controller {
                 $caracDeCom->setNumImmo($data['immobilisation']);
                 $caracDeCom->setNumFabricant($data['fabricant']);
                 $caracDeCom->setNumRevendeur($data['revendeur']);
-                $caracDeCom->setNumFacture($data['numFacture']);
-
-                \Doctrine\Common\Util\Debug::dump($caracDeCom);
+                $caracDeCom->setNumFacture($data['numFacture']);               
 
                 $em->persist($caracDeCom);
                 $em->flush();
@@ -167,7 +157,7 @@ class DefaultController extends Controller {
                 for ($i = 0; $i <= $data['nbLog'] + 1; $i++) {
                     $concat = 'log' . $i . '-1';
 
-                    \Doctrine\Common\Util\Debug::dump($concat);
+                    
                     if (isset($_POST[$concat])) {
                         $concat2 = 'log' . $i;
 
@@ -180,8 +170,6 @@ class DefaultController extends Controller {
 
                         $caracDeLog->setCarac($carac);
                         $carac->addNumCaracLog($caracDeLog);
-
-                        \Doctrine\Common\Util\Debug::dump($caracDeLog);
 
                         $em->persist($caracDeLog);
                         $em->flush();
@@ -204,8 +192,6 @@ class DefaultController extends Controller {
 
                 $materiel->setDateLastModif($date);
 
-
-
                 $em->persist($carac);
                 $em->flush();
 
@@ -215,9 +201,9 @@ class DefaultController extends Controller {
                  */
                 for ($i = 1; $i <= $data['nbUsers'] + 1; $i++) {
                     $concat = 'selectUser' . $i;
-                    \Doctrine\Common\Util\Debug::dump($concat);
+                    
                     if (isset($_POST[$concat])) {
-                        \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
+                        
                         $user = $em->getRepository('ParcInfoBundle:Utilisateur')->find($_POST[$concat]);
 
                       // $user->setNomUser($_POST[$concat]);
@@ -251,8 +237,7 @@ class DefaultController extends Controller {
                     $em->flush();
                 }
 
-                /* ca çà permet de retourner une réponse basique */
-                return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
+                return $this->redirect($this->generateUrl('parc_info_homepage'));
             }
         }
 
@@ -314,7 +299,6 @@ class DefaultController extends Controller {
                 ->add('btnMatEtat', 'submit', array('label' => 'Générer la liste des matériels en fonction de son état'))
                 ->add('btnListLog', 'submit', array('label' => 'Générer la liste des logiciels'))
                 ->getForm();
-
         if ($form->handleRequest($request)->isSubmitted()) {
             $form = $_POST['form'];
             if (isset($form['btnSiteGeo'])) {
@@ -326,13 +310,10 @@ class DefaultController extends Controller {
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                 $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
-
                 $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
                 
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
-
                 $html2pdf->pdf->SetDisplayMode('fullpage');
-
                 $html2pdf->writeHTML($html);
                 
                 if($numSite==''){
@@ -342,14 +323,11 @@ class DefaultController extends Controller {
                     $v = "Liste_Bien_$ville.pdf";
                 }
                 
-                
                 //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
                 $html2pdf->Output($v,'D');
                 return new Response();
             }
-
             if (isset($form['btnBienFinGar'])) {
-
                 $em = $this->getDoctrine()->getManager();
                 $materiels = $em->getRepository('ParcInfoBundle:Materiel')
                         ->getMaterielFinGarantie();
@@ -357,13 +335,9 @@ class DefaultController extends Controller {
                 
                 $html = $this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig', array('materiels' => $materiels, 'type' => $type));
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
-
                 $html2pdf->pdf->SetDisplayMode('fullpage');
-
                 $html2pdf->writeHTML($html);
-
                 $v = "Liste_Bien_Fin_Garantie.pdf";
-
                 $html2pdf->Output($v,'D');
                 return new Response();
                 
@@ -381,18 +355,14 @@ class DefaultController extends Controller {
                 $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig', array("materiels" => $materiel, 'type' => $type, 'etat' => $etat));
             
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
-
                 $html2pdf->pdf->SetDisplayMode('fullpage');
-
                 $html2pdf->writeHTML($html);
-
                 if($idEtat==''){
                     $e = "Liste_Bien_Tous_Etat.pdf";
                 }else{
                     $etat=$em->getRepository('ParcInfoBundle:Etat')->findOneBy(array('id'=>$idEtat))->getLibelleEtat();
                     $e = "Liste_Bien_$etat.pdf";
                 }
-
                 $html2pdf->Output($e,'D');
                 return new Response();
             }
@@ -400,33 +370,19 @@ class DefaultController extends Controller {
                 
                 $em = $this->getDoctrine()->getManager();
                 $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
-
                 $html= $this->renderView('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig', array("logiciel" => $logiciel));
             
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
-
                 $html2pdf->pdf->SetDisplayMode('fullpage');
-
                 $html2pdf->writeHTML($html);
-
                 $html2pdf->Output('Liste_Logiciels.pdf','D');
                 return new Response();
             }
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
         return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
-    }
-
-    public function etatAction($numSite, $idEtat) {
-        $em = $this->getDoctrine()->getManager();
-
-        $mats = $em->getRepository('ParcInfoBundle:Materiel')
-                ->findBy(array('numSite' => $numSite, 'numEtat' => $idEtat));
-        $etat = $em->getRepository('ParcInfoBundle:Etat')->find($idEtat)->getLibelleEtat();
-        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-        return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
-    }
-
+    }    
+    
     public function ficheAction($idmat,  Request $request) {
         $form = $this->createFormBuilder()
             ->add('connexionVNC', 'submit',array('label'=>'Connexion VNC'))
@@ -439,7 +395,7 @@ class DefaultController extends Controller {
         $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
         if ($form1->get('ping')->isClicked()) {
-            $process = new Process('ping -n 1 '.$materiel->getNomMat());
+            $process = new Process('ping -w 1 '.$materiel->getNomMat());
             $process->run();
 
             if($process->isSuccessful()){
@@ -448,7 +404,7 @@ class DefaultController extends Controller {
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
                 $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
-                $process = new Process('ping -n 1 '.$adr);
+                $process = new Process('ping -w 1 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
                     $couleur='green';
@@ -467,6 +423,16 @@ class DefaultController extends Controller {
             
         }*/
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
+    }
+
+    public function etatAction($numSite, $idEtat) {
+        $em = $this->getDoctrine()->getManager();
+
+        $mats = $em->getRepository('ParcInfoBundle:Materiel')
+                ->findBy(array('numSite' => $numSite, 'numEtat' => $idEtat));
+        $etat = $em->getRepository('ParcInfoBundle:Etat')->find($idEtat)->getLibelleEtat();
+        $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
+        return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
     }
 
     public function modifierAction($idmat, Request $request) {

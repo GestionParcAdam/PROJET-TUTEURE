@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Revendeur
  *
- * @ORM\Table()
+ * @ORM\Table("revendeur")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\RevendeurRepository")
  */
 class Revendeur

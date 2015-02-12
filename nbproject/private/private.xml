@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/ConnexionController.php</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/ficheMateriel.html.twig</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Controller/ModifierController.php</file>
+            <file>file:/C:/wamp/www/PROJET-TUTEURE/PROJET-TUTEURE/src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml</file>
         </group>
     </open-files>
 </project-private>

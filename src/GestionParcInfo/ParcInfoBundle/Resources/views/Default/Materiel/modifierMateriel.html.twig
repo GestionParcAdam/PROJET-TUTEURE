@@ -21,19 +21,20 @@
                     {{ form_start(form) }}
                     <p class="col-lg-5"><b>Type de matériel :</b>
                         <br/>
-                        {{ form_widget(form.typeMat, {'attr': {'class': 'form-control'}, 'value': materiel.numType.libelleType}) }}
+                        
+                        {{ form_widget(form.typeMat, {'attr': {'class': 'form-control'}}) }}
                     </p>
                     <p class="col-lg-5"><b>Nom du matériel :</b> 
                         {{ form_widget(form.nomMat, {'attr': {'class': 'form-control'}, 'value': materiel.nomMat}) }}
                     </p>
                     <p class="col-lg-5"><b>Etat du matériel :</b> 
-                        {{ form_widget(form.etatMat, {'attr': {'class': 'form-control'}, 'value': materiel.numEtat.libelleEtat}) }}
+                        {{ form_widget(form.etatMat, {'attr': {'class': 'form-control'}}) }}
                     </p>
                     <p class="col-lg-5"><b>Statut du matériel :</b> 
-                        {{ form_widget(form.statutMat, {'attr': {'class': 'form-control'}, 'value': materiel.numStatut.libelleStatut}) }}
+                        {{ form_widget(form.statutMat, {'attr': {'class': 'form-control'}}) }}
                     </p>
                     <p class="col-lg-5"><b>Site géographique :</b> 
-                        {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}, 'value': materiel.numSite.nomSite}) }}
+                        {{ form_widget(form.siteGeo, {'attr': {'class': 'form-control'}}) }}
                     </p>
                     <div class="systeme_onglets">
                         <div class="onglets col-sm-12">
@@ -49,26 +50,26 @@
                             <div class="contenu_onglet" id="contenu_onglet_1">
                                 <p class="col-lg-12"></p>
                                 <p class="col-lg-6"><b>Date d'achat :</b>
-                                    {{ form_widget(form.dateAchat, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.dateAchat|date('Y-m-d')}) }}
+                                    {{ form_widget(form.dateAchat, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>Prix d'achat :</b> 
                                     {{ form_widget(form.prixAchat, {'attr': {'class': 'form-control', 
-                                                                             'placeholder' : 'En €'}, 'value': materiel.numCarac.numCaracCom.prixAchat}) }}
+                                                                             'placeholder' : 'En €'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>N° facture :</b>
-                                    {{ form_widget(form.numFacture, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.numFacture}) }}
+                                    {{ form_widget(form.numFacture, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>Modèle :</b>
-                                    {{ form_widget(form.modele, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.libelleModele}) }}
+                                    {{ form_widget(form.modele, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>Fabricant :</b> 
-                                    {{ form_widget(form.fabricant, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.numFabricant.nomFabricant}) }}
+                                    {{ form_widget(form.fabricant, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>Revendeur :</b> 
-                                    {{ form_widget(form.revendeur, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur}) }}
+                                    {{ form_widget(form.revendeur, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                                 <p class="col-lg-6"><b>N° immobilisation :</b> 
-                                    {{ form_widget(form.immobilisation, {'attr': {'class': 'form-control'}, 'value': materiel.numCarac.numCaracCom.numImmo}) }}
+                                    {{ form_widget(form.immobilisation, {'attr': {'class': 'form-control'}}) }}
                                 </p>
                             </div>
                             {# 2eme onglet #}
@@ -143,30 +144,40 @@
                             <div class="contenu_onglet" id="contenu_onglet_4">
                                 <p class="col-lg-12">
                                     <br/> 
-                                    <button class="btn btn-default" id="ajouter_user" 
-                                            data-toggle="modal" data-target="#myModal2">Ajouter un utilisateur</button> 
+                                    <div class="col-lg-12">
+                                        <p class="col-lg-6 form-inline">
+                                            <b>Choisir un utilisateur : </b>
+                                            {{ form_widget(form.selectUser, {'attr': {'class': 'form-control'}}) }}
+                                            <input type="button" id="selectionUser" class="btn btn-primary" 
+                                            onclick="javascript:recupSelectionUser();" 
+                                            data-dismiss="modal" value="Ajouter"/>
+                                        </p>
+                                        <div id="cadreNbUser">
+                                           {{ form_widget(form.nbUsers, {'attr': {'class': 'form-control'}}) }} 
+                                        </div>
+                                    </div>
                                 </p>
-                                <p class="col-lg-12"><p class="col-lg-12"></p></br>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <td>Nom des utilisateurs affectés</td> 
-                                            <td>Supprimer</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabUser">
-                                        {% for u in materiel.utilisateurs %}
+                                <p class="col-lg-12">
+                                    <p class="col-lg-12"></p><br>
+                                    <table class="table table-striped">
+                                        <thead>
                                             <tr>
-                                                <td>{{u.nomUser}}</td>
-                                                <td> poubelle <td>
-                                            </tr> 
-                                        {% endfor %}
-                                    </tbody>                                            
-                                </table>
-                                </br>
-                                <div id="cadreUser">
-
-                                </div>
+                                                <td>Nom des utilisateurs affectés</td> 
+                                                <td>Supprimer</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabSelectUser">
+                                            {% for u in materiel.utilisateurs %}
+                                                <tr>
+                                                    <td> {{ u.nomUser }} </td>
+                                                    <td> poubelle </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>                                            
+                                    </table>
+                                <br>                        
+                                <div id="cadreSelectUser"></div>
+                                
                                 </p>
                             </div>
                             {# 4eme onglet #}
@@ -255,30 +266,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Ajouter un utilisateur</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <p class="col-lg-12"><b>Nom de l'utilisateur  :</b> 
-                                        {{ form_widget(form.nomUser, {'attr': {'class': 'form-control'}}) }}
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
-                                    <button type="button"  id="validerUser" class="btn btn-primary" 
-                                            onclick="javascript:recupSaisiePopupUser();" 
-                                            data-dismiss="modal">Ajouter</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                                    
                     <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
