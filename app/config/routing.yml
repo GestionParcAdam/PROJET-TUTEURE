@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 parc_info:
     resource: "@ParcInfoBundle/Resources/config/routing.yml"
     prefix:   /
@@ -8,11 +7,4 @@ fos_user:
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-=======
-parc_info:
-    resource: "@ParcInfoBundle/Resources/config/routing.yml"
-    prefix:   /
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
->>>>>>> origin/master

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 parc_info_homepage:
     path:     /
     defaults: { _controller: ParcInfoBundle:Default:index }
@@ -68,72 +68,3 @@ parc_info_delete:
     defaults: { _controller: ParcInfoBundle:Ajax:default }
     options:
         expose: true
-=======
-parc_info_homepage:
-    path:     /
-    defaults: { _controller: ParcInfoBundle:Default:index }
-
-parc_info_ajouter:
-    path:     /ajouter
-    defaults: { _controller: ParcInfoBundle:Default:ajouter }
-  
-parc_info_rechercher:
-    path:     /search
-    defaults: { _controller: ParcInfoBundle:Recherche:rechercher }
-    
-parc_info_matHS:
-    path:     /matHS
-    defaults: { _controller: ParcInfoBundle:Default:matHS }
-    
-parc_info_matPG:
-    path:     /matPG
-    defaults: { _controller: ParcInfoBundle:Default:matPG }
-    
-parc_info_edition:
-    path:     /edition
-    defaults: { _controller: ParcInfoBundle:Default:edition }
-    
-parc_info_imprim:
-    path:     /imprim
-    defaults: { _controller: ParcInfoBundle:Default:imprim }
-   
-parc_info_etat:
-    path:     /etat/{numSite}/{idEtat}
-    defaults: { _controller: ParcInfoBundle:Default:etat }
-    
-parc_info_fiche:
-    path:     /fiche/{idmat}
-    defaults: { _controller: ParcInfoBundle:Default:fiche }
-    
-parc_info_matEnPanne:
-    path:     /matEnPanne
-    defaults: { _controller: ParcInfoBundle:Default:matEnPanne }
-
-parc_info_modifier:
-    path:     /modifier/{idmat}
-    defaults: { _controller: ParcInfoBundle:Modifier:modifier }
-    
-parc_info_listeBienInformatique:
-    path:     /listeBienInformatique
-    defaults: { _controller: ParcInfoBundle:Default:listeBienInformatique }     
-
-parc_info_resultatRecherche:
-    path:     /ResultatRecherche
-    defaults: { _controller: ParcInfoBundle:Recherche:resultat } 
-    
-parc_info_connexion:
-    path:     /Connexion
-    defaults: { _controller: ParcInfoBundle:Connexion:connexion }
-
-parc_info_parametrage:
-    path:     /Parametrage
-    defaults: { _controller: ParcInfoBundle:Parametrage:parametrage }
-    
-parc_info_suppression:
-    path: /Parametrage/delete/{categorie}
-    defaults: { _controller: ParcInfoBundle:Parametrage:suppression }
-    
-parc_info_ajoutParam:
-    path: /Parametrage/add/{categorie}
-    defaults: { _controller: ParcInfoBundle:Parametrage:ajouter }
->>>>>>> origin/master
