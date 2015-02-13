@@ -22,7 +22,8 @@ class Historique
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", inversedBy="historiques", cascade={"persist","remove"});
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", inversedBy="historiques", cascade={"persist"});
+     * @ORM\JoinColumn(name="materiel_id", referencedColumnName="id", nullable=true)     
      */
     protected $materiel;
     

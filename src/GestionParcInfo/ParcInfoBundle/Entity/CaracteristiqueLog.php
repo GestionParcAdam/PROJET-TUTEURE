@@ -52,7 +52,7 @@ class CaracteristiqueLog
     /**
      * @var Caracteristique $carac
      * 
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", inversedBy="numLogCarac", cascade={"persist","remove"});
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", inversedBy="numLogCarac", cascade={"persist"});
      */
     private $carac;
     

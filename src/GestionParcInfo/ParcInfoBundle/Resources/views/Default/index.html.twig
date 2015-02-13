@@ -106,13 +106,14 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                             {% set nbMatPan = 0 %}
                             {% set nbMatHs = 0 %}
                             {% for materiel in site.materiels %}
-                                {% if materiel.numEtat.id==2 %}
+                                {# service 2 HS 3 PAN 4#}
+                                {% if materiel.numEtat.id==1 %}
                                     {% set nbMatService = nbMatService + 1 %}
                                 {% endif %}
-                                {% if materiel.numEtat.id==3 %}
+                                {% if materiel.numEtat.id==2 %}
                                     {% set nbMatHs = nbMatHs + 1 %}
                                 {% endif %}
-                                {% if materiel.numEtat.id==4 %}  
+                                {% if materiel.numEtat.id==3 %}  
                                     {% set nbMatPan = nbMatPan + 1 %}
                                 {% endif %}
                             {% endfor%}
@@ -129,15 +130,18 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
+                                            {# 2 #}
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 1,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En Service</td>
                                                 <td>{{nbMatService}}</td>
                                             </tr>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 4,'numSite':site.id }) }}'" class="cellule">
+                                            {# 4 #}
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En panne</td>
                                                 <td>{{nbMatPan}}</td>
                                             </tr>
-                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
+                                            {# 3 #}
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
                                                 <td>HS</td>
                                                 <td>{{nbMatHs}}</td>
                                             </tr>

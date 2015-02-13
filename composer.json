@@ -20,11 +20,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "obtao/html2pdf-bundle": "master-dev",
         "symfony/process": "2.4.*",
-<<<<<<< HEAD
-        "friendsofsymfony/user-bundle": "~2.0@dev"
-=======
-        "doctrine/doctrine-fixtures-bundle": "dev-master"
->>>>>>> origin/master
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "~1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

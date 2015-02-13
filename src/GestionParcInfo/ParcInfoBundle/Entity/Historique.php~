@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Historique
  *
- * @ORM\Table()
+ * @ORM\Table("historique")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\HistoriqueRepository")
  */
 class Historique
@@ -23,6 +23,7 @@ class Historique
 
     /**
      * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", inversedBy="historiques", cascade={"persist","remove"});
+     * @ORM\JoinColumn(name="materiel_id", referencedColumnName="id", nullable=true)     
      */
     protected $materiel;
     

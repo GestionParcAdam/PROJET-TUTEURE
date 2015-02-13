@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use GestionParcInfo\ParcInfoBundle\Entity\Materiel;
 use GestionParcInfo\ParcInfoBundle\Entity\Caracteristique;
 use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueCom;
+use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueLog;
+use GestionParcInfo\ParcInfoBundle\Entity\Historique;
 use Symfony\Component\HttpFoundation\Response;
 
 class ModifierController extends Controller
@@ -117,6 +119,70 @@ class ModifierController extends Controller
                 $caracDeRes->setAdressMac($data['adMac']);
                 $caracDeRes->setAdressPasserelle($data['adPasserelle']);
                 
+                /*
+                 * User
+                 * Prévoir bouclage sur le nombre d'user ajouter
+                 */
+                for ($i = 1; $i <= $data['nbUsers'] + 1; $i++) {
+                    $concat = 'selectUser' . $i;
+                    
+                    if (isset($_POST[$concat])) {
+                        
+                        $user = $em->getRepository('ParcInfoBundle:Utilisateur')->find($_POST[$concat]);
+
+                      // $user->setNomUser($_POST[$concat]);
+                        $user->addMateriel($materiel);
+                    }
+                }
+                
+                 /*
+                 * <!>
+                 */
+                /* Prévoir bouclage sur le nombre de log ajouter */
+                for ($i = 0; $i <= $data['nbLog'] + 1; $i++) {
+                    $concat = 'log' . $i . '-1';
+                    
+                    if (isset($_POST[$concat])) {
+                        $concat2 = 'log' . $i;
+
+                        $caracDeLog = new CaracteristiqueLog();
+
+                        $caracDeLog->setLicence($_POST[$concat2 . '-3']);
+                        $caracDeLog->setNomEditeur($_POST[$concat2 . '-2']);
+                        $caracDeLog->setNomLog($_POST[$concat2 . '-1']);
+                        $caracDeLog->setVersionLog($_POST[$concat2 . '-4']);
+
+                        $caracDeLog->setCarac($carac);
+                        $carac->addNumCaracLog($caracDeLog);
+
+                        $em->persist($caracDeLog);
+                        $em->flush();
+                    }
+                }
+                
+                 /*
+                 * Hist
+                 * Prévoir bouclage sur le nombre d'historique ajouter
+                 */
+                for ($i = 1; $i <= $data['nbMaintenance']; $i++) {
+
+                    $hist = new Historique();
+
+                    $hist->setMateriel($materiel);
+                    $hist->setObjetIntervention($_POST['maintenance' . $i . '-2']);
+                    $hist->setCoutIntervention($_POST['maintenance' . $i . '-5']);
+                    $hist->setDateIntervention(new \DateTime($_POST['maintenance' . $i . '-1']));
+                    $hist->setDescIntervention($_POST['maintenance' . $i . '-3']);
+                    $hist->setPrestataireIntervention($_POST['maintenance' . $i . '-4']);
+
+                    $materiel->addHistorique($hist);
+                    $hist->setMateriel($materiel);
+
+                    $em->persist($hist);
+                    $em->flush();
+                }
+                
+
                 $em->flush();
                 
                 return $this->redirect($this->generateUrl('parc_info_fiche',array("idmat" => $idmat)));

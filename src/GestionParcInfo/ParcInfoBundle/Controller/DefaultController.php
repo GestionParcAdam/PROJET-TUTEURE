@@ -130,9 +130,7 @@ class DefaultController extends Controller {
                 $caracDeCom->setNumImmo($data['immobilisation']);
                 $caracDeCom->setNumFabricant($data['fabricant']);
                 $caracDeCom->setNumRevendeur($data['revendeur']);
-                $caracDeCom->setNumFacture($data['numFacture']);
-
-                \Doctrine\Common\Util\Debug::dump($caracDeCom);
+                $caracDeCom->setNumFacture($data['numFacture']);               
 
                 $em->persist($caracDeCom);
                 $em->flush();
@@ -159,7 +157,7 @@ class DefaultController extends Controller {
                 for ($i = 0; $i <= $data['nbLog'] + 1; $i++) {
                     $concat = 'log' . $i . '-1';
 
-                    \Doctrine\Common\Util\Debug::dump($concat);
+                    
                     if (isset($_POST[$concat])) {
                         $concat2 = 'log' . $i;
 
@@ -172,8 +170,6 @@ class DefaultController extends Controller {
 
                         $caracDeLog->setCarac($carac);
                         $carac->addNumCaracLog($caracDeLog);
-
-                        \Doctrine\Common\Util\Debug::dump($caracDeLog);
 
                         $em->persist($caracDeLog);
                         $em->flush();
@@ -196,8 +192,6 @@ class DefaultController extends Controller {
 
                 $materiel->setDateLastModif($date);
 
-
-
                 $em->persist($carac);
                 $em->flush();
 
@@ -207,9 +201,9 @@ class DefaultController extends Controller {
                  */
                 for ($i = 1; $i <= $data['nbUsers'] + 1; $i++) {
                     $concat = 'selectUser' . $i;
-                    \Doctrine\Common\Util\Debug::dump($concat);
+                    
                     if (isset($_POST[$concat])) {
-                        \Doctrine\Common\Util\Debug::dump($_POST[$concat]);
+                        
                         $user = $em->getRepository('ParcInfoBundle:Utilisateur')->find($_POST[$concat]);
 
                       // $user->setNomUser($_POST[$concat]);
@@ -243,8 +237,7 @@ class DefaultController extends Controller {
                     $em->flush();
                 }
 
-                /* ca çà permet de retourner une réponse basique */
-                return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
+                return $this->redirect($this->generateUrl('parc_info_homepage'));
             }
         }
 
@@ -291,7 +284,7 @@ class DefaultController extends Controller {
         return $this->render('ParcInfoBundle:Default:PopUp/affichePopUpEnPanne.html.twig', array('materielEnPanne' => $materiels, 'type' => $type));
     }
 
-       public function editionAction(Request $request) {
+    public function editionAction(Request $request) {
         $form = $this->createFormBuilder()
                 ->setMethod('POST')
                 ->setAction($this->generateUrl('parc_info_edition'))
@@ -329,7 +322,6 @@ class DefaultController extends Controller {
                     $ville=$em->getRepository('ParcInfoBundle:Site')->findOneBy(array('id'=>$numSite))->getNomSite();
                     $v = "Liste_Bien_$ville.pdf";
                 }
-                
                 
                 //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
                 $html2pdf->Output($v,'D');
@@ -389,7 +381,6 @@ class DefaultController extends Controller {
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
         return $this->render('ParcInfoBundle:Default:EditionRapport/EditionRapport.html.twig', array('form' => $form->createView()));
-<<<<<<< HEAD
     }    
     
     public function ficheAction($idmat,  Request $request) {
@@ -404,7 +395,7 @@ class DefaultController extends Controller {
         $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
         if ($form1->get('ping')->isClicked()) {
-            $process = new Process('ping -a 1 '.$materiel->getNomMat());
+            $process = new Process('ping -w 1 '.$materiel->getNomMat());
             $process->run();
 
             if($process->isSuccessful()){
@@ -413,7 +404,7 @@ class DefaultController extends Controller {
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
                 $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
-                $process = new Process('ping -a 1 '.$adr);
+                $process = new Process('ping -w 1 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
                     $couleur='green';
@@ -433,8 +424,6 @@ class DefaultController extends Controller {
         }*/
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
-=======
-    }
 
     public function etatAction($numSite, $idEtat) {
         $em = $this->getDoctrine()->getManager();
@@ -444,133 +433,6 @@ class DefaultController extends Controller {
         $etat = $em->getRepository('ParcInfoBundle:Etat')->find($idEtat)->getLibelleEtat();
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
-    }
-
-    
->>>>>>> origin/master
-
-    public function modifierAction($idmat, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
-
-        $form = $this->createFormBuilder()
-                ->setMethod('POST')
-                ->setAction($this->generateUrl('parc_info_ajouter'))
-                ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type',
-                    'property' => 'libelleType'))
-                ->add('nomMat', 'text')
-                ->add('etatMat', 'entity', array('class' => 'ParcInfoBundle:Etat',
-                    'property' => 'libelleEtat'))
-                ->add('statutMat', 'entity', array('class' => 'ParcInfoBundle:Statut',
-                    'property' => 'libelleStatut'))
-                ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site',
-                    'property' => 'nomSite'))
-                ->add('dateAchat', 'date', array('input' => 'datetime',
-                    'widget' => 'single_text'))
-                ->add('prixAchat', 'money'/* ,array('currency' => 'false') */)
-                ->add('numFacture', 'text')
-                ->add('modele', 'text')
-                ->add('fabricant', 'entity', array('class' => 'ParcInfoBundle:Fabricant',
-                    'property' => 'nomFabricant'))
-                ->add('revendeur', 'entity', array('class' => 'ParcInfoBundle:Revendeur',
-                    'property' => 'nomRevendeur'))
-                ->add('immobilisation', 'text')
-                ->add('nomUser', 'text')
-                ->add('editeur', 'text')
-                ->add('nomLog', 'text')
-                ->add('licence', 'text')
-                ->add('dateInterv', 'date', array('input' => 'datetime',
-                    'widget' => 'single_text'))
-                ->add('objInterv', 'text')
-                ->add('descInterv', 'textarea')
-                ->add('prestaInterv', 'text')
-                ->add('coutInterv', 'text')
-                ->add('versionLogiciel', 'text')
-                ->add('adMac', 'text')
-                ->add('adIp', 'text')
-                ->add('adPasserelle', 'text')
-                ->add('dateGarantie', 'date', array('input' => 'datetime',
-                    'widget' => 'single_text'))
-                ->add('ajouter', 'submit')
-                ->getForm();
-
-        if ($form->handleRequest($request)->isSubmitted()) {
-
-            $requete = $this->get('request');
-            if ($requete->getMethod() == 'POST') {
-                $user = $_POST['user0'];
-                var_dump($user);
-            }
-
-            /* Ici je récupère les informations du formulaire dans un tableau */
-            $data = $form->getData();
-            \Doctrine\Common\Util\Debug::dump($data);
-
-            /* Je créer mon objet à persister dans la base */
-            /*
-              $materiel = new Materiel();
-
-
-              $materiel->setNomMat($data['nomMat']);
-              $materiel->setDateGarantie($data['dateGarantie']);
-              $materiel->setNumEtat($data['etatMat']);
-              $materiel->setNumSite($data['siteGeo']);
-              $materiel->setNumType($data['typeMat']);
-              $materiel->setNumStatut($data['statutMat']);
-              $date = new \DateTime();
-              $materiel->setDateLastModif($date);
-             */
-            /* j'ouvre la connexion à la BD Doctrine */
-            /*
-              $em = $this->getDoctrine()->getManager();
-             */
-            /* je dis que je persist l'objet et que j'upload direct en clair */
-            /*
-              $em->persist($materiel);
-              $em->flush();
-
-              $fabricant = new Fabricant();
-
-              $fabricant->setNomFabricant($data['fabricant']);
-
-              $em->persist($fabricant);
-              $em->flush();
-
-              $revendeur = new Revendeur();
-
-              $revendeur->setNomRevendeur($data['revendeur']);
-
-              $em->persist($revendeur);
-              $em->flush();
-
-              $caracDeCom = new CaracteristiqueCom();
-
-              $caracDeCom->setPrixAchat($data['prixAchat']);
-              $caracDeCom->setLibelleModele($data['modele']);
-              $caracDeCom->setDateAchat($data['dateAchat']);
-              $caracDeCom->setNumImmo($data('immobilisation'));
-              $caracDeCom->setNumFabricant($fabricant);
-
-              $em->persist($caracDeCom);
-              $em->flush();
-
-
-              $caracDeRes = new CaracteristiqueRes();
-
-              $caracDeRes->setAdressIp($data['adIp']);
-              $caracDeRes->setAdressMac($data['adMac']);
-              $caracDeRes->setAdressPasserelle($data['adPasserelle']);
-
-              $em->persist($caracDeRes);
-              $em->flush();
-             */
-
-
-            /* ca çà permet de retourner une réponse basique */
-            return new Response('<h1>Materiel ajouté !</h1>\n résultat : ');
-        }
-
-        return $this->render('ParcInfoBundle:Default:Materiel/modifierMateriel.html.twig', array("materiel" => $materiel, 'form' => $form->createView()));
     }
 
     /*

@@ -46,7 +46,7 @@ class Materiel
     
     /**
      * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Etat", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $numEtat;
     
@@ -57,8 +57,8 @@ class Materiel
     private $numStatut;
     
     /**
-     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", mappedBy="materiel")
-     */
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", mappedBy="materiel", cascade={"persist","remove"}, orphanRemoval=true)  
+    */
     private $historiques;
     
     /**
@@ -89,6 +89,16 @@ class Materiel
      */
     private $dateLastModif;
     
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->historiques = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->utilisateurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -108,7 +118,7 @@ class Materiel
     public function setNomMat($nomMat)
     {
         $this->nomMat = $nomMat;
-
+    
         return $this;
     }
 
@@ -131,7 +141,7 @@ class Materiel
     public function setDateGarantie($dateGarantie)
     {
         $this->dateGarantie = $dateGarantie;
-
+    
         return $this;
     }
 
@@ -143,121 +153,6 @@ class Materiel
     public function getDateGarantie()
     {
         return $this->dateGarantie;
-    }
-
-    /**
-     * Set numSite
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Site $numSite
-     * @return Materiel
-     */
-    public function setNumSite(\GestionParcInfo\ParcInfoBundle\Entity\Site $numSite)
-    {
-        $this->numSite = $numSite;
-
-        return $this;
-    }
-
-    /**
-     * Get numSite
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Site 
-     */
-    public function getNumSite()
-    {
-        return $this->numSite;
-    }
-
-    /**
-     * Set numEtat
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Etat $numEtat
-     * @return Materiel
-     */
-    public function setNumEtat(\GestionParcInfo\ParcInfoBundle\Entity\Etat $numEtat)
-    {
-        $this->numEtat = $numEtat;
-
-        return $this;
-    }
-
-    /**
-     * Get numEtat
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Etat 
-     */
-    public function getNumEtat()
-    {
-        return $this->numEtat;
-    }
-
-    /**
-     * Set numStatut
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Statut $numStatut
-     * @return Materiel
-     */
-    public function setNumStatut(\GestionParcInfo\ParcInfoBundle\Entity\Statut $numStatut)
-    {
-        $this->numStatut = $numStatut;
-
-        return $this;
-    }
-
-    /**
-     * Get numStatut
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Statut 
-     */
-    public function getNumStatut()
-    {
-        return $this->numStatut;
-    }
-    
-    /**
-     * Set numCarac
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $numCarac
-     * @return Materiel
-     */
-    public function setNumCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $numCarac)
-    {
-        $this->numCarac = $numCarac;
-
-        return $this;
-    }
-
-    /**
-     * Get numCarac
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique 
-     */
-    public function getNumCarac()
-    {
-        return $this->numCarac;
-    }
-
-    /**
-     * Set numType
-     *
-     * @param \GestionParcInfo\ParcInfoBundle\Entity\Type $numType
-     * @return Materiel
-     */
-    public function setNumType(\GestionParcInfo\ParcInfoBundle\Entity\Type $numType = null)
-    {
-        $this->numType = $numType;
-
-        return $this;
-    }
-
-    /**
-     * Get numType
-     *
-     * @return \GestionParcInfo\ParcInfoBundle\Entity\Type 
-     */
-    public function getNumType()
-    {
-        return $this->numType;
     }
 
     /**
@@ -282,13 +177,74 @@ class Materiel
     {
         return $this->dateLastModif;
     }
-  
+
     /**
-     * Constructor
+     * Set numSite
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Site $numSite
+     * @return Materiel
      */
-    public function __construct()
+    public function setNumSite(\GestionParcInfo\ParcInfoBundle\Entity\Site $numSite)
     {
-        $this->historiques = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->numSite = $numSite;
+    
+        return $this;
+    }
+
+    /**
+     * Get numSite
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Site 
+     */
+    public function getNumSite()
+    {
+        return $this->numSite;
+    }
+
+    /**
+     * Set numEtat
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Etat $numEtat
+     * @return Materiel
+     */
+    public function setNumEtat(\GestionParcInfo\ParcInfoBundle\Entity\Etat $numEtat = null)
+    {
+        $this->numEtat = $numEtat;
+    
+        return $this;
+    }
+
+    /**
+     * Get numEtat
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Etat 
+     */
+    public function getNumEtat()
+    {
+        return $this->numEtat;
+    }
+
+    /**
+     * Set numStatut
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Statut $numStatut
+     * @return Materiel
+     */
+    public function setNumStatut(\GestionParcInfo\ParcInfoBundle\Entity\Statut $numStatut)
+    {
+        $this->numStatut = $numStatut;
+    
+        return $this;
+    }
+
+    /**
+     * Get numStatut
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Statut 
+     */
+    public function getNumStatut()
+    {
+        return $this->numStatut;
     }
 
     /**
@@ -300,7 +256,7 @@ class Materiel
     public function addHistorique(\GestionParcInfo\ParcInfoBundle\Entity\Historique $historiques)
     {
         $this->historiques[] = $historiques;
-
+    
         return $this;
     }
 
@@ -333,7 +289,7 @@ class Materiel
     public function addUtilisateur(\GestionParcInfo\ParcInfoBundle\Entity\Utilisateur $utilisateurs)
     {
         $this->utilisateurs[] = $utilisateurs;
-        
+    
         return $this;
     }
 
@@ -355,5 +311,51 @@ class Materiel
     public function getUtilisateurs()
     {
         return $this->utilisateurs;
+    }
+
+    /**
+     * Set numCarac
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $numCarac
+     * @return Materiel
+     */
+    public function setNumCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $numCarac = null)
+    {
+        $this->numCarac = $numCarac;
+    
+        return $this;
+    }
+
+    /**
+     * Get numCarac
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Caracteristique 
+     */
+    public function getNumCarac()
+    {
+        return $this->numCarac;
+    }
+
+    /**
+     * Set numType
+     *
+     * @param \GestionParcInfo\ParcInfoBundle\Entity\Type $numType
+     * @return Materiel
+     */
+    public function setNumType(\GestionParcInfo\ParcInfoBundle\Entity\Type $numType = null)
+    {
+        $this->numType = $numType;
+    
+        return $this;
+    }
+
+    /**
+     * Get numType
+     *
+     * @return \GestionParcInfo\ParcInfoBundle\Entity\Type 
+     */
+    public function getNumType()
+    {
+        return $this->numType;
     }
 }

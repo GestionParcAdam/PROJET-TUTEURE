@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Fabricant
  *
- * @ORM\Table()
+ * @ORM\Table("fabricant")
  * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\FabricantRepository")
  */
 class Fabricant

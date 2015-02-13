@@ -76,8 +76,8 @@
                             <div class="contenu_onglet" id="contenu_onglet_2">
                                 <p class="col-lg-12">
                                     <br/>
-                                    <button class="btn btn-default" id="ajouter_log" 
-                                            data-toggle="modal" data-target="#myModal3">Ajouter un logiciel</button>
+                                    <input class="btn btn-default" id="ajouter_log" 
+                                            data-toggle="modal" data-target="#myModal3" value="Ajouter un logiciel"></input>
                                 </p>
                                 <p class="col-lg-12">
                                 <table class="table table-striped">
@@ -93,7 +93,7 @@
                                     <tbody id="tabLog">
                                         {% for car in materiel.numCarac.numCaracLog %}
 
-                                            <tr>
+                                            <tr data-value="{{car.id}}">
                                                 <td>
                                                     {%if materiel.numCarac is not null %}
                                                         {{car.nomLog}}
@@ -115,7 +115,7 @@
                                                     {%endif%}
                                                 </td>
                                                 <td>
-                                                    poubelle
+                                                    <a class="deleteBtn3">poubelle</a>
                                                 </td>
                                             </tr>
                                         {%endfor%}
@@ -170,7 +170,7 @@
                                             {% for u in materiel.utilisateurs %}
                                                 <tr>
                                                     <td> {{ u.nomUser }} </td>
-                                                    <td> poubelle </td>
+                                                    <td><a class="deleteBtn"> poubelle </a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>                                            
@@ -191,8 +191,8 @@
                             <div class="contenu_onglet" id="contenu_onglet_6">
                                 <p class="col-lg-12">
                                     <br/> 
-                                    <button class="btn btn-default" id="ajouter_maintenance" 
-                                            data-toggle="modal" data-target="#myModal">Ajouter une maintenance</button>
+                                    <input type="button" class="btn btn-default" id="ajouter_maintenance" 
+                                            data-toggle="modal" data-target="#myModal" value="Ajouter une maintenance"></input>
                                 </p>
 
                                 <p class="col-lg-12">
@@ -209,13 +209,13 @@
                                     </thead>
                                     <tbody id="tabMaintenance">
                                         {% for hist in materiel.historiques %}
-                                            <tr>
+                                            <tr data-value="{{hist.id}}">
                                                 <td>{{ hist.dateIntervention|date("d/m/Y") }}</td> 
                                                 <td>{{ hist.objetIntervention }}</td> 
                                                 <td>{{ hist.descIntervention }}</td> 
                                                 <td> {{ hist.prestataireIntervention }} </td>
                                                 <td> {{ hist.coutIntervention }} </td>
-                                                <td> poubelle </td>
+                                                <td><a class="deleteBtn2"> poubelle </a></td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>                                            
@@ -302,7 +302,82 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="idMateriel" class="idMat" value="{{materiel.id}}"></input>
     <script type="text/javascript">
+        
+            //console.log($(this));
+            //var pn = $(this).closest('td').prev('td').text();
+            //console.log(pn);
+            $(function() {
+                $('.deleteBtn').click(aButtonPressed);
+                $('.deleteBtn2').click(aButtonPressed2);
+                $('.deleteBtn3').click(aButtonPressed3);
+            });     
+            
+            function aButtonPressed()
+            {
+                var prevCell = $(this).parent().prev().text();
+                console.log(prevCell);
+                var idMat = $('#idMateriel').val();
+                console.log(idMat);
+                
+                $.ajax({
+                    type: "POST",
+                    url: Routing.generate('parc_info_delete', {data : prevCell, id : idMat, type : 'user'}),
+                    cache: false
+                   });
+                   
+                $(this).parent().parent().remove();
+            }
+            
+            function aButtonPressed2()
+            {
+                var prevCell = $(this).parent().parent().data('value');
+                console.log(prevCell);
+                var idMat = $('#idMateriel').val();
+                console.log(idMat);
+                
+                $.ajax({
+                    type: "POST",
+                    url: Routing.generate('parc_info_delete', {data : prevCell, id : idMat, type : 'hist'}),
+                    cache: false
+                   });
+                   
+                $(this).parent().parent().remove();
+            }
+            
+            function aButtonPressed3()
+            {
+                var prevCell = $(this).parent().parent().data('value');
+                console.log(prevCell);
+                var idMat = $('#idMateriel').val();
+                console.log(idMat);
+                
+                $.ajax({
+                    type: "POST",
+                    url: Routing.generate('parc_info_delete', {data : prevCell, id : idMat, type : 'log'}),
+                    cache: false
+                   });
+                   
+                $(this).parent().parent().remove();
+            }
+            
+            
+           
+            
+            {# $.ajax('{{path('parc_info_delete')}}',               
+                        {data: mydata}, 
+                    function(response){
+                            if(response.code === 100 && response.success){//dummy check
+                                document.getElementById('tabSelectUser').deleteRow(0);
+                            }
+
+            }, "json"); #}
+        
+
+        //$(document).ready(function() {     
+        //$('button').on('click', function(){aButtonPressed();});
+          
         var anc_onglet = '1';
         change_onglet(anc_onglet);
     </script>
