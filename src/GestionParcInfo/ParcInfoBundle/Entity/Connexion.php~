@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace GestionParcInfo\ParcInfoBundle\Entity;
@@ -176,3 +177,30 @@ class Connexion implements \Symfony\Component\Security\Core\User\UserInterface
         return $this->isActive;
     }
 }
+=======
+<?php
+
+namespace GestionParcInfo\ParcInfoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Connexion
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="GestionParcInfo\ParcInfoBundle\Repository\ConnexionRepository")
+ */
+class Connexion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="string")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    
+}
+>>>>>>> origin/master

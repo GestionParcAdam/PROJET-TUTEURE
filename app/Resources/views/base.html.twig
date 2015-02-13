@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,3 +59,64 @@
     </div>
     </body>
 </html>
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du Parc informatique ADAM SAS</title>
+
+    
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('css/local.css') }}" />
+
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/js/jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('js/script.js') }}"></script>
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+                <a class="navbar-brand" href="{{ path('parc_info_homepage') }}"><i class="fa fa-home"></i> Gestion du Parc informatique ADAM SAS</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                    <li class="selected"><a href="{{ path('parc_info_ajouter') }}"><i class="glyphicon glyphicon-hdd"></i> Ajouter un matériel </a></li>
+                    <li><a href="{{ path('parc_info_rechercher') }}"><i class="glyphicon glyphicon-search"></i>  Recherche multicritère </a></li>
+                    <li><a href="{{ path('parc_info_edition') }}"><i class="glyphicon glyphicon-print"></i> Edition de rapport </a></li>
+                    <li><a href="{{ path('parc_info_parametrage') }}"><i class="glyphicon glyphicon-cog"></i> Paramétrages </a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li>
+                        <a><i class="fa fa-user"></i> Administrateur</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}"  ><i class="glyphicon glyphicon-off"></i> Déconnexion  </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>
+    </div>
+    </body>
+</html>
+>>>>>>> origin/master

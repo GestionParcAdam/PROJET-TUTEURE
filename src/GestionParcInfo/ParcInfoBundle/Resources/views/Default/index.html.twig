@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {#
 Ca c'est une vue
 Ici elle étend la vue principal qui est dans app/ressources/views
@@ -191,4 +192,195 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
             </div>
         </div>
     </div>
+=======
+{#
+Ca c'est une vue
+Ici elle étend la vue principal qui est dans app/ressources/views
+Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de cette vue étendu
+#}
+{% extends "::base.html.twig" %}
+
+{#
+    Ici on dit que le block body de notre vue étendu va prendre tout ce qui suit
+#}
+{% block body %}        
+    <div class="row">
+        <div class="col-lg-12">
+            <h2> Gestion du Parc Informatique</h2>
+            {#
+                Ici on regarde l'objet passer en paramètre du render du controller
+             #}
+            {# 1er pop up #}
+            {% if materielHs != null %}
+                {#
+                    Là je créer une variable
+                #}
+                {% set nbMatHS = 0 %}
+
+                {% for materiel in materielHs %}
+                    {% set nbMatHS = nbMatHS + 1 %}
+                {% endfor %}
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <h4> Attention! </h4>
+                        {% if nbMatHS==1%}
+                        <p>  {{ nbMatHS }} Matériel est HS.  </p>
+                        {% else %}
+                        <p>  {{ nbMatHS }} Matériels sont HS.  </p>
+                        {% endif %}
+                        
+                        <a href="{{ path('parc_info_matHS', { 'materielHs': materielHs }) }}" ><button class="btn btn-defaut col-lg-offset-9">Accéder à la liste</button></a>      
+                    </div>
+                </div>
+            {%endif%}
+            {# 2ème pop up #}
+            {% if materielPG != null %}
+                {#
+                    Là je créer une variable
+                #}
+                {% set nbMatPG = 0 %}
+
+                {% for materiel in materielPG %}
+                    {% set nbMatPG = nbMatPG + 1 %}
+                {% endfor %}
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <h4> Attention! </h4>
+                        {% if nbMatPG==1%}
+                        <p>  {{ nbMatPG }} Matériel n'est plus sous garantie.  </p>
+                        {% else %}
+                        <p>  {{ nbMatPG }} Matériels ne sont plus sous garantie.  </p>
+                        {% endif %}
+                        <a href="{{ path('parc_info_matPG', { 'materielPG': materielPG }) }}" ><button class="btn btn-defaut col-lg-offset-9">Accéder à la liste</button></a>      
+                    </div>
+                </div>
+            {%endif%}
+        </div>
+     </div>
+     <div class="row">
+        <div class="col-lg-12">
+          {# 3ème pop up #}
+            {% if materielEnPanne != null %}
+                {#
+                    Là je créer une variable
+                #}
+                {% set nbMatEnPanne = 0 %}
+
+                {% for materiel in materielEnPanne %}
+                    {% set nbMatEnPanne = nbMatEnPanne + 1 %}
+                {% endfor %}
+                <div class="col-lg-6">
+                    <div class="alert alert-dismissable alert-warning">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        <h4> Attention! </h4>
+                        {% if nbMatEnPanne==1%}
+                        <p>  {{ nbMatEnPanne }} Matériel est en panne.  </p>
+                        {% else %}
+                        <p>  {{ nbMatEnPanne }} Matériels  sont en panne.  </p>
+                        {% endif %}
+                        <a href="{{ path('parc_info_matEnPanne', { 'materielEnPanne': materielEnPanne }) }}" ><button class="btn btn-defaut col-lg-offset-9">Accéder à la liste</button></a>      
+                    </div>
+                </div>
+            {%endif%}
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Etat du parc</h3>
+                </div>
+                <div class="panel-body">
+                   {% if allsite != null %}
+                     {% set nbMatHS = 0 %}
+
+                        {% for site in allsite %}
+                            {% set nbMatService = 0 %}
+                            {% set nbMatPan = 0 %}
+                            {% set nbMatHs = 0 %}
+                            {% for materiel in site.materiels %}
+                                {% if materiel.numEtat.id==2 %}
+                                    {% set nbMatService = nbMatService + 1 %}
+                                {% endif %}
+                                {% if materiel.numEtat.id==3 %}
+                                    {% set nbMatHs = nbMatHs + 1 %}
+                                {% endif %}
+                                {% if materiel.numEtat.id==4 %}  
+                                    {% set nbMatPan = nbMatPan + 1 %}
+                                {% endif %}
+                            {% endfor%}
+                            <div class="col-lg-6">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><i class="fa fa-laptop"></i> {{site.nomSite}} </h3>
+                                    </div>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Etat</th>
+                                                <th>Nombre</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
+                                                <td>En Service</td>
+                                                <td>{{nbMatService}}</td>
+                                            </tr>
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 4,'numSite':site.id }) }}'" class="cellule">
+                                                <td>En panne</td>
+                                                <td>{{nbMatPan}}</td>
+                                            </tr>
+                                            <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
+                                                <td>HS</td>
+                                                <td>{{nbMatHs}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {%endif%}
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Dernière modification</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Nom matériel</th>
+                                <th class="text-center">Lieu</th>
+                                <th class="text-center">Date de dernière modification</th>
+                               <!-- <th class="text-center">Modifier</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if dernierModif != null %}
+                                {% for materiel in dernierModif %}
+                                <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule text-center">
+                                    <td> {{materiel.nomMat}}</td>
+                                    <td> {{materiel.numSite.nomSite}}</td>
+                                    <td> {{materiel.dateLastModif|date('d-m-y')}}</td>
+                                    <!--<td class="text-center"><a href="modifierMat/PC1/ficheMateriel1.html"> <i class="glyphicon glyphicon-edit"></i></a></td>-->
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> origin/master
 {% endblock %}

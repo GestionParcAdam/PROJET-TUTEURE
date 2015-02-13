@@ -122,7 +122,7 @@ class ParametrageController extends Controller {
         }
         if ($categorie == 'admin') {
             $liste = $em->getRepository('ParcInfoBundle:Connexion')->findAll();
-            return $this->render('ParcInfoBundle:Default:Parametrage/adminParam.html.twig', array('liste' => $liste,
+            return $this->render('ParcInfoBundle:Default:Parametrage/suppression.html.twig', array('liste' => $liste,
                         'categorie' => 'admin',
                         'form' => $form->createView()));
         }
@@ -314,7 +314,9 @@ class ParametrageController extends Controller {
                 return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
-            return $this->render('ParcInfoBundle:Default:Parametrage/adminParam.html.twig');
+            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
         }
     }
 }
