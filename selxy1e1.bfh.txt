@@ -1,0 +1,439 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	app/AppKernel.php
+	app/Resources/views/base.html.twig
+	app/config/routing.yml
+	app/config/security.yml
+	composer.json
+	composer.lock
+	nbproject/private/private.xml
+	src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php
+	src/GestionParcInfo/ParcInfoBundle/Controller/ModifierController.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/Caracteristique.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/Caracteristique.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueCom.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueRes.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/Connexion.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/Fabricant.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/Historique.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/Historique.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/Revendeur.php~
+	src/GestionParcInfo/ParcInfoBundle/Entity/User.php
+	src/GestionParcInfo/ParcInfoBundle/Entity/Utilisateur.php~
+	src/GestionParcInfo/ParcInfoBundle/Repository/MaterielRepository.php
+	src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml
+	src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienInformatique.html.twig
+	src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/modifierMateriel.html.twig
+	src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/index.html.twig
+	web/UltraVNC/mslogon.log
+	web/config.php
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 3 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   2a5cnnrx.wk0.txt
+#	modified:   LICENSE
+#	modified:   README.md
+#	modified:   UPGRADE-2.2.md
+#	modified:   UPGRADE-2.3.md
+#	modified:   UPGRADE-2.4.md
+#	modified:   UPGRADE.md
+#	modified:   app/.htaccess
+#	modified:   app/AppCache.php
+#	modified:   app/AppKernel.php
+#	modified:   app/Resources/views/base.html.twig
+#	modified:   app/autoload.php
+#	modified:   app/config/config.yml
+#	modified:   app/config/config_dev.yml
+#	modified:   app/config/config_prod.yml
+#	modified:   app/config/config_test.yml
+#	modified:   app/config/parameters.yml.dist
+#	modified:   app/config/routing.yml
+#	modified:   app/config/routing_dev.yml
+#	modified:   app/config/security.yml
+#	modified:   app/console
+#	modified:   app/phpunit.xml.dist
+#	modified:   bin/doctrine
+#	modified:   bin/doctrine-dbal.bat
+#	modified:   bin/doctrine.bat
+#	modified:   bin/doctrine.php
+#	modified:   bin/doctrine.php.bat
+#	modified:   bin/security-checker.bat
+#	modified:   composer.json
+#	modified:   composer.lock
+#	modified:   composer.phar
+#	modified:   gestionparcinfo (1).sql
+#	modified:   html2pdf_Explication.pdf
+#	modified:   nbproject/private/private.properties
+#	modified:   nbproject/private/private.xml
+#	modified:   nbproject/project.properties
+#	modified:   nbproject/project.xml
+#	modified:   persist($usr)
+#	modified:   setPassword(root)
+#	modified:   setUsername(admin)
+#	modified:   src/.htaccess
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/ConnexionController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/FicheController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/ModifierController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/ParametrageController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/RechercheController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/DependencyInjection/Configuration.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/DependencyInjection/ParcInfoExtension.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Affecte.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Caracteristique.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Caracteristique.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueCom.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueCom.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueLog.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueRes.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/CaracteristiqueRes.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Connexion.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Connexion.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Etat.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Etat.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Fabricant.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Fabricant.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Historique.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Historique.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Materiel.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Materiels.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Revendeur.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Revendeur.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Site.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Site.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Statut.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Statut.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Type.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Type.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/User.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Utilisateur.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Entity/Utilisateur.php~
+#	modified:   src/GestionParcInfo/ParcInfoBundle/ParcInfoBundle.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/CaracteristiqueComRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/CaracteristiqueLogRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/CaracteristiqueRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/CaracteristiqueResRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/ConnexionRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/EtatRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/FabricantRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/HistoriqueRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/MaterielRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/RevendeurRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/SiteRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/StatutRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/TypeRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/UtilisateurRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/config/routing.yml
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/config/services.yml
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/translations/messages.fr.xlf
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/AjouterMateriel/ajouterMateriel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Connexion/Connexion.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Connexion/login.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/EditionRapport.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienEtat.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienFinGarantie.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienInformatique.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeLogiciel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Etat/affichageMaterielByEtat.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/ficheMateriel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Materiel/modifierMateriel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/adminParam.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/ajouter.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/parametrage.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/Parametrage/suppression.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/PopUp/affichePopUp.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/PopUp/affichePopUpEnPanne.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/PopUp/affichePopUpPG.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/RechercherMateriel/rechercherMateriel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/RechercherMateriel/rechercherResultat.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/index.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Tests/Controller/DefaultControllerTest.php
+#	modified:   web/.htaccess
+#	modified:   web/UltraVNC/Licence.rtf
+#	modified:   web/UltraVNC/Readme.txt
+#	modified:   web/UltraVNC/Whatsnew.rtf
+#	modified:   web/UltraVNC/mslogon.log
+#	modified:   web/UltraVNC/options.vnc
+#	modified:   web/UltraVNC/ultravnc.ini
+#	modified:   web/app.php
+#	modified:   web/app_dev.php
+#	modified:   web/bootstrap/css/bootstrap.css
+#	modified:   web/bootstrap/css/bootstrap.min.css
+#	modified:   web/bootstrap/fonts/glyphicons-halflings-regular.svg
+#	modified:   web/bootstrap/js/bootstrap.js
+#	modified:   web/bootstrap/js/bootstrap.min.js
+#	modified:   web/bootstrap/js/jquery-1.10.2.min.js
+#	modified:   web/config.php
+#	modified:   web/css/local.css
+#	modified:   web/font-awesome/css/font-awesome.css
+#	modified:   web/font-awesome/css/font-awesome.min.css
+#	modified:   web/font-awesome/fonts/fontawesome-webfont.svg
+#	modified:   web/font-awesome/less/bordered-pulled.less
+#	modified:   web/font-awesome/less/core.less
+#	modified:   web/font-awesome/less/fixed-width.less
+#	modified:   web/font-awesome/less/font-awesome.less
+#	modified:   web/font-awesome/less/icons.less
+#	modified:   web/font-awesome/less/larger.less
+#	modified:   web/font-awesome/less/list.less
+#	modified:   web/font-awesome/less/mixins.less
+#	modified:   web/font-awesome/less/path.less
+#	modified:   web/font-awesome/less/rotated-flipped.less
+#	modified:   web/font-awesome/less/spinning.less
+#	modified:   web/font-awesome/less/stacked.less
+#	modified:   web/font-awesome/less/variables.less
+#	modified:   web/font-awesome/scss/_bordered-pulled.scss
+#	modified:   web/font-awesome/scss/_core.scss
+#	modified:   web/font-awesome/scss/_fixed-width.scss
+#	modified:   web/font-awesome/scss/_icons.scss
+#	modified:   web/font-awesome/scss/_larger.scss
+#	modified:   web/font-awesome/scss/_list.scss
+#	modified:   web/font-awesome/scss/_mixins.scss
+#	modified:   web/font-awesome/scss/_path.scss
+#	modified:   web/font-awesome/scss/_rotated-flipped.scss
+#	modified:   web/font-awesome/scss/_spinning.scss
+#	modified:   web/font-awesome/scss/_stacked.scss
+#	modified:   web/font-awesome/scss/_variables.scss
+#	modified:   web/font-awesome/scss/font-awesome.scss
+#	modified:   web/html2pdf/lib/Html2Pdf/Html2Pdf.php
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/ca.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/cs.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/da.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/de.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/en.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/es.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/fr.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/it.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/nl.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/pt.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/locale/tr.csv
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/2dbarcodes.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/CHANGELOG.TXT
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/LICENSE.TXT
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/README.TXT
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/barcodes.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/cache/chapter_demo_1.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/cache/chapter_demo_2.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/cache/table_data_demo.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/cache/utf8test.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/lang/bra.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/lang/eng.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/lang/ger.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/lang/ita.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/tcpdf_config.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/config/tcpdf_config_alt.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/doc/read_me.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/examples/read_me.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/README.TXT
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/ZarBold.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/ZarBold.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/almohanad.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/almohanad.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/almohanad.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/arialunicid0.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/courier.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/AUTHORS
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/BUGS
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/LICENSE
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/NEWS
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/README
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/langcover.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/status.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavu-fonts-ttf-2.30/unicover.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusans.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusans.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusans.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensed.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensed.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensed.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusanscondensedi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmono.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmono.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmono.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonob.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonob.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonob.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonobi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonobi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonobi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonoi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonoi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavusansmonoi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserif.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserif.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserif.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensed.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensed.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensed.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifcondensedi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/dejavuserifi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/AUTHORS
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/COPYING
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/CREDITS
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/ChangeLog
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/INSTALL
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freefont-20090104/README
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemono.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemono.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemono.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonob.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonob.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonob.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonobi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonobi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonobi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonoi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonoi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freemonoi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesans.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesans.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesans.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freesansi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserif.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserif.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserif.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifb.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifb.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifbi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifbi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifi.ctg.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/freeserifi.z
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/helvetica.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/helveticab.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/helveticabi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/helveticai.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/hysmyeongjostdmedium.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/kozgopromedium.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/kozminproregular.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/msungstdlight.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/stsongstdlight.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/symbol.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/times.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/timesb.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/timesbi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/timesi.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/uni2cid_ac15.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/uni2cid_ag15.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/uni2cid_aj16.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/uni2cid_ak12.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/README.TXT
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1250.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1251.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1252.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1253.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1254.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1255.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1257.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp1258.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/cp874.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-1.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-11.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-15.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-16.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-2.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-4.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-5.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-7.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/iso-8859-9.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/koi8-r.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/enc/koi8-u.map
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/freetype6.dll
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/makeallttffonts.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/makefont.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/pfm2afm
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/pfm2afm.exe
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/src/pfm2afm-src.tar.gz
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/src/readme.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/src/ttf2ufm-src.tar.gz
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/ttf2ufm
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/ttf2ufm.exe
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/utils/zlib1.dll
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/zapfdingbats.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/fonts/zarbold.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/htmlcolors.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/images/read_me.txt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/qrcode.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/tcpdf.crt
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/tcpdf.fdf
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/tcpdf.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/_tcpdf/unicode_data.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/exception.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/html2pdf.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/locale.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/myPdf.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/parsingCss.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/parsingHtml.class.php
+#	modified:   web/html2pdf/lib/Html2Pdf/src/tcpdfConfig.php
+#	modified:   web/js/script.js
+#	modified:   web/options.vnc
+#	modified:   web/robots.txt
+#	modified:   web/test.php
+#	modified:   web/test.txt
+#	modified:   web/vnc.bat
+#
+

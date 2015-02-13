@@ -4,11 +4,9 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
+
     "hash": "775b06463256f97833d41ebde3b552bc",
-=======
-    "hash": "fa7365677cbd80835672bec389a825fc",
->>>>>>> origin/master
+
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1931,12 +1929,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "obtao/html2pdf-bundle": 20,
-<<<<<<< HEAD
         "friendsofsymfony/user-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20
-=======
-        "friendsofsymfony/user-bundle": 20
->>>>>>> origin/master
     },
     "prefer-stable": false,
     "prefer-lowest": false,
