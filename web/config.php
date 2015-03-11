@@ -7,6 +7,13 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     '127.0.0.1',
     '::1',
+<<<<<<< HEAD
+=======
+    '192.168.0.58',
+    '164.81.154.91', 
+    '164.81.20.58',
+    '77.153.18.165'
+>>>>>>> c96d759021e50f795c6ef1e4ee6a84963b946f5d
 ))) {
     header('HTTP/1.0 403 Forbidden');
     exit('This script is only accessible from localhost.');
