@@ -1,14 +1,22 @@
 <?php
 
 if (!isset($_SERVER['HTTP_HOST'])) {
-    
     exit('This script cannot be run from the CLI. Run it from a browser.');
 }
 
 if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     '127.0.0.1',
     '::1',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
     '192.168.0.58',
+    '164.81.154.91', 
+    '164.81.20.58',
+    '77.153.18.165'
+>>>>>>> c96d759021e50f795c6ef1e4ee6a84963b946f5d
+>>>>>>> origin/master
 ))) {
     header('HTTP/1.0 403 Forbidden');
     exit('This script is only accessible from localhost.');

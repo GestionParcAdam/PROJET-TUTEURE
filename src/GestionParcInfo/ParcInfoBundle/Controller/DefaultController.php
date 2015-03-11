@@ -15,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Process;
+use Html2Pdf_Html2Pdf;
+
 
 class DefaultController extends Controller {
 
@@ -312,7 +314,7 @@ class DefaultController extends Controller {
                 $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
                 $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
                 
-                $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+                $html2pdf = new \Html2Pdf_Html2('P','A4','fr');
                 $html2pdf->pdf->SetDisplayMode('fullpage');
                 $html2pdf->writeHTML($html);
                 
@@ -325,7 +327,7 @@ class DefaultController extends Controller {
                 
                 //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
                 $html2pdf->Output($v,'D');
-                return new Response();
+                return new Response('ok');
             }
             if (isset($form['btnBienFinGar'])) {
                 $em = $this->getDoctrine()->getManager();
@@ -339,7 +341,7 @@ class DefaultController extends Controller {
                 $html2pdf->writeHTML($html);
                 $v = "Liste_Bien_Fin_Garantie.pdf";
                 $html2pdf->Output($v,'D');
-                return new Response();
+                return new Response('ok');
                 
             }
             if (isset($form['btnMatEtat'])) {
@@ -364,19 +366,19 @@ class DefaultController extends Controller {
                     $e = "Liste_Bien_$etat.pdf";
                 }
                 $html2pdf->Output($e,'D');
-                return new Response();
+                return new Response('ok');
             }
             if (isset($form['btnListLog'])) {
                 
                 $em = $this->getDoctrine()->getManager();
                 $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
                 $html= $this->renderView('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig', array("logiciel" => $logiciel));
-            
+                
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
                 $html2pdf->pdf->SetDisplayMode('fullpage');
                 $html2pdf->writeHTML($html);
                 $html2pdf->Output('Liste_Logiciels.pdf','D');
-                return new Response();
+                return new Response('ok');
             }
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');
         }
