@@ -11,10 +11,10 @@ use Symfony\Component\Debug\Debug;
 // Feel free to remove this, extend it, or make something more sophisticated.
 if (isset($_SERVER['HTTP_CLIENT_IP'])
     || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-    || !(in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1','192.168.0.58', '164.81.154.91', '164.81.20.58')) || php_sapi_name() === 'cli-server')
+    || !(in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '77.153.18.165', '::1','192.168.0.58', '164.81.154.91', '164.81.20.58')) || php_sapi_name() === 'cli-server')
 ) {
     header('HTTP/1.0 403 Forbidden');
-    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
+    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.'.@$_SERVER['REMOTE_ADDR']);
 }
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';

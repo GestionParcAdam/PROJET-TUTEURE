@@ -152,7 +152,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Type',
                         'form' => $form->createView()));
         }
         if ($categorie == 'statuts') {
@@ -175,7 +175,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Statut',
                         'form' => $form->createView()));
         }
         if ($categorie == 'etats') {
@@ -198,7 +198,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Etat',
                         'form' => $form->createView()));
         }
         if ($categorie == 'Utilisateur'){
@@ -221,7 +221,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Utilisateur',
                         'form' => $form->createView()));
         }
         if ($categorie == 'siteGeo') {
@@ -246,7 +246,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Site Géographique',
                         'form' => $form->createView()));
         }
         if ($categorie == 'fabricant') {
@@ -269,7 +269,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Fabricant',
                         'form' => $form->createView()));
         }
         if ($categorie == 'revendeur') {
@@ -292,7 +292,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Revendeur',
                         'form' => $form->createView()));
         }
         if ($categorie == 'admin') {
@@ -315,7 +315,7 @@ class ParametrageController extends Controller {
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
-                array('categorie' => $categorie,
+                array('categorie' => 'Admin',
                         'form' => $form->createView()));
         }
     }
