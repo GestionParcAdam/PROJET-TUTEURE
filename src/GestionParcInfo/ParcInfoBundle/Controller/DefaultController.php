@@ -63,7 +63,7 @@ class DefaultController extends Controller {
         $form = $this->createFormBuilder()
                 ->setMethod('POST')
                 ->setAction($this->generateUrl('parc_info_ajouter'))
-                ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type',
+                ->add('typeMat', 'entity', array('class' => 'ParcInfoBundle:Type', 
                     'property' => 'libelleType'))
                 ->add('nomMat', 'text')
                 ->add('etatMat', 'entity', array('class' => 'ParcInfoBundle:Etat',
@@ -73,35 +73,42 @@ class DefaultController extends Controller {
                 ->add('siteGeo', 'entity', array('class' => 'ParcInfoBundle:Site',
                     'property' => 'nomSite'))
                 ->add('dateAchat', 'date', array('input' => 'datetime',
+                    'required' => false,
+                    'empty_value' => 'null',
                     'widget' => 'single_text'))
-                ->add('prixAchat', 'money'/* ,array('currency' => 'false') */)
-                ->add('numFacture', 'text')
-                ->add('modele', 'text')
+                ->add('prixAchat', 'money',array('required' => false)/* ,array('currency' => 'false') */)
+                ->add('numFacture', 'text', array('required' => false))
+                ->add('modele', 'text', array('required' => false,))
                 ->add('fabricant', 'entity', array('class' => 'ParcInfoBundle:Fabricant',
+                    'required' => false,
                     'property' => 'nomFabricant'))
                 ->add('revendeur', 'entity', array('class' => 'ParcInfoBundle:Revendeur',
+                    'required' => false,
                     'property' => 'nomRevendeur'))
-                ->add('immobilisation', 'text')
-                ->add('nbUsers', 'hidden')
+                ->add('immobilisation', 'text',array('required' => false))
+                ->add('nbUsers', 'hidden',array('required' => false))
                 ->add('selectUser', 'entity', array('class' => 'ParcInfoBundle:Utilisateur',
+                    'required' => false,
                     'property' => 'nomUser'))
-                ->add('nbLog', 'hidden')
-                ->add('nbMaintenance', 'hidden')
-                ->add('nomUser', 'text')
-                ->add('editeur', 'text')
-                ->add('nomLog', 'text')
-                ->add('licence', 'text')
+                ->add('nbLog', 'hidden',array('required' => false))
+                ->add('nbMaintenance', 'hidden',array('required' => false))
+                ->add('nomUser', 'text',array('required' => false))
+                ->add('editeur', 'text',array('required' => false))
+                ->add('nomLog', 'text',array('required' => false))
+                ->add('licence', 'text',array('required' => false))
                 ->add('dateInterv', 'date', array('input' => 'datetime',
+                    'required' => false,
                     'widget' => 'single_text'))
-                ->add('objInterv', 'text')
-                ->add('descInterv', 'textarea')
-                ->add('prestaInterv', 'text')
-                ->add('coutInterv', 'text')
-                ->add('versionLogiciel', 'text')
-                ->add('adMac', 'text')
-                ->add('adIp', 'text')
-                ->add('adPasserelle', 'text')
+                ->add('objInterv', 'text',array('required' => false))
+                ->add('descInterv', 'textarea',array('required' => false))
+                ->add('prestaInterv', 'text',array('required' => false))
+                ->add('coutInterv', 'text',array('required' => false))
+                ->add('versionLogiciel', 'text',array('required' => false))
+                ->add('adMac', 'text',array('required' => false))
+                ->add('adIp', 'text',array('required' => false))
+                ->add('adPasserelle', 'text',array('required' => false))
                 ->add('dateGarantie', 'date', array('input' => 'datetime',
+                    'required' => false,
                     'widget' => 'single_text'))
                 ->add('ajouter', 'submit')
                 ->getForm();
@@ -416,14 +423,7 @@ class DefaultController extends Controller {
                
             }
         }
-        /*$form->handleRequest($request);
-        if ($form->get('connexionVNC')->isClicked()) {            
-            //$proc = new Process('vnc.bat');
-            //$proc->run();
-            //system("C:/wamp/www/PROJET-TUTEURE/web/vncviewer.exe");
-            return $this->render('http://www.google.fr');
-            
-        }*/
+
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
 
@@ -436,31 +436,15 @@ class DefaultController extends Controller {
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
     }
+    
+    public function deleteMatAction($idMat) {
+        $em = $this->getDoctrine()->getManager();
 
-    /*
-      public function listeBienFinGarantieAction()
-      {
-      $em = $this->getDoctrine()->getManager();
-      $materiels = $em->getRepository('ParcInfoBundle:Materiel')
-      ->getMaterielFinGarantie($numSite,$idEtat);
-      $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-      return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienFinGarantie.html.twig',
-      array('materiels' => $materiels,'type'=>$type));
-      }
-      public function listeBienEtatAction(){
-      $em = $this->getDoctrine()->getManager();
-      $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite'=>$numSite,'numEtat'=>$idEtat));
-      if($numSite==0){
-      $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
-      }
-      $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
-      return $this->render('ParcInfoBundle:Default:EditionRapport/listeBienEtat.html.twig',array("materiels"=>  $materiel,'type'=>$type));
-      }
-
-      public function listeLogicielAction(){
-      $em = $this->getDoctrine()->getManager();
-      $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
-
-      return $this->render('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig',array("logiciel"=>  $logiciel));
-      } */
+        $mat = $em->getRepository('ParcInfoBundle:Materiel')->find($idMat);
+        
+        $em->remove($mat);
+        $em->flush();
+        
+        return $this->redirect($this->generateUrl('parc_info_homepage'));
+    }
 }

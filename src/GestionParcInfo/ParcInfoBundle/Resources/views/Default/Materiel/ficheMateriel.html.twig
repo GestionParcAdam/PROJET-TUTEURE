@@ -37,6 +37,7 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 {{ form_end(form1) }}
                                 
                                 <p class="col-lg-1"><a href="{{path('parc_info_modifier',{'idmat':materiel.id})}}"><button class="btn btn-default">Editer</button></a></p>
+                                
                                 <p class="col-lg-5"><b>Type de matériel :</b> 
                                     {%if materiel.numType is not null %}
                                         {{materiel.numType.libelleType}}
@@ -102,17 +103,21 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                         </p>
                                         <p class="col-lg-6"><b>Fabricant :</b> 
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracCom.numFabricant.nomFabricant}}
+                                                {% if materiel.numCarac.numCaracCom.numFabricant.nomFabricant is defined %}
+                                                    {{materiel.numCarac.numCaracCom.numFabricant.nomFabricant}}
+                                                {%endif%}
                                             {%endif%}
                                         </p>
                                         <p class="col-lg-6"><b>Revendeur :</b> 
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur}}
+                                                {% if materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur is defined %}
+                                                    {{ materiel.numCarac.numCaracCom.numRevendeur.nomRevendeur }}
+                                                {%endif%}
                                             {%endif%}
                                         </p>
                                         <p class="col-lg-6"><b>N° immobilisation :</b> 
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracCom.numImmo}}
+                                                {{materiel.numCarac.numCaracCom.numImmo}}
                                             {%endif%}
                                         </p>
                                     </div>
@@ -243,6 +248,10 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                         </div>
                     </div>
                 </div>
+                                <p class="col-lg-10"></p>                
+                                <p class="col-lg-2">
+                                    <a href="{{path('parc_info_deleteMat',{'idMat':materiel.id})}}" ><button class="btn btn-danger">Supprimer</button></a>                                    
+                                </p>
             </div>
         </div>
     </div>

@@ -71,10 +71,14 @@ class ParametrageController extends Controller {
             if($categorie == 'etats'){
                 $obj = $em->getRepository('ParcInfoBundle:Etat')->find($id);
             }
-            
-            $em->remove($obj);
-            $em->flush();
+            try{
+                $em->remove($obj);
+                $em->flush();
 
+            } catch (\Doctrine\DBAL\DBALException $ex) {
+               return $this->render('ParcInfoBundle:Default:Parametrage/suppressionException.html.twig');
+            }
+            
             return $this->redirect($this->generateUrl('parc_info_parametrage'));
         }
 

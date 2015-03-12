@@ -68,3 +68,11 @@ parc_info_delete:
     defaults: { _controller: ParcInfoBundle:Ajax:default }
     options:
         expose: true
+        
+parc_info_deleteMat:
+    path: /fiche/delete/{idMat}
+    defaults: { _controller: ParcInfoBundle:Default:deleteMat }
+    
+parc_info_parametrage_exception:
+    path: Parametrage/delete/exception
+    defaults: { _controller: ParcInfoBundle:Default:deleteMat }
