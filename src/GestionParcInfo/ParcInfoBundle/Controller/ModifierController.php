@@ -41,7 +41,8 @@ class ModifierController extends Controller
                 ->add('prixAchat', 'money'/* ,array('currency' => 'false') */, 
                         array('data' => $materiel->getNumCarac()
                                        ->getNumCaracCom()
-                                       ->getPrixAchat()))
+                                       ->getPrixAchat(),
+                            'required' => false))
                 ->add('numFacture', 'text', array('required' => false, 
                     'data' => $materiel->getNumCarac()
                                        ->getNumCaracCom()
