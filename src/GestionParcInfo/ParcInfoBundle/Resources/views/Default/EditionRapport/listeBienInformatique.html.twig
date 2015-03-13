@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 <body>
     <br/>     
 
-    {# <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}"> #}
+     <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}">
  <br/> 
     <h3 style="text-align: center;"> Liste du Matériel par Site</h3>
 
@@ -42,53 +41,4 @@
                 <br/>
     {% endif %}           
     {% endfor %}
-            
-    
-=======
-<body>
-    <br/>     
-
-    {# <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}"> #}
- <br/> 
-    <h3 style="text-align: center;"> Liste du Matériel par Site</h3>
-
-<br/> 
-    {% for s in site %}
-        {% set existe = '' %}
-        {% for materiel in materiels %}
-            {% if materiel.numSite.id==s.id %}
-                   {% set existe = 'true' %}
-            {% endif %}
-        {% endfor %}
-    {% if existe %}
-            <div class="panel-heading">
-                <h4 style="text-align: center;"> {{s.nomSite}}</h4>
-            </div>
-            <table class="table table-striped" style="width: 100%; font-size: 14px; border-bottom-right-radius: 3px;
-            border-bottom-left-radius: 3px;border-color: gray;margin: auto;">
-                <thead>
-                    <tr>
-                        <th>Nom du matériel &nbsp;&nbsp;</th>
-                        <th> Type de matériel &nbsp;&nbsp;</th>
-                        <th> Statut </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for materiel in materiels %}
-                        {% if materiel.numSite.id==s.id %}
-                        <tr>
-                            <td>{{ materiel.nomMat }}</td>
-                           <td>{{ materiel.numType.libelleType}}</td>
-                           <td>{{  materiel.numStatut.libelleStatut}}</td>
-                        </tr>
-                        {% endif %}
-                    {% endfor %}
-                </tbody>
-            </table>
-                <br/>
-    {% endif %}           
-    {% endfor %}
-            
-    
->>>>>>> origin/master
  </body>

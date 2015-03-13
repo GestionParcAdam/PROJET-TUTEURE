@@ -34,30 +34,30 @@ class Materiel
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_garantie", type="date")
+     * @ORM\Column(name="date_garantie", type="date", nullable=true)
      */
     private $dateGarantie;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Site", inversedBy="materiels", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Site", inversedBy="materiels", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false, referencedColumnName="id")
      */
     private $numSite;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Etat", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Etat", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $numEtat;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Statut", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Statut", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $numStatut;
     
     /**
-     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", mappedBy="materiel", cascade={"persist","remove"}, orphanRemoval=true)  
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Historique", mappedBy="materiel", cascade={"persist"}, orphanRemoval=true)  
     */
     private $historiques;
     
@@ -76,7 +76,7 @@ class Materiel
     private $numCarac;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Type", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Type", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $numType;
@@ -85,7 +85,7 @@ class Materiel
      *
      * @var \DateTime
      * 
-     * @ORM\Column(name="dateLastModif", type="date")
+     * @ORM\Column(name="dateLastModif", type="date", nullable=true)
      */
     private $dateLastModif;
     

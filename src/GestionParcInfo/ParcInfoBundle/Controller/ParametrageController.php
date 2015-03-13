@@ -21,6 +21,8 @@ use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
 use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
 use GestionParcInfo\ParcInfoBundle\Entity\Site;
 use GestionParcInfo\ParcInfoBundle\Entity\Utilisateur;
+use GestionParcInfo\ParcInfoBundle\Entity\User;
+use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class ParametrageController extends Controller {
 
@@ -71,10 +73,14 @@ class ParametrageController extends Controller {
             if($categorie == 'etats'){
                 $obj = $em->getRepository('ParcInfoBundle:Etat')->find($id);
             }
-            
-            $em->remove($obj);
-            $em->flush();
+            try{
+                $em->remove($obj);
+                $em->flush();
 
+            } catch (\Doctrine\DBAL\DBALException $ex) {
+               return $this->render('ParcInfoBundle:Default:Parametrage/suppressionException.html.twig');
+            }
+            
             return $this->redirect($this->generateUrl('parc_info_parametrage'));
         }
 
@@ -183,7 +189,6 @@ class ParametrageController extends Controller {
                     ->add('nom','text')
                     ->add('Ajouter','submit',array('label' => 'Ajouter l\'état'))
                     ->getForm();
-            
             if($form->handleRequest($request)->isSubmitted())
             {
                 $data = $form->getData();
@@ -296,17 +301,29 @@ class ParametrageController extends Controller {
                         'form' => $form->createView()));
         }
         if ($categorie == 'admin') {
+            $user = $em->getRepository('ParcInfoBundle:User')->find(1);
             $form = $this->createFormBuilder()
-                    ->add('nom','text')
-                    ->add('Ajouter','submit',array('label' => 'Ajouter l\'admin'))
+                    ->add('nom','text', array('data' => $user->getUsername()))
+                    ->add('ancienMDP','password')
+                    ->add('newMDP','password')
+                    ->add('confMDP','password')
+                    ->add('Enregistrer','submit')
                     ->getForm();
+            
             #A voir avec l'equipe !
             if($form->handleRequest($request)->isSubmitted())
             {
                 $data = $form->getData();
-                $obj = new Statut();
+                \Doctrine\Common\Util\Debug::dump($data);
+                $user->setUsername($data['nom']);
                 
-                $obj->setLibelleStatut($data['nom']);
+                if(!empty($data['newMDP'])){
+                    $user->setPlainPassword($data['newMDP']);
+                    $password=$data['newMDP'];
+                    $encoder = getEncoder($user);
+                    $user->setPassword($encoder->encodePassword($password, $user->getSalt()));
+                    $user->eraseCredentials();
+                }
                 
                 $em->persist($obj);
                 $em->flush();
@@ -314,7 +331,7 @@ class ParametrageController extends Controller {
                 return $this->redirect($this->generateUrl('parc_info_parametrage'));
             }
             
-            return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
+            return $this->render('ParcInfoBundle:Default:Parametrage/adminParam.html.twig', 
                 array('categorie' => 'Admin',
                         'form' => $form->createView()));
         }

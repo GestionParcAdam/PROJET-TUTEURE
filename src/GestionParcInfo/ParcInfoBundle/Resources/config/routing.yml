@@ -54,6 +54,11 @@ parc_info_resultatRecherche:
 parc_info_parametrage:
     path:     /Parametrage
     defaults: { _controller: ParcInfoBundle:Parametrage:parametrage }
+   
+parc_info_modifadmin:
+    path: /Parametrage/gerer/admin
+    defaults: { _controller: FOSUserBundle:ChangePassword:changePassword }
+    
     
 parc_info_suppression:
     path: /Parametrage/delete/{categorie}
@@ -68,3 +73,47 @@ parc_info_delete:
     defaults: { _controller: ParcInfoBundle:Ajax:default }
     options:
         expose: true
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+
+=======
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+        
+parc_info_deleteMat:
+    path: /fiche/delete/{idMat}
+    defaults: { _controller: ParcInfoBundle:Default:deleteMat }
+    
+parc_info_parametrage_exception:
+    path: Parametrage/delete/exception
+    defaults: { _controller: ParcInfoBundle:Default:deleteMat }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master

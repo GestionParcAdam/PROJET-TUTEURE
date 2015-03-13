@@ -24,24 +24,26 @@ class CaracteristiqueRes
     /**
      * @var string
      *
-     * @ORM\Column(name="adressIp", type="string", length=40)
+     * @ORM\Column(name="adressIp", type="string", length=40, nullable=true)
      */
     private $adressIp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adressMac", type="string", length=40)
+     * @ORM\Column(name="adressMac", type="string", length=40, nullable=true)
      */
     private $adressMac;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="adressPasserelle", type="string", length=40)
+     * @ORM\Column(name="adressPasserelle", type="string", length=40, nullable=true)
      */
     private $adressPasserelle;
 
+
+    
 
     /**
      * Get id
@@ -62,7 +64,7 @@ class CaracteristiqueRes
     public function setAdressIp($adressIp)
     {
         $this->adressIp = $adressIp;
-
+    
         return $this;
     }
 
@@ -85,7 +87,7 @@ class CaracteristiqueRes
     public function setAdressMac($adressMac)
     {
         $this->adressMac = $adressMac;
-
+    
         return $this;
     }
 
@@ -108,7 +110,7 @@ class CaracteristiqueRes
     public function setAdressPasserelle($adressPasserelle)
     {
         $this->adressPasserelle = $adressPasserelle;
-
+    
         return $this;
     }
 

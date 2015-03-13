@@ -24,53 +24,62 @@ class CaracteristiqueCom
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateAchat", type="date")
+     * @ORM\Column(name="dateAchat", type="date", nullable=true)
      */
     private $dateAchat;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prixAchat", type="string", length=255)
+     * @ORM\Column(name="prixAchat", type="string", length=255, nullable=true)
      */
     private $prixAchat;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="numFacture", type="string", length=255)
+     * @ORM\Column(name="numFacture", type="string", length=255, nullable=true)
      */
     private $numFacture;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="libelleModele", type="string", length=255)
+     * @ORM\Column(name="libelleModele", type="string", length=255, nullable=true)
      */
     private $libelleModele;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="numImmo", type="string", length=255)
+     * @ORM\Column(name="numImmo", type="string", length=255, nullable=true)
      */
     private $numImmo;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $numFabricant;
+    private $numFabricant = null;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $numRevendeur;
+    private $numRevendeur = null;
     /**
      * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Caracteristique", mappedBy="numCaracCom",cascade={"persist","remove"})
      */
     private $carac;
+
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carac = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -91,7 +100,7 @@ class CaracteristiqueCom
     public function setDateAchat($dateAchat)
     {
         $this->dateAchat = $dateAchat;
-
+    
         return $this;
     }
 
@@ -114,7 +123,7 @@ class CaracteristiqueCom
     public function setPrixAchat($prixAchat)
     {
         $this->prixAchat = $prixAchat;
-
+    
         return $this;
     }
 
@@ -137,7 +146,7 @@ class CaracteristiqueCom
     public function setNumFacture($numFacture)
     {
         $this->numFacture = $numFacture;
-
+    
         return $this;
     }
 
@@ -160,7 +169,7 @@ class CaracteristiqueCom
     public function setLibelleModele($libelleModele)
     {
         $this->libelleModele = $libelleModele;
-
+    
         return $this;
     }
 
@@ -183,7 +192,7 @@ class CaracteristiqueCom
     public function setNumImmo($numImmo)
     {
         $this->numImmo = $numImmo;
-
+    
         return $this;
     }
 
@@ -203,10 +212,10 @@ class CaracteristiqueCom
      * @param \GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant
      * @return CaracteristiqueCom
      */
-    public function setNumFabricant(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant)
+    public function setNumFabricant(\GestionParcInfo\ParcInfoBundle\Entity\Fabricant $numFabricant = null)
     {
         $this->numFabricant = $numFabricant;
-
+    
         return $this;
     }
 
@@ -226,10 +235,10 @@ class CaracteristiqueCom
      * @param \GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur
      * @return CaracteristiqueCom
      */
-    public function setNumRevendeur(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur)
+    public function setNumRevendeur(\GestionParcInfo\ParcInfoBundle\Entity\Revendeur $numRevendeur = null)
     {
         $this->numRevendeur = $numRevendeur;
-
+    
         return $this;
     }
 
@@ -242,13 +251,6 @@ class CaracteristiqueCom
     {
         return $this->numRevendeur;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->carac = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add carac
@@ -259,7 +261,7 @@ class CaracteristiqueCom
     public function addCarac(\GestionParcInfo\ParcInfoBundle\Entity\Caracteristique $carac)
     {
         $this->carac[] = $carac;
-
+    
         return $this;
     }
 
