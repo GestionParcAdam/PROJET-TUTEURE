@@ -73,29 +73,6 @@ parc_info_delete:
     defaults: { _controller: ParcInfoBundle:Ajax:default }
     options:
         expose: true
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-=======
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
         
 parc_info_deleteMat:
     path: /fiche/delete/{idMat}
@@ -104,22 +81,3 @@ parc_info_deleteMat:
 parc_info_parametrage_exception:
     path: Parametrage/delete/exception
     defaults: { _controller: ParcInfoBundle:Default:deleteMat }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87

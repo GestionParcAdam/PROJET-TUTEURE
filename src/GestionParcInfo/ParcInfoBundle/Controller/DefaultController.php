@@ -431,26 +431,7 @@ class DefaultController extends Controller {
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:Etat/affichageMaterielByEtat.html.twig', array('materiels' => $mats, 'etat' => $etat, 'type' => $type));
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
+
     
     public function deleteMatAction($idMat) {
         $em = $this->getDoctrine()->getManager();
@@ -462,23 +443,4 @@ class DefaultController extends Controller {
         
         return $this->redirect($this->generateUrl('parc_info_homepage'));
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
 }
