@@ -437,6 +437,7 @@ class DefaultController extends Controller {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> origin/master
@@ -448,6 +449,8 @@ class DefaultController extends Controller {
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
     
     public function deleteMatAction($idMat) {
         $em = $this->getDoctrine()->getManager();
@@ -464,6 +467,7 @@ class DefaultController extends Controller {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
 =======
 >>>>>>> origin/master
@@ -475,4 +479,6 @@ class DefaultController extends Controller {
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> 26681cb90f80b297abb014792f45c74ae6dd1e87
 }
