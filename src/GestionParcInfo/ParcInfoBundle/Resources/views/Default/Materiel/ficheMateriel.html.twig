@@ -258,6 +258,12 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
 <script type="text/javascript">
         var anc_onglet = '1';
         change_onglet(anc_onglet);
+        $(document).ready(function(){
+            console.log($('#form_ping').css("background-color"));
+            if($('#form_ping').css("background-color")=="rgb(255, 255, 255)"){
+                $('#form_ping').trigger('click');
+            }
+        });
 </script>
 
 {% endblock %}

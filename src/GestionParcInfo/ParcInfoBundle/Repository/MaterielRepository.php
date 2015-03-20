@@ -163,9 +163,9 @@ class MaterielRepository extends EntityRepository
             if($first==''){
                 $req=' where ';
                 $first='false';
-                $modele=" co.numFacture like '%$modele%'";
+                $modele=" co.libelleModele like '%$modele%'";
             }else{ 
-                $modele=" and m.numType like '%$modele%'";
+                $modele=" and co.libelleModele like '%$modele%'";
             } 
             $req.=$modele;
             if($firstCo){

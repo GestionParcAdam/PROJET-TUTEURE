@@ -371,15 +371,16 @@ class DefaultController extends Controller {
                 return new Response('ok');
             }
             if (isset($form['btnListLog'])) {
-                
                 $em = $this->getDoctrine()->getManager();
+                
                 $logiciel = $em->getRepository('ParcInfoBundle:CaracteristiqueLog')->findAll();
                 $html= $this->renderView('ParcInfoBundle:Default:EditionRapport/listeLogiciel.html.twig', array("logiciel" => $logiciel));
                 
                 $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
                 $html2pdf->pdf->SetDisplayMode('fullpage');
                 $html2pdf->writeHTML($html);
-                $html2pdf->Output('Liste_Logiciels.pdf','D');
+                $l= "Liste_Logiciels.pdf";
+                $html2pdf->Output($l,'D');
                 return new Response('ok');
             }
             return new Response('<h1>Erreur !</h1><br> Commande Introuvable!! ');

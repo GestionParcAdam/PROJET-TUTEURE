@@ -10,13 +10,9 @@
  */
 namespace GestionParcInfo\ParcInfoBundle\Controller;
 
-use GestionParcInfo\ParcInfoBundle\Entity\Materiel;
-use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
-use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
-use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueCom;
-use GestionParcInfo\ParcInfoBundle\Entity\CaracteristiqueRes;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\HttpFoundation\Request;
 
 
