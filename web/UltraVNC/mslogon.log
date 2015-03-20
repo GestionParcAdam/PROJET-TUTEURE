@@ -137,6 +137,7 @@
 19/3/2015 13:21   Client 127.0.0.1 disconnected
 19/3/2015 13:24   Invalid attempt from client 127.0.0.1
 19/3/2015 13:24   Invalid attempt from client 127.0.0.1
+<<<<<<< HEAD
 20/3/2015 15:08   Connection received from 25.69.148.6
 20/3/2015 15:08   Invalid attempt from client 25.69.148.6
 20/3/2015 15:08   Client 25.69.148.6 disconnected
@@ -151,3 +152,18 @@
 20/3/2015 17:06   Client 25.69.148.6 disconnected
 20/3/2015 17:34   Invalid attempt from client 212.7.209.11
 20/3/2015 17:57   Invalid attempt from client 212.7.209.11
+=======
+20/3/2015 15:11   Connection received from 25.70.8.17
+20/3/2015 15:11   Invalid attempt from client 25.70.8.17
+20/3/2015 15:11   Client 25.70.8.17 disconnected
+20/3/2015 16:41   Invalid attempt from client 193.104.41.59
+20/3/2015 16:47   Invalid attempt from client 193.104.41.59
+20/3/2015 16:48   Invalid attempt from client 193.104.41.59
+20/3/2015 16:48   Invalid attempt from client 193.104.41.59
+20/3/2015 16:49   Invalid attempt from client 193.104.41.59
+20/3/2015 16:49   Invalid attempt from client 193.104.41.59
+20/3/2015 18:04   Invalid attempt from client 193.104.41.59
+20/3/2015 18:10   Connection received from 25.69.148.6
+20/3/2015 18:10   Invalid attempt from client 25.69.148.6
+20/3/2015 18:10   Client 25.69.148.6 disconnected
+>>>>>>> origin/master
