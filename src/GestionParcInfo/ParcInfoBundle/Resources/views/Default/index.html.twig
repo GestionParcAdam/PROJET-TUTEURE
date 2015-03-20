@@ -130,17 +130,20 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {# 2 #}
+                                            {# 2 linux serv#}
+                                            {# 1 host serv#}
                                             <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 1,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En Service</td>
                                                 <td>{{nbMatService}}</td>
                                             </tr>
-                                            {# 4 #}
+                                            {# 4 linux serv#}
+                                            {# 3 host serv#}
                                             <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 3,'numSite':site.id }) }}'" class="cellule">
                                                 <td>En panne</td>
                                                 <td>{{nbMatPan}}</td>
                                             </tr>
-                                            {# 3 #}
+                                            {# 3 linux serv#}
+                                            {# 2 host serv#}
                                             <tr onclick="document.location.href='{{ path('parc_info_etat', { 'idEtat': 2,'numSite':site.id }) }}'" class="cellule">
                                                 <td>HS</td>
                                                 <td>{{nbMatHs}}</td>

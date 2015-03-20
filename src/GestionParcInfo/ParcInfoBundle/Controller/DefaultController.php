@@ -71,7 +71,7 @@ class DefaultController extends Controller {
                     'required' => false,
                     'empty_value' => 'null',
                     'widget' => 'single_text'))
-                ->add('prixAchat', 'money',array('required' => false)/* ,array('currency' => 'false') */)
+                ->add('prixAchat', 'money',array('required' => false, 'currency' => 'false')/* ,array('currency' => 'false') */)
                 ->add('numFacture', 'text', array('required' => false))
                 ->add('modele', 'text', array('required' => false,))
                 ->add('fabricant', 'entity', array('class' => 'ParcInfoBundle:Fabricant',
@@ -399,6 +399,7 @@ class DefaultController extends Controller {
         $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
         if ($form1->get('ping')->isClicked()) {
+            // -c pour linux et -w pour windows
             $process = new Process('ping -w 1 '.$materiel->getNomMat());
             $process->run();
 
@@ -408,6 +409,7 @@ class DefaultController extends Controller {
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
                 $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
+                // -c pour linux et -w pour windows
                 $process = new Process('ping -w 1 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
