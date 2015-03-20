@@ -28,26 +28,36 @@ class FicheController extends Controller
         $form1->handleRequest($request);
         $couleur='#fff';
         $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findOneBy(array('id' => $idmat));
-        if ($form1->get('ping')->isClicked()) {
-            $process = new Process('ping -n 1 '.$materiel->getNomMat());
+        
+            $process = new Process('ping -n 1 -4 '.$materiel->getNomMat());
             $process->run();
-
+            $ip = split(' ',$process->getOutput())[6];
+            $ip = substr($ip, 1,-1);
+            
+            \Doctrine\Common\Util\Debug::dump($ip);
+ 
             if($process->isSuccessful()){
                 $couleur='green';
+                $mat = $materiel->getNumCarac()->getNumCaracRes()->setAdressIp($ip);
+                    $em->persist($mat);
+                    $em->flush();
             }else{
                 $adr=$em->getRepository('ParcInfoBundle:Caracteristique')
                         ->findOneBy(array('id'=>$materiel->getNumCarac()))->getNumCaracRes();
                 $adr = $em->getRepository('ParcInfoBundle:CaracteristiqueRes')->findOneBy(array('id'=>$adr))->getAdressIp();
-                $process = new Process('ping -n 1 '.$adr);
+                $process = new Process('ping -n 1 -4 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
                     $couleur='green';
+                    $mat = $materiel->getNumCarac()->getNumCaracRes()->setAdressIp($ip);
+                    $em->persist($mat);
+                    $em->flush();
                 }else{
                     $couleur='red';
                 }
                
             }
-        }
+        
         return $this->render('ParcInfoBundle:Default:Materiel/ficheMateriel.html.twig', array("materiel" => $materiel,'form' => $form->createView(),'form1' => $form1->createView(),'couleur'=>$couleur));
     }
      
