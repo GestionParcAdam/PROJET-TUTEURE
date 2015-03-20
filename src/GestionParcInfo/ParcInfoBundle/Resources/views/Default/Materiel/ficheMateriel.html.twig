@@ -81,7 +81,11 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                         <p class="col-lg-12"></p>
                                         <p class="col-lg-6"><b>Date d'achat :</b>
                                             {%if materiel.numCarac is not null %}
-                                            {{materiel.numCarac.numCaracCom.dateAchat|date("d/m/Y")}}
+                                                {%if materiel.numCarac.numCaracCom.dateAchat is null%}
+                                                
+                                                {%else%}
+                                                    {{materiel.numCarac.numCaracCom.dateAchat|date("d/m/Y")}}
+                                                {% endif %}
                                             {%endif%}
                                         </p>
                                         <p class="col-lg-6"><b>Prix d'achat :</b>  
@@ -210,7 +214,11 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                         <p class="col-lg-12"></p>
                                         <p class="col-lg-6"><b>Date de fin de garanti :</b> 
                                             {%if materiel.dateGarantie is not null %}
-                                            {{materiel.dateGarantie|date("d/m/Y")}}
+                                                {%if materiel.dateGarantie is null %}
+                                                    
+                                                {% else %}
+                                                    {{materiel.dateGarantie|date("d/m/Y")}}
+                                                {% endif %}
                                             {%endif%}
                                         </p>    
                                     </div>

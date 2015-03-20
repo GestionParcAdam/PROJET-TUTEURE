@@ -43,7 +43,7 @@ class ParametrageController extends Controller {
         if ($form->handleRequest($request)->isSubmitted()) {
             
             $id = $_POST['liste'];
-            \Doctrine\Common\Util\Debug::dump($id);
+            
             $em = $this->getDoctrine()->getManager();
             
             if($categorie == 'Utilisateur'){
@@ -151,10 +151,20 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleType($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                $isPresent = $em->getRepository('ParcInfoBundle:Type')->findBy(array('libelleType' => $data['nom']));
+                             
+                if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                {                                  
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));      
+                }
+
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -174,10 +184,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleStatut($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Statut')->findBy(array('$libelleStatut' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+                
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }              
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -196,10 +215,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleEtat($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Etat')->findBy(array('$libelleEtat' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -217,12 +245,21 @@ class ParametrageController extends Controller {
                 $data = $form->getData();
                 $obj = new Utilisateur();
                 
-                $obj->setNomUser($data['nom']);
+                $isPresent = $em->getRepository('ParcInfoBundle:Utilisateur')->findBy(array('nomUser' => $data['nom']));
+                             
+                if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                {
+                    $obj->setNomUser($data['nom']);
+
+                    $em->persist($obj);
+                    $em->flush();
                 
-                $em->persist($obj);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -244,10 +281,19 @@ class ParametrageController extends Controller {
                 $obj->setNomSite($data['nom']);
                 $obj->setAdresseSite($data['adresse']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Site')->findBy(array('$nomSite' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -267,10 +313,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomFabricant($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Fabricant')->findBy(array('$nomFabricant' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -290,10 +345,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomRevendeur($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Revendeur')->findBy(array('$nomRevendeur' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -335,5 +399,9 @@ class ParametrageController extends Controller {
                 array('categorie' => 'Admin',
                         'form' => $form->createView()));
         }
+    }
+    
+    public function modifierAction(Request $request, $categorie, $data){
+        
     }
 }

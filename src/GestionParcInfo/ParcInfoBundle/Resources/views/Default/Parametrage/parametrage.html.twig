@@ -3,7 +3,7 @@
 {% block body %}
     <br/>
     <div class="row">   
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Paramétrages </h3>
@@ -27,6 +27,12 @@
                                                     Ajouter <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                                                 </button>
                                             </a>
+                                            <a href ='{{ path('parc_info_modifParam', { 'categorie': 'types' }) }}'>
+                                                <button class="btn btn-warning">
+                                                    Modifier <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                                                </button>
+                                            </a>
+                                          
                                             <a href ='{{ path('parc_info_suppression', { 'categorie': 'types' }) }}'>
                                                 <button class="btn btn-danger">
                                                     Supprimer <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
