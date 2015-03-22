@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <br/>
+    <div class="row"> 
+        <div class="col-lg-12">
+            {{ form_start(form) }}
+            <h1>Editer</h1>
+            <br/>
+            <div class="col-lg-6">
+                <label> {{ categorie }} : </label>
+                {{ form_widget(form.nom , {'attr': {'class': 'form-control' }}) }}
+                
+                {% if categorie == 'Site' %}
+                    <div class="col-lg-6"></div>
+                    <br/>
+                    <label> Adresse : </label>
+                     {{ form_widget(form.adresse , {'attr': {'class': 'form-control' }}) }}
+                {% endif %}
+                <br/>
+                {{ form_widget(form.Modifier, {'attr': {'class':'btn btn-warning' }}) }}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

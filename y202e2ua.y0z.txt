@@ -1,0 +1,32 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	web/UltraVNC/mslogon.log
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/DefaultController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/FicheController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Controller/RechercheController.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Repository/MaterielRepository.php
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeBienEtat.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/EditionRapport/listeLogiciel.html.twig
+#	modified:   src/GestionParcInfo/ParcInfoBundle/Resources/views/Default/RechercherMateriel/rechercherMateriel.html.twig
+#	modified:   web/UltraVNC/mslogon.log
+#	modified:   web/UltraVNC/ultravnc.ini
+#
+

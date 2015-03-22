@@ -43,7 +43,7 @@ class ParametrageController extends Controller {
         if ($form->handleRequest($request)->isSubmitted()) {
             
             $id = $_POST['liste'];
-            \Doctrine\Common\Util\Debug::dump($id);
+            
             $em = $this->getDoctrine()->getManager();
             
             if($categorie == 'Utilisateur'){
@@ -151,10 +151,20 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleType($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                $isPresent = $em->getRepository('ParcInfoBundle:Type')->findBy(array('libelleType' => $data['nom']));
+                             
+                if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                {                                  
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));      
+                }
+
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -174,10 +184,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleStatut($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Statut')->findBy(array('$libelleStatut' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+                
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }              
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -196,10 +215,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleEtat($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Etat')->findBy(array('$libelleEtat' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -217,12 +245,21 @@ class ParametrageController extends Controller {
                 $data = $form->getData();
                 $obj = new Utilisateur();
                 
-                $obj->setNomUser($data['nom']);
+                $isPresent = $em->getRepository('ParcInfoBundle:Utilisateur')->findBy(array('nomUser' => $data['nom']));
+                             
+                if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                {
+                    $obj->setNomUser($data['nom']);
+
+                    $em->persist($obj);
+                    $em->flush();
                 
-                $em->persist($obj);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -244,10 +281,19 @@ class ParametrageController extends Controller {
                 $obj->setNomSite($data['nom']);
                 $obj->setAdresseSite($data['adresse']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Site')->findBy(array('$nomSite' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -267,10 +313,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomFabricant($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Fabricant')->findBy(array('$nomFabricant' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -290,10 +345,19 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomRevendeur($data['nom']);
                 
-                $em->persist($obj);
-                $em->flush();
+                $isPresent = $em->getRepository('ParcInfoBundle:Revendeur')->findBy(array('$nomRevendeur' => $data['nom']));
                 
-                return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                 if(sizeof($isPresent, null)==1)
+                {
+                    return $this->render('ParcInfoBundle:Default:Parametrage/doublon.html.twig');
+                }
+                else
+                { 
+                    $em->persist($obj);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('parc_info_parametrage'));
+                }
             }
             
             return $this->render('ParcInfoBundle:Default:Parametrage/ajouter.html.twig', 
@@ -335,5 +399,202 @@ class ParametrageController extends Controller {
                 array('categorie' => 'Admin',
                         'form' => $form->createView()));
         }
+    }
+    
+    public function editAction(Request $request, $categorie){
+
+                if($categorie === 'Types')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Type',
+                                  'property' => 'libelleType'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Statuts')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Statut',
+                                  'property' => 'libelleStatut'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Etats')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Etat',
+                                  'property' => 'libelleEtat'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Utilisateur')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Utilisateur',
+                                  'property' => 'nomUser'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Site')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Site',
+                                  'property' => 'nomSite'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Fabricant')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Fabricant',
+                                  'property' => 'nomFabricant'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($categorie === 'Revendeur')
+                {
+                    $form = $this->createFormBuilder()
+                            ->add('nom', 'entity', array('class' => 'ParcInfoBundle:Revendeur',
+                                  'property' => 'nomRevendeur'))
+                            ->add('Modifier','submit')
+                            ->getForm();
+                }
+                
+                if($form->handleRequest($request)->isSubmitted())
+                {
+                    $data = $form->getData();
+                    
+                    return $this->redirect($this->generateUrl('parc_info_modifParamSubmit', 
+                                         array('categorie' => $categorie, 'id' => $data['nom']->getId())));
+                }
+        
+        return $this->render('ParcInfoBundle:Default:Parametrage/modifier.html.twig', 
+                array('categorie' => $categorie,
+                        'form' => $form->createView()));
+    }
+    
+    public function editSubmitAction(Request $request, $categorie, $id){
+        
+        $em = $this->getDoctrine()->getManager();
+       
+        if($categorie === 'Types')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Type')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getLibelleType()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Statuts')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Statut')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getLibelleStatut()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Etats')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Etat')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getLibelleEtat()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Utilisateur')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Utilisateur')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getNomUser()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Site')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Site')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getNomSite()))
+                                ->add('adresse','text', array('data' => $cat->getAdresseSite()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Fabricant')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Fabricant')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getNomFabricant()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($categorie === 'Revendeur')
+        {
+            $cat = $em->getRepository('ParcInfoBundle:Revendeur')->find($id);
+
+            $form = $this->createFormBuilder()
+                                ->add('nom', 'text', array('data' => $cat->getNomRevendeur()))
+                                ->add('Modifier','submit')
+                                ->getForm();
+        }
+        
+        if($form->handleRequest($request)->isSubmitted())
+        {
+            $data = $form->getData();
+            
+            if($categorie === 'Types')
+            {
+                 $cat->setLibelleType($data['nom']);
+            }
+            if($categorie === 'Statuts')
+            {
+                 $cat->setLibelleStatut($data['nom']);
+            }
+            if($categorie === 'Etats')
+            {
+                 $cat->setLibelleEtat($data['nom']);
+            }
+            if($categorie === 'Utilisateur')
+            {
+                 $cat->setNomUser($data['nom']);
+            }
+            if($categorie === 'Site')
+            {
+                 $cat->setNomSite($data['nom']);
+                 $cat->setAdresseSite($data['adresse']);
+            }
+            if($categorie === 'Fabricant')
+            {
+                 $cat->setNomFabricant($data['nom']);
+            }
+            if($categorie === 'Revendeur')
+            {
+                 $cat->setNomRevendeur($data['nom']);
+            }
+  
+            $em->persist($cat);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('parc_info_parametrage'));
+        }
+        
+        return $this->render('ParcInfoBundle:Default:Parametrage/modifierSubmit.html.twig', 
+                             array('categorie' => $categorie, 'id' => $id, 'form' => $form->createView()));
     }
 }
