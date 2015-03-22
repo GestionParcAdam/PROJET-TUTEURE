@@ -40,7 +40,7 @@ class DefaultController extends Controller {
         $dernierModif = $em->getRepository('ParcInfoBundle:Materiel')->getDernierMateriels();
         $userMat = $em->getRepository('ParcInfoBundle:Utilisateur')->findAll();
 
-        \Doctrine\Common\Util\Debug::dump($userMat);
+       
         return $this->render('ParcInfoBundle:Default:index.html.twig', 
                 array('materielHs' => $materiels, 
                     'allsite' => $allsite, 'materielPG' => $materielPG, 
