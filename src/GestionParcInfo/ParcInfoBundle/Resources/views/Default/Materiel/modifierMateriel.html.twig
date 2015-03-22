@@ -115,7 +115,7 @@
                                                     {%endif%}
                                                 </td>
                                                 <td>
-                                                    <a class="deleteBtn3">poubelle</a>
+                                                    <a class="deleteBtn3 glyphicon glyphicon-trash" ></a>
                                                 </td>
                                             </tr>
                                         {%endfor%}
@@ -170,7 +170,7 @@
                                             {% for u in materiel.utilisateurs %}
                                                 <tr>
                                                     <td> {{ u.nomUser }} </td>
-                                                    <td><a class="deleteBtn"> poubelle </a></td>
+                                                    <td><a class="deleteBtn glyphicon glyphicon-trash"></a></td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>                                            
@@ -220,7 +220,7 @@
                                                 <td>{{ hist.descIntervention }}</td> 
                                                 <td> {{ hist.prestataireIntervention }} </td>
                                                 <td> {{ hist.coutIntervention }} </td>
-                                                <td><a class="deleteBtn2"> poubelle </a></td>
+                                                <td><a class="deleteBtn2 glyphicon glyphicon-trash"></a></td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>                                            
