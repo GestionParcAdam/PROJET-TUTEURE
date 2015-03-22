@@ -76,7 +76,7 @@ class DefaultController extends Controller {
                     'required' => false,
                     'empty_value' => 'null',
                     'widget' => 'single_text'))
-                ->add('prixAchat', 'money',array('required' => false, 'currency' => 'false')/* ,array('currency' => 'false') */)
+                ->add('prixAchat', 'money',array('required' => false/*, 'currency' => 'false'*/))
                 ->add('numFacture', 'text', array('required' => false))
                 ->add('modele', 'text', array('required' => false,))
                 ->add('fabricant', 'entity', array('class' => 'ParcInfoBundle:Fabricant',
