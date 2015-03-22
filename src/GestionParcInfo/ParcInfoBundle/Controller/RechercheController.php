@@ -66,7 +66,7 @@ class RechercheController extends Controller
         
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
          
-         
+        $userMat = $em->getRepository('ParcInfoBundle:Utilisateur')->findAll();
          $materiels = $em->getRepository('ParcInfoBundle:Materiel')   
                        ->getRechercheMateriels(array('numSite'=>$_POST['form']['siteGeo'],
                            'numType'=>$_POST['form']['typeMat'],
@@ -83,6 +83,6 @@ class RechercheController extends Controller
           
         $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
         return $this->render('ParcInfoBundle:Default:RechercherMateriel/rechercherResultat.html.twig',
-                array('type'=>$type,'materiels'=>$materiels));
+                array('type'=>$type,'materiels'=>$materiels,'utilisateur' => $userMat));
     }
  }

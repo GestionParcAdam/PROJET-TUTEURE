@@ -29,6 +29,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>Utilisateur(s)</th>
                                         <th>Nom du matériel</th>
                                         <th>Etat </th>
                                         <th>Statut</th>
@@ -39,6 +40,16 @@
                                     {% for materiel in materiels %}
                                         {% if materiel.numType.id==t.id %}
                                         <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
+                                            <td>
+                                                {%for u in utilisateur %}
+                                                    {%for m in u.materiels %}
+                                                        {%if m.id==materiel.id%}
+                                                            {{u.nomUser}}
+                                                            <br>
+                                                        {%endif%} 
+                                                    {% endfor %}  
+                                                {% endfor %}
+                                            </td>
                                             <td>{{ materiel.nomMat }}</td>
                                             <td>{{ materiel.numEtat.libelleEtat}}</td>
                                             <td>{{ materiel.numStatut.libelleStatut }}</td>
