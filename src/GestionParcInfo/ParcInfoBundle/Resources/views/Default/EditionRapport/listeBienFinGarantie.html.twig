@@ -3,9 +3,7 @@
      <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}">
 
     <br/>
-    <div >     
-        <div >
-            <div >
+
                   
                 <div >
                     <h3 style="text-align: center;">Matériel</h3>
@@ -19,8 +17,8 @@
                             {% endif %}
                         {% endfor %}
                     {% if existe %}    
-                    <div >
-                        <div >
+
+                    
                             <div >
                                 <h3 style="text-align: center;"> Type : {{t.libelleType}}</h3>
                             </div>
@@ -44,17 +42,15 @@
                                             <td>{{ materiel.getNumSite.nomSite }}</td>
                                             <td>{{ materiel.numEtat.libelleEtat}}</td>
                                             <td>{{  materiel.numStatut.libelleStatut}}</td>
-                                            <td style="border-top: solid black; text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
+                                            <td style=" text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
                                         </tr>
                                         {% endif %}
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+
                     {% endif %}           
                     {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+
+
