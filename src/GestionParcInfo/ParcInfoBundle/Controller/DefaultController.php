@@ -319,15 +319,18 @@ class DefaultController extends Controller {
         if ($form->handleRequest($request)->isSubmitted()) {
             $form = $_POST['form'];
             if (isset($form['btnSiteGeo'])) {
-                $numSite = $form['siteGeo'];
                 $em = $this->getDoctrine()->getManager();
+                $numSite = $form['siteGeo'];
+                $userMat = $em->getRepository('ParcInfoBundle:Utilisateur')->findAll();
+                
                 $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findBy(array('numSite' => $numSite));
                 if ($numSite == ''){
                     $materiel = $em->getRepository('ParcInfoBundle:Materiel')->findAll();
                 }
                 $type = $em->getRepository('ParcInfoBundle:Type')->findAll();
                 $site = $em->getRepository('ParcInfoBundle:Site')->findAll();
-                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', array("materiels" => $materiel, 'type' => $type, 'site' => $site));
+                $html=$this->renderView('ParcInfoBundle:Default:EditionRapport/listeBienInformatique.html.twig', 
+                                    array("materiels" => $materiel, 'type' => $type, 'site' => $site,'utilisateur'=>$userMat));
                 
                 $html2pdf = new \Obtao\Bundle\Html2PdfBundle\lib\HTML2PDF('P','A4','fr');
                 $html2pdf->pdf->SetDisplayMode('fullpage');

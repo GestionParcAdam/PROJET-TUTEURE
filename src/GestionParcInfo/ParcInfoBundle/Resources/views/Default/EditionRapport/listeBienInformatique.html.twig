@@ -3,7 +3,7 @@
 
      <img src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('Images/logo.jpg')}}">
  <br/> 
-    <h3 style="text-align: center;"> Liste du Matériel par Site</h3>
+    <h2 style="text-align: center;"> Liste du Matériel par Site</h2>
 
 <br/> 
     {% for s in site %}
@@ -13,31 +13,54 @@
                    {% set existe = 'true' %}
             {% endif %}
         {% endfor %}
+        {% set tabtype=[]%}
     {% if existe %}
             <div class="panel-heading">
-                <h4 style="text-align: center;"> {{s.nomSite}}</h4>
+                <h3 style="text-align: center; "> <b>{{s.nomSite}}</b></h3>
+            </div>
+            {% for t in materiels %}
+            {%if t.numType not in tabtype  %}
+
+            <div>
+                <h4 style="text-align: center;"> Type :{{t.numType.libelleType}}</h4>
             </div>
             <table class="table table-striped" style="width: 100%; font-size: 14px; border-bottom-right-radius: 3px;
             border-bottom-left-radius: 3px;border-color: gray;margin: auto;">
                 <thead>
-                    <tr>
-                        <th>Nom du matériel &nbsp;&nbsp;</th>
-                        <th> Type de matériel &nbsp;&nbsp;</th>
-                        <th> Statut </th>
+                <tr>
+                        <th><b>Utilisateur(s)&nbsp;&nbsp;</b></th>
+                        <th><b>Nom du matériel &nbsp;&nbsp;</b></th>
+                        <th><b> Etat </b></th>
+                        <th><b> Statut </b></th>
+                        <th><b> Date de fin de Garantie </b></th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% set l =1 %}
                     {% for materiel in materiels %}
-                        {% if materiel.numSite.id==s.id %}
-                        <tr>
-                            <td>{{ materiel.nomMat }}</td>
-                           <td>{{ materiel.numType.libelleType}}</td>
-                           <td>{{  materiel.numStatut.libelleStatut}}</td>
+                        {% if materiel.numSite.id==s.id and t.numType==materiel.numType %}
+                        <tr {%if l ==2 %}style="background:#EEE" {% set l=1%}{%else%}{% set l=2%}{%endif%}>
+                            <td style="border-top: solid black">{%for u in utilisateur %}
+                                                    {%for m in u.materiels %}
+                                                        {%if m.id==materiel.id%}
+                                                            {{u.nomUser}}
+                                                            <br>
+                                                        {%endif%} 
+                                                    {% endfor %}  
+                                                {% endfor %}
+                            </td>
+                            <td style="border-top: solid black">{{ materiel.nomMat }}</td>
+                            <td style="border-top: solid black">{{  materiel.numEtat.libelleEtat}}</td>
+                           <td style="border-top: solid black">{{  materiel.numStatut.libelleStatut}}</td>
+                           <td style="border-top: solid black; text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
+                {%set tabtype= tabtype|merge([t.numType])%}
+                {%endif%}
+            {%endfor%}
                 <br/>
     {% endif %}           
     {% endfor %}
