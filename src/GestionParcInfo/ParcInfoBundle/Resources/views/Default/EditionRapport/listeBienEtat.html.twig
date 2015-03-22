@@ -27,18 +27,19 @@
                     <tr>
                         <th>Nom du matériel&nbsp;&nbsp;</th>
                         <th>Lieu&nbsp;&nbsp;</th>
-                        <th> Etat&nbsp;&nbsp;</th>
                         <th> Statut </th>
+                        <th> Date de fin de Garantie </th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% set l =1 %}
                      {% for materiel in materiels %}
                         {% if  materiel.numEtat.id==e.id %}
-                        <tr onclick="document.location.href = '{{ path('parc_info_fiche',{'idmat':materiel.id}) }}'" class="cellule">
+                        <tr {%if l ==2 %}style="background:#EEE" {% set l=1%}{%else%}{% set l=2%}{%endif%}>
                             <td>{{ materiel.nomMat }}</td>
                             <td>{{ materiel.getNumSite.nomSite }}</td>
-                            <td>{{ materiel.numEtat.libelleEtat}}</td>
                            <td>{{  materiel.numStatut.libelleStatut}}</td>
+                           <td style="border-top: solid black; text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}

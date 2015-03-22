@@ -234,8 +234,7 @@ class MaterielRepository extends EntityRepository
     {
        $today = date("y.m.d");    
        $query = $this->getEntityManager()
-                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.dateGarantie > :date')
-                ->setParameter('date', $today);
+                ->createQuery('SELECT m FROM ParcInfoBundle:Materiel m WHERE m.numStatut=1 or m.numStatut=3');
         $materiels = $query->getResult();
         
         return $materiels;

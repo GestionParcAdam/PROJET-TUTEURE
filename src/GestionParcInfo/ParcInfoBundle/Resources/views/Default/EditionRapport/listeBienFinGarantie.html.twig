@@ -24,13 +24,15 @@
                             <div >
                                 <h3 style="text-align: center;"> Type : {{t.libelleType}}</h3>
                             </div>
-                            <table>
+                            <table style="width: 100%; font-size: 14px; border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;border-color: gray;margin: auto;">
                                 <thead>
                                     <tr>
-                                        <th>Nom du matériel</th>
-                                        <th>Lieu</th>
-                                        <th> Etat</th>
-                                        <th> Statut </th>
+                                        <th><b>Nom du matériel</b></th>
+                                        <th><b>Lieu</b></th>
+                                        <th><b> Etat</b></th>
+                                        <th><b> Statut </b></th>
+                                        <th><b> Date de fin de Garantie </b></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,7 +43,8 @@
                                             <td>{{ materiel.nomMat }}</td>
                                             <td>{{ materiel.getNumSite.nomSite }}</td>
                                             <td>{{ materiel.numEtat.libelleEtat}}</td>
-                                           <td>{{  materiel.numStatut.libelleStatut}}</td>
+                                            <td>{{  materiel.numStatut.libelleStatut}}</td>
+                                            <td style="border-top: solid black; text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
                                         </tr>
                                         {% endif %}
                                     {% endfor %}

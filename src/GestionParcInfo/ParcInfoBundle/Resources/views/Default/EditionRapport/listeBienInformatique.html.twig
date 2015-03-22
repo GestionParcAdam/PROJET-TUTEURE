@@ -49,10 +49,10 @@
                                                     {% endfor %}  
                                                 {% endfor %}
                             </td>
-                            <td style="border-top: solid black">{{ materiel.nomMat }}</td>
-                            <td style="border-top: solid black">{{  materiel.numEtat.libelleEtat}}</td>
-                           <td style="border-top: solid black">{{  materiel.numStatut.libelleStatut}}</td>
-                           <td style="border-top: solid black; text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
+                            <td >{{ materiel.nomMat }}</td>
+                            <td >{{  materiel.numEtat.libelleEtat}}</td>
+                           <td >{{  materiel.numStatut.libelleStatut}}</td>
+                           <td style="text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}

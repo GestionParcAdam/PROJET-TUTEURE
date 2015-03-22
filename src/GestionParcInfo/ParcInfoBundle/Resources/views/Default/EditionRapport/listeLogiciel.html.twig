@@ -17,9 +17,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% set l =1 %}
                                     {% for logiciels in logiciel %}
                                        
-                                        <tr>
+                                        <tr {%if l ==2 %}style="background:#EEE" {% set l=1%}{%else%}{% set l=2%}{%endif%}>
                                             <td>{{ logiciels.nomLog }}</td>
                                             <td>{{ logiciels.nomEditeur }}</td>
                                             <td>{{ logiciels.versionLog}}</td>
