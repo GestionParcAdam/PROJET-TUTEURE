@@ -34,7 +34,6 @@ class FicheController extends Controller
             $ip = split(' ',$process->getOutput())[6];
             $ip = substr($ip, 1,-1);
             
-            \Doctrine\Common\Util\Debug::dump($ip);
  
             if($process->isSuccessful()){
                 $couleur='green';

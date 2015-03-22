@@ -38,9 +38,14 @@ class DefaultController extends Controller {
         $materielEnPanne = $em->getRepository('ParcInfoBundle:Materiel')->getMaterielEnPanne();
 
         $dernierModif = $em->getRepository('ParcInfoBundle:Materiel')->getDernierMateriels();
+        $userMat = $em->getRepository('ParcInfoBundle:Utilisateur')->findAll();
 
-
-        return $this->render('ParcInfoBundle:Default:index.html.twig', array('materielHs' => $materiels, 'allsite' => $allsite, 'materielPG' => $materielPG, 'materielEnPanne' => $materielEnPanne, 'dernierModif' => $dernierModif));
+        \Doctrine\Common\Util\Debug::dump($userMat);
+        return $this->render('ParcInfoBundle:Default:index.html.twig', 
+                array('materielHs' => $materiels, 
+                    'allsite' => $allsite, 'materielPG' => $materielPG, 
+                    'materielEnPanne' => $materielEnPanne, 'dernierModif' => $dernierModif,
+                    'utilisateur' => $userMat));
     }
 
     public function ajouterAction(Request $request) {
