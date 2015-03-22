@@ -31,11 +31,12 @@ class FicheController extends Controller
         
             $process = new Process('ping -n 1 -4 '.$materiel->getNomMat());
             $process->run();
-            $ip = split(' ',$process->getOutput())[6];
-            $ip = substr($ip, 1,-1);
+            
             
  
             if($process->isSuccessful()){
+                $ip = explode(' ',$process->getOutput())[6];
+                $ip = substr($ip, 1,-1);
                 $couleur='green';
                 $mat = $materiel->getNumCarac()->getNumCaracRes()->setAdressIp($ip);
                     $em->persist($mat);
@@ -47,6 +48,8 @@ class FicheController extends Controller
                 $process = new Process('ping -n 1 -4 '.$adr);
                 $process->run();
                 if($process->isSuccessful()){
+                    $ip = explode(' ',$process->getOutput())[6];
+                    $ip = substr($ip, 1,-1);
                     $couleur='green';
                     $mat = $materiel->getNumCarac()->getNumCaracRes()->setAdressIp($ip);
                     $em->persist($mat);
