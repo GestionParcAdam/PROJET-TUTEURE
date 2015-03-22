@@ -69,8 +69,12 @@ parc_info_ajoutParam:
     defaults: { _controller: ParcInfoBundle:Parametrage:ajouter }
 
 parc_info_modifParam:
-    path: /Parametrage/add/{categorie}
-    defaults: { _controller: ParcInfoBundle:Parametrage:ajouter }
+    path: /Parametrage/edit/{categorie}
+    defaults: { _controller: ParcInfoBundle:Parametrage:edit }
+    
+parc_info_modifParamSubmit:
+    path: /Parametrage/edit/{categorie}/{id}
+    defaults: { _controller: ParcInfoBundle:Parametrage:editSubmit }
     
 parc_info_delete:
     path: /delete/{data}/{id}/{type}
