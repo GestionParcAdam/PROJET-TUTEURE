@@ -13,24 +13,20 @@
                    {% set existe = 'true' %}
             {% endif %}
         {% endfor %}
-        {% set tabtype=[]%}
     {% if existe %}
             <div class="panel-heading">
                 <h3 style="text-align: center; "> <b>{{s.nomSite}}</b></h3>
             </div>
-            {% for t in materiels %}
-            {%for typ in type %}
-                
-            {%if typ.id==t.numType.id%}
-            <div>
-                <h4 style="text-align: center;"> Type :{{t.numType.libelleType}}</h4>
-            </div>
+
+
+
             <table class="table table-striped" style="width: 100%; font-size: 14px; border-bottom-right-radius: 3px;
             border-bottom-left-radius: 3px;border-color: gray;margin: auto;">
                 <thead>
                 <tr>
                         <th><b>Utilisateur(s)&nbsp;&nbsp;</b></th>
                         <th><b>Nom du matériel &nbsp;&nbsp;</b></th>
+                        <th><b>Type &nbsp;&nbsp;</b></th>
                         <th><b> Etat </b></th>
                         <th><b> Statut </b></th>
                         <th><b> Date de fin de Garantie </b></th>
@@ -39,7 +35,7 @@
                 <tbody>
                     {% set l =1 %}
                     {% for materiel in materiels %}
-                        {% if materiel.numSite.id==s.id and t.numType==materiel.numType %}
+                        {% if materiel.numSite.id==s.id %}
                         <tr {%if l ==2 %}style="background:#EEE" {% set l=1%}{%else%}{% set l=2%}{%endif%}>
                             <td >{%for u in utilisateur %}
                                                     {%for m in u.materiels %}
@@ -51,6 +47,7 @@
                                                 {% endfor %}
                             </td>
                             <td >{{ materiel.nomMat }}</td>
+                            <td >{{ materiel.numType.libelleType }}</td>
                             <td >{{  materiel.numEtat.libelleEtat}}</td>
                            <td >{{  materiel.numStatut.libelleStatut}}</td>
                            <td style="text-align: center;">{{  materiel.dateGarantie|date("d/m/Y")}}</td>
@@ -59,10 +56,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-                {%set tabtype= tabtype|merge([t.numType])%}
-                {%endif%}
-             {%endfor%}
-            {%endfor%}
                 <br/>
     {% endif %}           
     {% endfor %}
