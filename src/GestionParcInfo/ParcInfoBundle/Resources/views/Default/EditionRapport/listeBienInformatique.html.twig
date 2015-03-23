@@ -19,8 +19,9 @@
                 <h3 style="text-align: center; "> <b>{{s.nomSite}}</b></h3>
             </div>
             {% for t in materiels %}
-            {%if t.numType not in tabtype  %}
-
+            {%for typ in type %}
+                
+            {%if typ.id==t.numType.id%}
             <div>
                 <h4 style="text-align: center;"> Type :{{t.numType.libelleType}}</h4>
             </div>
@@ -60,6 +61,7 @@
             </table>
                 {%set tabtype= tabtype|merge([t.numType])%}
                 {%endif%}
+             {%endfor%}
             {%endfor%}
                 <br/>
     {% endif %}           
