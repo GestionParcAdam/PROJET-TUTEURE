@@ -184,7 +184,7 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleStatut($data['nom']);
                 
-                $isPresent = $em->getRepository('ParcInfoBundle:Statut')->findBy(array('$libelleStatut' => $data['nom']));
+                $isPresent = $em->getRepository('ParcInfoBundle:Statut')->findBy(array('libelleStatut' => $data['nom']));
                 
                  if(sizeof($isPresent, null)==1)
                 {
@@ -215,7 +215,7 @@ class ParametrageController extends Controller {
                 
                 $obj->setLibelleEtat($data['nom']);
                 
-                $isPresent = $em->getRepository('ParcInfoBundle:Etat')->findBy(array('$libelleEtat' => $data['nom']));
+                $isPresent = $em->getRepository('ParcInfoBundle:Etat')->findBy(array('libelleEtat' => $data['nom']));
                 
                  if(sizeof($isPresent, null)==1)
                 {
@@ -281,7 +281,7 @@ class ParametrageController extends Controller {
                 $obj->setNomSite($data['nom']);
                 $obj->setAdresseSite($data['adresse']);
                 
-                $isPresent = $em->getRepository('ParcInfoBundle:Site')->findBy(array('$nomSite' => $data['nom']));
+                $isPresent = $em->getRepository('ParcInfoBundle:Site')->findBy(array('nomSite' => $data['nom']));
                 
                  if(sizeof($isPresent, null)==1)
                 {
@@ -313,7 +313,7 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomFabricant($data['nom']);
                 
-                $isPresent = $em->getRepository('ParcInfoBundle:Fabricant')->findBy(array('$nomFabricant' => $data['nom']));
+                $isPresent = $em->getRepository('ParcInfoBundle:Fabricant')->findBy(array('nomFabricant' => $data['nom']));
                 
                  if(sizeof($isPresent, null)==1)
                 {
@@ -345,7 +345,7 @@ class ParametrageController extends Controller {
                 
                 $obj->setNomRevendeur($data['nom']);
                 
-                $isPresent = $em->getRepository('ParcInfoBundle:Revendeur')->findBy(array('$nomRevendeur' => $data['nom']));
+                $isPresent = $em->getRepository('ParcInfoBundle:Revendeur')->findBy(array('nomRevendeur' => $data['nom']));
                 
                  if(sizeof($isPresent, null)==1)
                 {
