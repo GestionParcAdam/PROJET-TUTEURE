@@ -33,10 +33,30 @@ class FicheController extends Controller
             $process->run();
             
             
- 
+            
             if($process->isSuccessful()){
                 $ip = explode(' ',$process->getOutput())[6];
                 $ip = substr($ip, 1,-1);
+                $file = fopen('vnc.bat', 'w+');
+                $bat="rem désactive l'affichage des commandes
+                    echo off
+                    rem remise à blanc de l'écran
+                    cls
+                    rem définition de la valeur de la variable
+                    set variable=%CD%
+                    rem affiche du texte en rappelant la variable grâce aux %
+                    echo %variable%
+                    rem on se deplace
+                    cd \"C:\wamp\www\PROJET-TUTEURE\web\ \"
+                    rem on lance vnc
+                    start vncviewer.exe ".$ip."
+                    rem on revien la ou il y avait le bat
+                    cd %variable%
+                    rem on le suprime
+                    del vnc.bat";
+                
+                fputs($file, $bat);
+                fclose($file);
                 $couleur='green';
                 $mat = $materiel->getNumCarac()->getNumCaracRes()->setAdressIp($ip);
                     $em->persist($mat);

@@ -24,10 +24,10 @@ Donc on aura déjà un partie de vue créer ensuite on va remplir les bloc de ce
                                 <h3 class="panel-title"><i class="fa fa-laptop"></i> Détail du matériel</h3>
                             </div>
                             <div class="panel-body">
-                                <p class="col-lg-8"></p>
+                                <p class="col-lg-8">{{'http://'~ materiel.numCarac.numCaracRes.adressIp ~':5800/'}}</p>
                                 
                                 <p class="col-lg-2">
-                                    <a href="{{'http://'~ materiel.numCarac.numCaracRes.adressIp ~':5800/'}}" target=_blank><button class="btn btn-default">Connexion VNC</button></a>                                    
+                                    <a href="{{ app.request.scheme ~'://' ~ app.request.httpHost ~ asset('vnc.bat') }}" target=_blank><button class="btn btn-default">Connexion VNC</button></a>                                    
                                 </p>
                                                               
                                 {{ form_start(form1) }}

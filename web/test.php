@@ -1,3 +1,8 @@
 <?php
-exec( "vncviewer.exe 127.0.0.1 -password 01");
+//$file="test2.bat";
+//exec( $file);
+
 ?>
+<html>
+erhgege
+</html>
