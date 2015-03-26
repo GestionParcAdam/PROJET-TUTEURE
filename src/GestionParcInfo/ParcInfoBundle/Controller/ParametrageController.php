@@ -21,13 +21,43 @@ use GestionParcInfo\ParcInfoBundle\Entity\Fabricant;
 use GestionParcInfo\ParcInfoBundle\Entity\Revendeur;
 use GestionParcInfo\ParcInfoBundle\Entity\Site;
 use GestionParcInfo\ParcInfoBundle\Entity\Utilisateur;
+use GestionParcInfo\ParcInfoBundle\Entity\Chemin;
 use GestionParcInfo\ParcInfoBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class ParametrageController extends Controller {
 
-    public function parametrageAction() {
-        return $this->render('ParcInfoBundle:Default:Parametrage/parametrage.html.twig');
+    public function parametrageAction(Request $request) {
+         $form = $this->createFormBuilder()
+                ->setMethod('POST')
+                ->setAction($this->generateUrl('parc_info_parametrage'))
+                ->add('ajouter', 'submit')
+                ->add('chemin', 'text',array('attr'=>array('title'=>'Ecrire le chemin comple vers votre dossier où se trouve vncviewer.exe et finir par \\. 
+                                                       Exemple C:\\Dossier\\
+                                                       En cas d\'erreur la connexion vnc ne fonctionnera pas')))
+                ->getForm();
+        $em = $this->getDoctrine()->getManager();
+        $isPresent = $em->getRepository('ParcInfoBundle:Chemin')->findBy(array('id' => 1));
+        if($isPresent){
+            $chemin = $isPresent[0]->getAdresseVnc();
+        }else{
+            $chemin="";
+        }
+        
+        if($form->handleRequest($request)->isSubmitted()){
+            $data = $form->getData();
+            $chemin = $data['chemin'];
+            if(empty(sizeof($isPresent, null))){
+                $obj = new Chemin();
+                $obj->setAdresseVnc($chemin);
+                $em->persist($obj);
+                $em->flush();
+            }else{
+                $isPresent[0]->setAdresseVnc($chemin);
+                $em->flush();
+            }
+        }
+        return $this->render('ParcInfoBundle:Default:Parametrage/parametrage.html.twig',array("form"=>$form->createView(),"chemin"=>$chemin));
     }
 
     public function suppressionAction(Request $request, $categorie) {

@@ -42,7 +42,12 @@ class CaracteristiqueRes
      */
     private $adressPasserelle;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresseVnc", type="string", length=40, nullable=true)
+     */
+    private $adresseVnc;
     
 
     /**
@@ -122,5 +127,28 @@ class CaracteristiqueRes
     public function getAdressPasserelle()
     {
         return $this->adressPasserelle;
+    }
+
+    /**
+     * Set adresseVnc
+     *
+     * @param string $adresseVnc
+     * @return CaracteristiqueRes
+     */
+    public function setAdresseVnc($adresseVnc)
+    {
+        $this->adresseVnc = $adresseVnc;
+    
+        return $this;
+    }
+
+    /**
+     * Get adresseVnc
+     *
+     * @return string 
+     */
+    public function getAdresseVnc()
+    {
+        return $this->adresseVnc;
     }
 }

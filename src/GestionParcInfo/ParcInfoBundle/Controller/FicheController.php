@@ -37,6 +37,7 @@ class FicheController extends Controller
             if($process->isSuccessful()){
                 $ip = explode(' ',$process->getOutput())[6];
                 $ip = substr($ip, 1,-1);
+                $chemin = $em->getRepository('ParcInfoBundle:Chemin')->findBy(array('id' => 1))[0]->getAdresseVnc();
                 $file = fopen('vnc.bat', 'w+');
                 $bat="rem désactive l'affichage des commandes
                     echo off
@@ -47,7 +48,7 @@ class FicheController extends Controller
                     rem affiche du texte en rappelant la variable grâce aux %
                     echo %variable%
                     rem on se deplace
-                    cd \"C:\wamp\www\PROJET-TUTEURE\web\ \"
+                    cd \"".$chemin." \"
                     rem on lance vnc
                     start vncviewer.exe ".$ip."
                     rem on revien la ou il y avait le bat

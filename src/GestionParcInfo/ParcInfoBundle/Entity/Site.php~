@@ -37,7 +37,7 @@ class Site
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="numSite", cascade={"remove","persist"})
+     * @ORM\OneToMany(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Materiel", mappedBy="numSite", cascade={"persist"})
      */
     protected $materiels;
     

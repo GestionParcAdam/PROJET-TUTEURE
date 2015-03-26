@@ -171,6 +171,16 @@
                                             
                                         </td>   
                                     </tr>
+                                    <tr>
+                                        <td>Ajouter un chemin a UltraVnc viewer</td>
+                                        <td>
+                                            {{ form_start(form) }}
+                                            <label>Chemin Actuel : {{chemin|e('html')}} </label><br>
+                                                {{ form_widget(form.chemin)}}
+                                                {{ form_widget(form.ajouter,{'attr':{'class':'btn btn-success'}})}}
+                                            {{ form_end(form) }}                                           
+                                        </td>   
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

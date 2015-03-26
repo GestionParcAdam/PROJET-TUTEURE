@@ -57,13 +57,13 @@ class CaracteristiqueCom
     private $numImmo;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Fabricant", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $numFabricant = null;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="GestionParcInfo\ParcInfoBundle\Entity\Revendeur", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $numRevendeur = null;

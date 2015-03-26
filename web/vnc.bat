@@ -7,12 +7,10 @@ rem désactive l'affichage des commandes
                     rem affiche du texte en rappelant la variable grâce aux %
                     echo %variable%
                     rem on se deplace
-                    cd "C:\wamp\www\PROJET-TUTEURE\web\ "
+                    cd "C:\wamp\www\PROJET-TUTEURE\web\UltraVNC\ "
                     rem on lance vnc
                     start vncviewer.exe 127.0.0.1
                     rem on revien la ou il y avait le bat
                     cd %variable%
                     rem on le suprime
                     del vnc.bat
-                    rem arrêt
-                    pause
